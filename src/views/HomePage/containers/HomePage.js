@@ -11,7 +11,7 @@ class HomePage extends Component {
       <>
         <NavBar></NavBar>
         <SearchBanner />
-        <section className="section serveis-section">
+        <section className="section has-text-centered">
           <h1 className="title">Quins serveis pots trobar</h1>
           <h2 className="subtitle">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque

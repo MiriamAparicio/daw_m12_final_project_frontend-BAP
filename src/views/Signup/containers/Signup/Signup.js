@@ -2,17 +2,17 @@ import React, { Component } from 'react';
 //import PropTypes from 'prop-types';
 
 import NavBar from '../../../shared-components/NavBar/NavBar';
-import LoginForm from '../LoginForm/LoginForm';
+import SignupForm from '../SignupForm/SignupForm';
 
-class Login extends Component {
+class Signup extends Component {
   render() {
     return (
       <>
         <NavBar showIcon={false} />
-        <LoginForm />
+        <SignupForm />
       </>
     );
   }
 }
 
-export default Login;
+export default Signup;

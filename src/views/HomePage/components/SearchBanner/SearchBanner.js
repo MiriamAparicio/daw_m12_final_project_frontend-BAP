@@ -8,7 +8,7 @@ class SearchBanner extends Component {
   render() {
     return (
       <section className="section search-banner">
-        <div className="container search-banner-container">
+        <div className="container has-text-centered">
           <h2 className="subtitle search-banner-subtitle">
             Cerca serveis a la teva zona
           </h2>

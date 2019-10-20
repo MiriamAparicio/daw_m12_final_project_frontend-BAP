@@ -4,10 +4,10 @@ import React, { Component } from 'react';
 class SearchInput extends Component {
   render() {
     return (
-      <div class="field">
-        <div class="control">
+      <div className="field search-field">
+        <div className="control">
           <input
-            class="input is-rounded"
+            className="input is-rounded"
             type="text"
             placeholder="Codi Postal"
           />

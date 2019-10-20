@@ -7,9 +7,11 @@ import SearchInput from '../SearchInput/SearchInput';
 class SearchBanner extends Component {
   render() {
     return (
-      <section class="section">
-        <div class="container">
-          <h2 class="subtitle">Cerca serveis a la teva zona</h2>
+      <section className="section search-banner">
+        <div className="container search-banner-container">
+          <h2 className="subtitle search-banner-subtitle">
+            Cerca serveis a la teva zona
+          </h2>
           <SearchInput></SearchInput>
         </div>
       </section>

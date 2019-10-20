@@ -1,16 +1,16 @@
-.section {
+.search-banner {
   background-color: #498291;
 }
 
-.container {
+.search-banner-container {
   text-align: center;
 }
 
-.subtitle {
+.search-banner-subtitle {
   color: white;
 }
 
-.field {
+.search-field {
   display: flex;
   justify-content: center;
 }

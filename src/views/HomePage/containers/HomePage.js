@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //import PropTypes from 'prop-types';
 
-import NavBar from '../../components/NavBar/NavBar';
+import NavBar from '../../shared-components/NavBar/NavBar';
 
 class HomePage extends Component {
   render() {

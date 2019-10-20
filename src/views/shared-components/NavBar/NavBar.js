@@ -11,12 +11,10 @@ class NavBar extends Component {
             <span>BEN A PROP</span>
           </div>
         </div>
-        <div className="navbar-end">
-          <div className="navbar-item">
-            <a href="/login" className="icon">
-              <i className="far fa-user user-icon-color"></i>
-            </a>
-          </div>
+        <div className="navbar-item">
+          <a href="/login" className="button is-rounded icon is-medium">
+            <i className="far fa-user user-icon-color"></i>
+          </a>
         </div>
       </nav>
     );

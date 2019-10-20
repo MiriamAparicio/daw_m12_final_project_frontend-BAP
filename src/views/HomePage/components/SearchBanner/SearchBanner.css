@@ -1,0 +1,16 @@
+.section {
+  background-color: #498291;
+}
+
+.container {
+  text-align: center;
+}
+
+.subtitle {
+  color: white;
+}
+
+.field {
+  display: flex;
+  justify-content: center;
+}

@@ -1,8 +1,28 @@
 import React, { Component } from 'react';
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import './SignupForm.css';
 
 class SignupForm extends Component {
+  static propTypes = {
+    handleSubmit: PropTypes.func
+  };
+
+  state = {
+    username: '',
+    name: '',
+    surname: '',
+    postalCode: '',
+    email: '',
+    password: ''
+  };
+
+  onChange = e => {
+    const value = e.target.value;
+    this.setState({
+      [e.target.name]: value
+    });
+  };
+
   render() {
     return (
       <section className="hero is-light is-fullheight">
@@ -16,6 +36,7 @@ class SignupForm extends Component {
                     <label className="label">Nom d'usuari</label>
                     <div className="control has-icons-left">
                       <input
+                        onChange={this.onChange}
                         name="username"
                         type="text"
                         placeholder="Silent Bob"
@@ -28,6 +49,7 @@ class SignupForm extends Component {
                     <label className="label">Nom</label>
                     <div className="control has-icons-left">
                       <input
+                        onChange={this.onChange}
                         name="name"
                         type="text"
                         placeholder="Bob"
@@ -40,6 +62,7 @@ class SignupForm extends Component {
                     <label className="label">Cognoms</label>
                     <div className="control has-icons-left">
                       <input
+                        onChange={this.onChange}
                         name="surname"
                         type="text"
                         placeholder="Smith"
@@ -52,6 +75,7 @@ class SignupForm extends Component {
                     <label className="label">Codi Postal</label>
                     <div className="control has-icons-left">
                       <input
+                        onChange={this.onChange}
                         name="postalCode"
                         type="text"
                         placeholder="08339"
@@ -64,6 +88,7 @@ class SignupForm extends Component {
                     <label className="label">Email</label>
                     <div className="control has-icons-left">
                       <input
+                        onChange={this.onChange}
                         type="email"
                         placeholder="bobsmith@gmail.com"
                         className="input"
@@ -75,6 +100,7 @@ class SignupForm extends Component {
                     <label className="label">Password</label>
                     <div className="control has-icons-left">
                       <input
+                        onChange={this.onChange}
                         type="password"
                         placeholder="*******"
                         className="input"
@@ -83,7 +109,12 @@ class SignupForm extends Component {
                     </div>
                   </div>
                   <div className="field has-text-centered">
-                    <button className="button is-info">Signup</button>
+                    <button
+                      onClick={this.props.handleSubmit(this.state)}
+                      className="button is-info"
+                    >
+                      Signup
+                    </button>
                   </div>
                 </form>
               </div>

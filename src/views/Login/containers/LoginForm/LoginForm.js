@@ -1,8 +1,24 @@
 import React, { Component } from 'react';
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import './LoginForm.css';
 
 class LoginForm extends Component {
+  static propTypes = {
+    handleSubmit: PropTypes.func
+  };
+
+  state = {
+    email: '',
+    password: ''
+  };
+
+  onChange = e => {
+    const value = e.target.value;
+    this.setState({
+      [e.target.name]: value
+    });
+  };
+
   render() {
     return (
       <section className="hero is-light is-fullheight">
@@ -16,6 +32,8 @@ class LoginForm extends Component {
                     <label className="label">Email</label>
                     <div className="control has-icons-left">
                       <input
+                        onChange={this.onChange}
+                        name="email"
                         type="email"
                         placeholder="bobsmith@gmail.com"
                         className="input"
@@ -27,6 +45,8 @@ class LoginForm extends Component {
                     <label className="label">Password</label>
                     <div className="control has-icons-left">
                       <input
+                        onChange={this.onChange}
+                        name="password"
                         type="password"
                         placeholder="*******"
                         className="input"
@@ -35,7 +55,12 @@ class LoginForm extends Component {
                     </div>
                   </div>
                   <div className="field has-text-centered">
-                    <button className="button is-info">Sign in</button>
+                    <button
+                      onClick={this.props.handleSubmit(this.state)}
+                      className="button is-info"
+                    >
+                      Sign in
+                    </button>
                   </div>
                 </form>
                 <div>

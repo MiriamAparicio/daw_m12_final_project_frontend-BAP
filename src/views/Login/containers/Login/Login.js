@@ -5,11 +5,16 @@ import NavBar from '../../../shared-components/NavBar/NavBar';
 import LoginForm from '../LoginForm/LoginForm';
 
 class Login extends Component {
+  handleSubmit = ({ email, password }) => e => {
+    e.preventDefault();
+    console.log(email, password);
+  };
+
   render() {
     return (
       <>
         <NavBar showIcon={false} />
-        <LoginForm />
+        <LoginForm handleSubmit={this.handleSubmit} />
       </>
     );
   }

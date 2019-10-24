@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 //import PropTypes from 'prop-types';
 import './HomePage.css';
 
-import NavBar from '../../shared-components/NavBar/NavBar';
+import NavBar from '../../../components/NavBar/NavBar';
 import SearchBanner from '../components/SearchBanner/SearchBanner';
 
 class HomePage extends Component {
   render() {
     return (
       <>
-        <NavBar></NavBar>
+        <NavBar />
         <SearchBanner />
         <section className="section has-text-centered">
           <h1 className="title">Quins serveis pots trobar</h1>

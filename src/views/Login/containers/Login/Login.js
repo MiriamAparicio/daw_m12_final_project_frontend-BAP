@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //import PropTypes from 'prop-types';
 
-import NavBar from '../../../shared-components/NavBar/NavBar';
+import NavBar from '../../../../components/NavBar/NavBar';
 import LoginForm from '../LoginForm/LoginForm';
 
 class Login extends Component {

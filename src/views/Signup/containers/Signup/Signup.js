@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //import PropTypes from 'prop-types';
 
-import NavBar from '../../../shared-components/NavBar/NavBar';
+import NavBar from '../../../../components/NavBar/NavBar';
 import SignupForm from '../SignupForm/SignupForm';
 
 class Signup extends Component {
@@ -14,6 +14,7 @@ class Signup extends Component {
     password
   }) => e => {
     e.preventDefault();
+    //send location instead of postalCode
     console.log(username, name, surname, postalCode, email, password);
   };
 

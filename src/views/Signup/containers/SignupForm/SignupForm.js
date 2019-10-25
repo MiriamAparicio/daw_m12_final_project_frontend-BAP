@@ -88,6 +88,7 @@ class SignupForm extends Component {
                     <label className="label">Email</label>
                     <div className="control has-icons-left">
                       <input
+                        name="email"
                         onChange={this.onChange}
                         type="email"
                         placeholder="bobsmith@gmail.com"
@@ -100,6 +101,7 @@ class SignupForm extends Component {
                     <label className="label">Password</label>
                     <div className="control has-icons-left">
                       <input
+                        name="password"
                         onChange={this.onChange}
                         type="password"
                         placeholder="*******"

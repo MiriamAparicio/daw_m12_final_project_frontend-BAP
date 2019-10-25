@@ -11,26 +11,19 @@ class AuthService {
     });
   }
 
-  async signup(user) {
+  signup(user) {
     const { username, name, surname, email, password, location } = user;
-    return (
-      this.auth
-        .post('/signup', {
-          username,
-          name,
-          surname,
-          email,
-          password,
-          location
-        })
-        // TODO resoldre error del BE 500 i llavor posar el catch al metode del component que fa el request
-        .catch(e => {
-          console.log(e);
-        })
-    );
+    return this.auth.post('/signup', {
+      username,
+      name,
+      surname,
+      email,
+      password,
+      location
+    });
   }
 
-  async login(user) {
+  login(user) {
     const { email, password } = user;
     return this.auth.post('/login', { email, password });
   }

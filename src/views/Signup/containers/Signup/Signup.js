@@ -27,11 +27,10 @@ class Signup extends Component {
       .signup({ username, name, surname, email, password, location })
       .then(() => {
         this.props.history.replace('/anuncis');
+      })
+      .catch(e => {
+        console.log(e);
       });
-    // TODO resoldre error del BE 500
-    // .catch(e => {
-    //   console.log(e);
-    // });
   };
 
   render() {

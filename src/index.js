@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import App from './App';
 import Login from './views/Login/containers/Login/Login';
 import Signup from './views/Signup/containers/Signup/Signup';
@@ -14,7 +15,7 @@ const router = (
       <Route exact path="/" component={App}></Route>
       <Route path="/login" component={Login}></Route>
       <Route path="/signup" component={Signup}></Route>
-      <Route path="/anuncis" component={Anuncis}></Route>
+      <PrivateRoute path="/anuncis" component={Anuncis}></PrivateRoute>
     </Switch>
   </Router>
 );

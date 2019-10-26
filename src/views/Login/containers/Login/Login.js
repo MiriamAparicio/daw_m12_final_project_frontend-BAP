@@ -17,8 +17,7 @@ class Login extends Component {
 
   handleSubmit = ({ email, password }) => e => {
     e.preventDefault();
-    console.log(email, password);
-    this.props.handleLogin({ email, password }).then(() => {
+    return this.props.handleLogin({ email, password }).then(() => {
       this.props.history.replace('/anuncis');
     });
   };

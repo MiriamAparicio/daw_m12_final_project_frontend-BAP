@@ -119,6 +119,11 @@ class SignupForm extends Component {
                     </button>
                   </div>
                 </form>
+                <div>
+                  <p>
+                    Ja tens un compte? <a href="/login">Logeja't</a>.
+                  </p>
+                </div>
               </div>
             </div>
           </div>

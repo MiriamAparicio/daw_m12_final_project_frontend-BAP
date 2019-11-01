@@ -1,28 +1,37 @@
 import React from 'react';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
+import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
-
+import reducers from './store/reducers';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import AuthRoute from './components/AuthRoute/AuthRoute';
 import App from './App';
 import Login from './views/Login/containers/Login/Login';
 import Signup from './views/Signup/containers/Signup/Signup';
 import Anuncis from './views/Anuncis/containers/Anuncis';
-import * as serviceWorker from './serviceWorker';
+
+const store = createStore(
+  reducers,
+  compose(
+    applyMiddleware(thunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  )
+);
 
 const router = (
   <Router>
     <Switch>
-      <Route exact path="/" component={App}></Route>
-      <Route path="/login" component={Login}></Route>
-      <Route path="/signup" component={Signup}></Route>
-      <PrivateRoute path="/anuncis" component={Anuncis}></PrivateRoute>
+      <Route exact path="/" component={App} />
+      <AuthRoute path="/login" component={Login} />
+      <AuthRoute path="/signup" component={Signup} />
+      <PrivateRoute path="/anuncis" component={Anuncis} />
     </Switch>
   </Router>
 );
 
-ReactDOM.render(router, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(
+  <Provider store={store}>{router}</Provider>,
+  document.getElementById('root')
+);

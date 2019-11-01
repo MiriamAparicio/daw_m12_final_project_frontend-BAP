@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
-//import PropTypes from 'prop-types';
-
-import authService from '../../../../services/auth-service';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom';
+import * as userActionCreators from '../../../../store/user/actions';
 
 import NavBar from '../../../../components/NavBar/NavBar';
 import SignupForm from '../SignupForm/SignupForm';
 
 class Signup extends Component {
+  static propTypes = {
+    handleSignup: PropTypes.func.isRequired,
+    isLogin: PropTypes.bool.isRequired,
+    error: PropTypes.string.isRequired
+  };
   handleSubmit = ({
     username,
     name,
@@ -22,14 +28,10 @@ class Signup extends Component {
       lat: 123456,
       lng: 123456
     };
-    console.log(username, name, surname, email, password, location);
-    authService
-      .signup({ username, name, surname, email, password, location })
+    this.props
+      .handleSignup({ username, name, surname, email, password, location })
       .then(() => {
         this.props.history.replace('/anuncis');
-      })
-      .catch(e => {
-        console.log(e);
       });
   };
 
@@ -43,4 +45,17 @@ class Signup extends Component {
   }
 }
 
-export default withRouter(Signup);
+const mapStateToProps = ({ user }) => ({
+  isLogin: user.isLogin,
+  error: user.error
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(userActionCreators, dispatch);
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Signup)
+);

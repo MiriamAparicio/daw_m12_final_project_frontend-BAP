@@ -1,12 +1,34 @@
 .search-banner {
-  background-color: #498291;
+  background-color: #faca57;
+}
+
+.hero.is-small .hero-body {
+  margin-top: 3rem;
+  padding-bottom: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.search {
+  padding-bottom: 0.5rem;
+}
+
+.search img {
+  width: 70%;
 }
 
 .search-banner-subtitle {
-  color: white;
+  color: #24303d;
+}
+
+.control {
+  text-align: center;
 }
 
 .search-field {
-  display: flex;
-  justify-content: center;
+  padding-bottom: 1rem;
+}
+
+.search-field input {
+  width: 80%;
 }

@@ -1,0 +1,27 @@
+@media (max-width: 767px) {
+  .custom-columns {
+    flex-direction: column-reverse;
+    display: flex;
+  }
+}
+
+.input-is-read-only {
+  border-color: transparent;
+}
+
+.avatar {
+  width: 80px;
+  height: 100%;
+  position: relative;
+  margin: 0 auto;
+}
+
+.avatar img {
+  display: block;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.rate {
+  padding-right: 0.5rem;
+}

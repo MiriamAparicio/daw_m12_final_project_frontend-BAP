@@ -1,0 +1,53 @@
+.info-card {
+  margin-left: 1rem;
+}
+
+.title-red {
+  color: #f66b6c;
+}
+
+.title-green {
+  color: #43d1a1;
+}
+
+.step {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.bullet {
+  padding-right: 1rem;
+}
+
+p.step-bullet {
+  border-radius: 1em;
+  color: #ffffff;
+  display: inline-block;
+  font-weight: bold;
+  line-height: 2em;
+  margin-right: 5px;
+  text-align: center;
+  width: 2em;
+}
+
+p.step-bullet-red {
+  background: #f66b6c;
+}
+
+p.step-bullet-green {
+  background: #43d1a1;
+}
+
+.step-text p {
+  font-size: 0.75rem;
+}
+
+.step-text-red {
+  color: #f66b6c;
+}
+
+.step-text-green {
+  color: #43d1a1;
+}

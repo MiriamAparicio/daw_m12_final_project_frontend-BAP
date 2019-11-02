@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 //import PropTypes from 'prop-types';
 import './HomePage.css';
+import { STEPS_SEARCH, STEPS_OFFER } from '../../../utils/copy-texts';
 
 import NavBar from '../../../components/NavBar/NavBar';
 import SearchBanner from '../components/SearchBanner/SearchBanner';
+import InfoCard from '../components/InfoCard/InfoCard';
 
 class HomePage extends Component {
   render() {
@@ -11,15 +13,22 @@ class HomePage extends Component {
       <>
         <NavBar />
         <SearchBanner />
-        <section className="section has-text-centered">
-          <h1 className="title">Quins serveis pots trobar</h1>
-          <h2 className="subtitle">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-            gravida id magna eget tempor. Vestibulum id semper justo, vel
-            eleifend nulla. Praesent convallis ante est, in sodales lorem
-            volutpat eget. Sed felis felis, luctus et enim ac, accumsan cursus
-            nunc.
-          </h2>
+        <section className="section">
+          <h1 className="title has-text-centered">Com funciona?</h1>
+          <div className="columns info-cards">
+            <InfoCard
+              dotColor="red"
+              titleKey="contractar"
+              image="contracta.png"
+              stepsList={STEPS_SEARCH}
+            />
+            <InfoCard
+              dotColor="green"
+              titleKey="oferir"
+              image="ofereix.png"
+              stepsList={STEPS_OFFER}
+            />
+          </div>
         </section>
       </>
     );

@@ -7,9 +7,9 @@ class SearchInput extends Component {
       <div className="field search-field">
         <div className="control">
           <input
-            className="input is-rounded"
+            className="input is-small"
             type="text"
-            placeholder="Codi Postal"
+            placeholder="Introdueix el codi postal"
           />
         </div>
       </div>

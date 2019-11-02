@@ -13,14 +13,20 @@ class NavBar extends Component {
 
   render() {
     return (
-      <nav className="navbar" role="navigation" aria-label="main navigation">
+      <nav
+        className="navbar is-fixed-top"
+        role="navigation"
+        aria-label="main navigation"
+      >
         <div className="navbar-brand">
-          <div className="navbar-item">
-            <span>BEN A PROP</span>
+          <div className="navbar-item logo">
+            <a href="/">
+              <img src={require('../../images/logoBap.png')} alt="logo" />
+            </a>
           </div>
         </div>
         {this.props.showIcon && (
-          <div className="navbar-item">
+          <div className="navbar-item user-icon">
             <a href="/login" className="button is-rounded icon is-medium">
               <i className="far fa-user user-icon-color"></i>
             </a>

@@ -29,7 +29,15 @@ class Signup extends Component {
       lng: 123456
     };
     this.props
-      .handleSignup({ username, name, surname, email, password, location })
+      .handleSignup({
+        username,
+        name,
+        surname,
+        email,
+        password,
+        location,
+        postalCode
+      })
       .then(() => {
         this.props.history.replace('/anuncis');
       });
@@ -38,7 +46,7 @@ class Signup extends Component {
   render() {
     return (
       <>
-        <NavBar showIcon={false} />
+        <NavBar showIcon={false} isUserLogged={false} />
         <SignupForm handleSubmit={this.handleSubmit} />
       </>
     );

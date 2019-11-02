@@ -12,14 +12,23 @@ class AuthService {
   }
 
   signup(user) {
-    const { username, name, surname, email, password, location } = user;
+    const {
+      username,
+      name,
+      surname,
+      email,
+      password,
+      location,
+      postalCode
+    } = user;
     return this.auth.post('/signup', {
       username,
       name,
       surname,
       email,
       password,
-      location
+      location,
+      cp: postalCode
     });
   }
 

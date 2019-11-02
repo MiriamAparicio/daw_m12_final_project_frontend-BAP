@@ -32,18 +32,11 @@ function signupUserError(error) {
   };
 }
 
-export function handleSignup({
-  username,
-  name,
-  surname,
-  email,
-  password,
-  location
-}) {
+export function handleSignup(user) {
   return function(dispatch) {
     dispatch(signupUser());
     return authService
-      .signup({ username, name, surname, email, password, location })
+      .signup(user)
       .then(response => {
         dispatch(signupUserSuccess(response));
       })

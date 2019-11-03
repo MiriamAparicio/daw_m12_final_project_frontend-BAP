@@ -25,7 +25,7 @@ class Login extends Component {
   render() {
     return (
       <>
-        <NavBar showIcon={false} />
+        <NavBar showIcon={false} isUserLogged={false} />
         <LoginForm handleSubmit={this.handleSubmit} />
       </>
     );

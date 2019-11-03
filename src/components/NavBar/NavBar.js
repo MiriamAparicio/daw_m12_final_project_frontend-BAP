@@ -4,7 +4,8 @@ import './NavBar.css';
 
 class NavBar extends Component {
   static propTypes = {
-    showIcon: PropTypes.bool
+    showIcon: PropTypes.bool,
+    isUserLogged: PropTypes.bool.isRequired
   };
 
   static defaultProps = {
@@ -12,6 +13,7 @@ class NavBar extends Component {
   };
 
   render() {
+    const url = this.props.isUserLogged ? '/profile' : '/login';
     return (
       <nav
         className="navbar is-fixed-top"
@@ -27,7 +29,7 @@ class NavBar extends Component {
         </div>
         {this.props.showIcon && (
           <div className="navbar-item user-icon">
-            <a href="/login" className="button is-rounded icon is-medium">
+            <a href={url} className="button is-rounded icon is-medium">
               <i className="far fa-user user-icon-color"></i>
             </a>
           </div>

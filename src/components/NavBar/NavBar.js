@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './NavBar.css';
 
@@ -22,16 +23,16 @@ class NavBar extends Component {
       >
         <div className="navbar-brand">
           <div className="navbar-item logo">
-            <a href="/">
+            <Link to="/">
               <img src={require('../../images/logoBap.png')} alt="logo" />
-            </a>
+            </Link>
           </div>
         </div>
         {this.props.showIcon && (
           <div className="navbar-item user-icon">
-            <a href={url} className="button is-rounded icon is-medium">
+            <Link to={url} className="button is-rounded icon is-medium">
               <i className="far fa-user user-icon-color"></i>
-            </a>
+            </Link>
           </div>
         )}
       </nav>

@@ -1,4 +1,3 @@
-//add service for authentication
 import axios from 'axios';
 
 const apiUrl = 'http://localhost:3000/auth';
@@ -12,22 +11,13 @@ class AuthService {
   }
 
   signup(user) {
-    const {
-      username,
-      name,
-      surname,
-      email,
-      password,
-      location,
-      postalCode
-    } = user;
+    const { username, name, surname, email, password, postalCode } = user;
     return this.auth.post('/signup', {
       username,
       name,
       surname,
       email,
       password,
-      location,
       cp: postalCode
     });
   }

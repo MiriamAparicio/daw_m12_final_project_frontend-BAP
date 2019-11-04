@@ -1,3 +1,37 @@
 .form-body {
   flex-grow: 0.5;
 }
+
+
+.form-title,.form-label,.login-foot,.button-text{
+  font-family: Nunito;
+  font-weight: 700;
+}
+
+h2{
+  font-size: 2rem;
+  padding-bottom: 15px;
+  color: #01a3a4;
+}
+
+.form-label{
+  font-size: 1rem;
+}
+
+.button-text{
+  color: white;
+  background-color: #01a3a4;
+  border-width: 0;
+}
+
+.coloured-text{
+  color: #01a3a4;
+}
+
+button{
+  margin-top: 15px;
+}
+
+.form-hero{
+  background-color: #c8d6e5;
+}

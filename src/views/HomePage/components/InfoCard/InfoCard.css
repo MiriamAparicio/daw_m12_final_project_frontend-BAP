@@ -22,10 +22,12 @@
 }
 
 p.step-bullet {
+  font-family: Nunito;
+  font-size: 18px;
   border-radius: 1em;
   color: #ffffff;
   display: inline-block;
-  font-weight: bold;
+  font-weight: 900;
   line-height: 2em;
   margin-right: 5px;
   text-align: center;
@@ -41,7 +43,9 @@ p.step-bullet-green {
 }
 
 .step-text p {
-  font-size: 0.75rem;
+  font-family: Nunito;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .step-text-red {
@@ -50,4 +54,10 @@ p.step-bullet-green {
 
 .step-text-green {
   color: #43d1a1;
+}
+
+.steps-title{
+  font-family: Nunito, sans-serif;
+  font-weight: 700;
+  font-size: 24px;
 }

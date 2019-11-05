@@ -26,15 +26,17 @@ class SignupForm extends Component {
 
   render() {
     return (
-      <section className="hero is-light is-fullheight">
+      <section className="hero is-fullheight form-hero">
         <div className="hero-body form-body">
           <div className="container">
             <div className="columns is-centered">
               <div className="column is-5-tablet is-4-desktop is-3-widescreen">
                 <form action="" className="box">
-                  <h2 className="title is-3 has-text-centered">Registra't</h2>
+                  <h2 className="is-3 has-text-left form-title">
+                    Registre d'usuari
+                  </h2>
                   <div className="field">
-                    <label className="label">Nom d'usuari</label>
+                    <label className="label form-label">Nom d'usuari</label>
                     <div className="control has-icons-left">
                       <input
                         onChange={this.onChange}
@@ -47,7 +49,7 @@ class SignupForm extends Component {
                     </div>
                   </div>
                   <div className="field">
-                    <label className="label">Nom</label>
+                    <label className="label form-label">Nom</label>
                     <div className="control has-icons-left">
                       <input
                         onChange={this.onChange}
@@ -60,7 +62,7 @@ class SignupForm extends Component {
                     </div>
                   </div>
                   <div className="field">
-                    <label className="label">Cognoms</label>
+                    <label className="label form-label">Cognoms</label>
                     <div className="control has-icons-left">
                       <input
                         onChange={this.onChange}
@@ -73,7 +75,7 @@ class SignupForm extends Component {
                     </div>
                   </div>
                   <div className="field">
-                    <label className="label">Codi Postal</label>
+                    <label className="label form-label">Codi Postal</label>
                     <div className="control has-icons-left">
                       <input
                         onChange={this.onChange}
@@ -86,7 +88,7 @@ class SignupForm extends Component {
                     </div>
                   </div>
                   <div className="field">
-                    <label className="label">Email</label>
+                    <label className="label form-label">Email</label>
                     <div className="control has-icons-left">
                       <input
                         name="email"
@@ -99,7 +101,7 @@ class SignupForm extends Component {
                     </div>
                   </div>
                   <div className="field">
-                    <label className="label">Password</label>
+                    <label className="label form-label">Contrasenya</label>
                     <div className="control has-icons-left">
                       <input
                         name="password"
@@ -114,15 +116,19 @@ class SignupForm extends Component {
                   <div className="field has-text-centered">
                     <button
                       onClick={this.props.handleSubmit(this.state)}
-                      className="button is-info"
+                      className="button button-text form-button"
                     >
-                      Signup
+                      Envia
                     </button>
                   </div>
                 </form>
                 <div>
-                  <p>
-                    Ja tens un compte? <Link to="/login">Logeja't</Link>.
+                  <p className="has-text-centered login-foot">
+                    Ja tens un compte?{' '}
+                    <Link href="/login" className="coloured-text">
+                      Inicia sessió
+                    </Link>
+                    .
                   </p>
                 </div>
               </div>

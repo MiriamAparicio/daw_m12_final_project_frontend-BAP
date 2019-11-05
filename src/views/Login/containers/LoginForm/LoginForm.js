@@ -57,7 +57,7 @@ class LoginForm extends Component {
                   <div className="field has-text-centered">
                     <button
                       onClick={this.props.handleSubmit(this.state)}
-                      className="button button-text"
+                      className="button button-text form-button"
                     >
                       Envia
                     </button>

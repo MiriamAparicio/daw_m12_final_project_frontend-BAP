@@ -23,11 +23,6 @@ class Signup extends Component {
     password
   }) => e => {
     e.preventDefault();
-    //send location instead of postalCode ("00000000Mn")
-    const location = {
-      lat: 123456,
-      lng: 123456
-    };
     this.props
       .handleSignup({
         username,
@@ -35,7 +30,6 @@ class Signup extends Component {
         surname,
         email,
         password,
-        location,
         postalCode
       })
       .then(() => {

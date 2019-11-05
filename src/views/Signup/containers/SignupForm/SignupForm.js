@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './SignupForm.css';
 
@@ -31,7 +32,9 @@ class SignupForm extends Component {
             <div className="columns is-centered">
               <div className="column is-5-tablet is-4-desktop is-3-widescreen">
                 <form action="" className="box">
-                  <h2 className="is-3 has-text-left form-title">Registre d'usuari</h2>
+                  <h2 className="is-3 has-text-left form-title">
+                    Registre d'usuari
+                  </h2>
                   <div className="field">
                     <label className="label form-label">Nom d'usuari</label>
                     <div className="control has-icons-left">
@@ -121,7 +124,11 @@ class SignupForm extends Component {
                 </form>
                 <div>
                   <p className="has-text-centered login-foot">
-                    Ja tens un compte? <a href="/login" className="coloured-text">Inicia sessió</a>.
+                    Ja tens un compte?{' '}
+                    <Link href="/login" className="coloured-text">
+                      Inicia sessió
+                    </Link>
+                    .
                   </p>
                 </div>
               </div>

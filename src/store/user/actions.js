@@ -4,9 +4,13 @@ import {
   SIGNUP_USER_ERROR,
   LOGIN_USER,
   LOGIN_USER_SUCCESS,
-  LOGIN_USER_ERROR
+  LOGIN_USER_ERROR,
+  UPDATE_USER,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_ERROR
 } from '../constants';
 import authService from '../../services/auth-service';
+import profileService from '../../services/profile-service';
 import { decodeToken } from '../../utils/utils';
 
 function signupUser() {
@@ -76,5 +80,40 @@ export function handleLogin({ email, password }) {
         dispatch(loginUserSuccess(response));
       })
       .catch(error => dispatch(loginUserError(error.response.data.message)));
+  };
+}
+
+function updateUser() {
+  return {
+    type: UPDATE_USER
+  };
+}
+
+function updateUserSucces(response) {
+  localStorage.setItem('token', response.data.token);
+  return {
+    type: UPDATE_USER_SUCCESS,
+    user: decodeToken(response.data.token),
+    response
+  };
+}
+
+function updateUserError(error) {
+  console.error(error);
+  return {
+    type: UPDATE_USER_ERROR,
+    error
+  };
+}
+
+export function handleUpdateUser(user, token) {
+  return function(dispatch) {
+    dispatch(updateUser());
+    return profileService
+      .updateUserProfile(user, token)
+      .then(response => {
+        dispatch(updateUserSucces(response));
+      })
+      .catch(error => dispatch(updateUserError(error.response.data.message)));
   };
 }

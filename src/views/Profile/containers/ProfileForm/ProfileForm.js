@@ -7,7 +7,9 @@ import './ProfileForm.css';
 class ProfileForm extends Component {
   static propTypes = {
     user: PropTypes.object.isRequired,
-    handleSubmit: PropTypes.func
+    profile: PropTypes.object.isRequired,
+    handleSubmit: PropTypes.func,
+    isEditting: PropTypes.bool.isRequired
   };
 
   state = {
@@ -20,18 +22,19 @@ class ProfileForm extends Component {
     isEditting: false
   };
 
-  componentDidMount() {
-    //todo get data from get user endpoint instead of the store
-    const { user } = this.props;
-
-    this.setState({
-      username: user.username,
-      name: user.name,
-      surname: user.surname,
-      postalCode: user.cp,
-      email: user.email,
-      isEditable: user._id === user._id //TODO check ids from logged user or users
-    });
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) {
+      const { user, profile, isEditting } = this.props;
+      this.setState({
+        username: profile.username,
+        name: profile.name,
+        surname: profile.surname,
+        postalCode: profile.cp,
+        email: profile.email,
+        isEditable: user._id === profile._id,
+        isEditting
+      });
+    }
   }
 
   onChange = e => {
@@ -48,7 +51,13 @@ class ProfileForm extends Component {
   };
 
   handleCancel = () => {
+    const { profile } = this.props;
     this.setState({
+      username: profile.username,
+      name: profile.name,
+      surname: profile.surname,
+      postalCode: profile.cp,
+      email: profile.email,
       isEditting: false
     });
   };
@@ -200,7 +209,7 @@ class ProfileForm extends Component {
                     <div className="field is-grouped is-grouped-centered">
                       <div className="control">
                         <button
-                          onClick={() => {}}
+                          onClick={this.props.handleSubmit(this.state)}
                           className="button is-info is-fullwidth"
                         >
                           Desa
@@ -228,7 +237,7 @@ class ProfileForm extends Component {
                     </figure>
                   </div>
                   <div className="column has-text-centered">
-                    <p>{username}</p>
+                    <p>{this.props.profile.username}</p>
                   </div>
                   <div className="column has-text-centered">
                     <span className="rate">4,5</span>

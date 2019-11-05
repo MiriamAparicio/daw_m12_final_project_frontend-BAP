@@ -19,7 +19,7 @@ class HomePage extends Component {
         <NavBar isUserLogged={!!this.props.user} />
         <SearchBanner />
         <section className="section">
-          <h1 className="title has-text-centered">Com funciona?</h1>
+          <h1 className="title has-text-centered how-title">Com funciona?</h1>
           <div className="columns info-cards">
             <InfoCard
               dotColor="red"

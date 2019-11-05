@@ -26,7 +26,7 @@ class InfoCard extends Component {
             />
           </div>
           <div className="column steps">
-            <p className="title is-5">
+            <p className="title is-5 steps-title">
               Vols <span className={`title-${dotColor}`}>{titleKey}</span>{' '}
               serveis?
             </p>

@@ -22,7 +22,7 @@ class UserProfile {
   updateUserProfile(user, token) {
     const { _id, username, name, surname, email, postalCode } = user;
     const config = this.getConfig(token);
-    return this.profile.post(
+    return this.profile.put(
       '/',
       {
         _id,
@@ -31,7 +31,6 @@ class UserProfile {
         surname,
         email,
         cp: postalCode
-        //password: '123456Aa' //TODO delete when BE is fixed
       },
       config
     );

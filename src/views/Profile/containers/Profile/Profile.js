@@ -65,7 +65,7 @@ class Profile extends Component {
     return (
       <>
         <NavBar isUserLogged={!!this.props.user} />
-        <section id="profile" className="section container">
+        <section id="profile" className="hero is-fullheight is-fullwidth is-light">
           <ProfileForm
             user={this.props.user}
             profile={this.state.profile}

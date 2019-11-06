@@ -5,6 +5,16 @@
   }
 }
 
+@media screen and (min-width: 767px), print {
+  .form-label  {
+    flex-grow: 2; /* overwrites previous value of 1 */
+  }
+}
+
+.main{
+  margin-top: 20px;
+}
+
 .input-is-read-only {
   border-color: transparent;
 }
@@ -24,4 +34,13 @@
 
 .rate {
   padding-right: 0.5rem;
+}
+
+.separate{
+  margin-bottom: 20px;
+}
+
+.profile-column{
+  vertical-align: middle;
+  margin: 20px;
 }

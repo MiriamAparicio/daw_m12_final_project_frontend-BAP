@@ -125,7 +125,7 @@ class SignupForm extends Component {
                 <div>
                   <p className="has-text-centered login-foot">
                     Ja tens un compte?{' '}
-                    <Link href="/login" className="coloured-text">
+                    <Link to="/login" className="coloured-text">
                       Inicia sessió
                     </Link>
                     .

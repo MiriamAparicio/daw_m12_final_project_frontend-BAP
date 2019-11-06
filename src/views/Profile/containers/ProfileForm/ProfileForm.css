@@ -22,7 +22,7 @@
   
   .form-label  {
     flex-grow: 2; /* overwrites previous value of 1 */
-    line-height: 1.8rem;
+    line-height: 2.1rem;
   }
 }
 
@@ -53,7 +53,6 @@
 
 .rate {
   padding-right: 0.5rem;
-  font-style: Nunito;
   font-weight: 800;;
 }
 
@@ -67,7 +66,6 @@
 }
 
 .input-text{
-  font-family: Nunito;
   font-size: 1rem;
 }
 
@@ -76,7 +74,6 @@
 }
 
 .username{
-  font-family: Nunito;
   font-size: 1.125rem;
   font-weight: 800;
   color: #576574;

@@ -243,7 +243,7 @@ class ProfileForm extends Component {
                   <div className="separate has-text-centered">
                     <p className="username">{this.props.profile.username}</p>
                   </div>
-                  <div className=" has-text-centered">
+                  <div className="has-text-centered">
                     <span className="rate">4,5</span>
                     <i className="fas fa-star rate-stars"></i>
                     <i className="fas fa-star rate-stars"></i>

@@ -22,7 +22,6 @@
 }
 
 p.step-bullet {
-  font-family: Nunito;
   font-size:	1.125rem;
   border-radius: 1em;
   color: #ffffff;
@@ -43,7 +42,6 @@ p.step-bullet-green {
 }
 
 .step-text p {
-  font-family: Nunito;
   font-size: 1rem;
   font-weight: 400;
 }
@@ -57,7 +55,6 @@ p.step-bullet-green {
 }
 
 .steps-title{
-  font-family: Nunito, sans-serif;
   font-weight: 700;
   font-size: 1.5rem;
 }

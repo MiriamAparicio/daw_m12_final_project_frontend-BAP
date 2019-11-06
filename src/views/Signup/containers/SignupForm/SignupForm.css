@@ -1,10 +1,10 @@
 .form-body {
   flex-grow: 0.5;
+  margin-top: 30px;
 }
 
 
 .form-title,.form-label,.login-foot,.button-text{
-  font-family: Nunito;
   font-weight: 700;
 }
 

@@ -3,6 +3,35 @@
     flex-direction: column-reverse;
     display: flex;
   }
+
+  .form-title{
+    margin-top: 10px;
+    margin-left: 20px;
+  }
+
+  .bottom-border{
+    border-bottom: 3px dotted #c8d6e5;
+  }
+
+}
+
+@media (min-width: 767px){
+  .right-border{
+    border-right: 3px dotted #c8d6e5;
+  }
+  
+  .form-label  {
+    flex-grow: 2; /* overwrites previous value of 1 */
+    line-height: 2.1rem;
+  }
+}
+
+
+
+
+
+.main{
+  margin-top: 20px;
 }
 
 .input-is-read-only {
@@ -24,4 +53,33 @@
 
 .rate {
   padding-right: 0.5rem;
+  font-weight: 800;;
 }
+
+.separate{
+  margin-bottom: 20px;
+}
+
+.profile-column{
+  margin: 20px;
+  margin-top: 10px;
+}
+
+.input-text{
+  font-size: 1rem;
+}
+
+.rate-stars{
+  color: #feca57;
+}
+
+.username{
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: #576574;
+}
+
+
+
+
+

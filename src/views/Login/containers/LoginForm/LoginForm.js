@@ -69,7 +69,7 @@ class LoginForm extends Component {
                 <div>
                   <p className="login-foot has-text-centered">
                     Encara no tens compte?{' '}
-                    <Link href="/signup" className="coloured-text">
+                    <Link to="/signup" className="coloured-text">
                       Registra't
                     </Link>
                     .

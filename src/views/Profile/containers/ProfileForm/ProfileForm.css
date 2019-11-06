@@ -3,13 +3,32 @@
     flex-direction: column-reverse;
     display: flex;
   }
+
+  .form-title{
+    margin-top: 10px;
+    margin-left: 20px;
+  }
+
+  .bottom-border{
+    border-bottom: 3px dotted #c8d6e5;
+  }
+
 }
 
-@media screen and (min-width: 767px), print {
+@media (min-width: 767px){
+  .right-border{
+    border-right: 3px dotted #c8d6e5;
+  }
+  
   .form-label  {
     flex-grow: 2; /* overwrites previous value of 1 */
+    line-height: 1.8rem;
   }
 }
+
+
+
+
 
 .main{
   margin-top: 20px;
@@ -34,6 +53,8 @@
 
 .rate {
   padding-right: 0.5rem;
+  font-style: Nunito;
+  font-weight: 800;;
 }
 
 .separate{
@@ -41,6 +62,27 @@
 }
 
 .profile-column{
-  vertical-align: middle;
   margin: 20px;
+  margin-top: 10px;
 }
+
+.input-text{
+  font-family: Nunito;
+  font-size: 1rem;
+}
+
+.rate-stars{
+  color: #feca57;
+}
+
+.username{
+  font-family: Nunito;
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: #576574;
+}
+
+
+
+
+

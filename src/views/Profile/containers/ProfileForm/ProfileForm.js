@@ -73,19 +73,22 @@ class ProfileForm extends Component {
       isEditting //TODO check ids from logged user or users
     } = this.state;
 
-    const inputClasses = classNames('input', {
+    const inputClasses = classNames('input input-text', {
       'input-is-read-only': !this.state.isEditting,
       'is-static': !isEditting
     });
     return (
       <div className="hero-body">
         <div className="container">
-          <div className="columns">
+          <div className="columns is-vcentered">
             <div className="column is-three-fifths-desktop is-four-fifths-tablet
-             is-offset-one-fifth-desktop is-offset-1-tablet box main">
-              <div className="columns">
-                <div className="column is-three-fifths profile-column">
-                  <h2 className="title is-3 has-text-left">Perfil</h2>
+              is-offset-one-fifth-desktop is-offset-1-tablet box main">
+              <h2 className="form-title is-3 has-text-left is-hidden-tablet">Perfil</h2>
+
+              <div className="columns is-vcentered custom-columns">
+                <div className="column is-three-fifths is-four-fifths-mobile  profile-column right-border">
+                <h2 className="form-title is-3 has-text-left is-hidden-mobile">Perfil</h2>
+
                   {/* USERNAME */}
                   <div className="field is-horizontal">
                     <div className="field-label form-label is-normal">
@@ -201,17 +204,17 @@ class ProfileForm extends Component {
                       <div className="field">
                         <button
                           onClick={this.handleEditProfile}
-                          className="button is-success"
+                          className="button form-button button-text"
                         >
                           Edita
                       </button>
                       </div>
                     ) : (
-                        <div className="field is-grouped is-grouped-centered">
+                        <div className="field is-grouped is-grouped-left">
                           <div className="control">
                             <button
                               onClick={this.props.handleSubmit(this.state)}
-                              className="button is-info is-fullwidth"
+                              className="button button-text form-button"
                             >
                               Desa
                         </button>
@@ -219,7 +222,7 @@ class ProfileForm extends Component {
                           <div className="control">
                             <button
                               onClick={this.handleCancel}
-                              className="button is-link is-light is-fullwidth"
+                              className="button button-text form-button"
                             >
                               Cancel·la
                         </button>
@@ -227,25 +230,26 @@ class ProfileForm extends Component {
                         </div>
                       ))}
                 </div>
-                <div className="column profile-column ">
+                <div className="column bottom-border is-three-quarters-mobile ">
                   <div className="separate has-text-centered">
                     <figure className="image avatar is-128x128">
                       <img
                         className="is-rounded"
                         src="https://bulma.io/images/placeholders/128x128.png"
+                        alt={username}
                       />
                     </figure>
                   </div>
                   <div className="separate has-text-centered">
-                    <p>{this.props.profile.username}</p>
+                    <p className="username">{this.props.profile.username}</p>
                   </div>
                   <div className=" has-text-centered">
                     <span className="rate">4,5</span>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star-half-alt"></i>
+                    <i className="fas fa-star rate-stars"></i>
+                    <i className="fas fa-star rate-stars"></i>
+                    <i className="fas fa-star rate-stars"></i>
+                    <i className="fas fa-star rate-stars"></i>
+                    <i className="fas fa-star-half-alt rate-stars"></i>
                   </div>
                   <div className="separate has-text-centered">
                     <p>4 comentaris</p>

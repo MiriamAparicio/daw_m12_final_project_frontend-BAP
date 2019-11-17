@@ -6,35 +6,55 @@ import ResultsItem from '../ResultsItem/ResultsItem';
 const data = [
     {
         owner: {
+            type: 1234,
             name: 'Francesc Muñoz',
             username: 'franlol',
-            avgValoration: 5
+            avgRating: 5
         },
-        title: 'Titol anunci 1',
+        title: "S'ofereix professor per classes particulars",
         description: "Hola, m'ofereixo per moltes coses",
         rang: 10,
         services: {
-            cangur: true,
+            babysitter: false,
             classes: true,
-            neteja: false,
-            mascotes: true,
+            cleaner: false,
+            pets: false,
         },
         price: 15,
     },
     {
         owner: {
+            type: 6789,
             name: 'Xavi Sánchez',
             username: 'xavixanxe',
-            avgValoration: 4.5
+            avgRating: 3.5
         },
-        title: 'Titol anunci 2',
+        title: 'Noia responsable per cangurs i neteja',
         description: "Hola, jo també m'ofereixo per moltes coses",
         rang: 10,
         services: {
-            cangur: false,
+            babysitter: true,
             classes: false,
-            neteja: false,
-            mascotes: true,
+            cleaner: true,
+            pets: false,
+        },
+        price: 15,
+    },
+    {
+        owner: {
+            type: 54321,
+            name: 'Miriam Aparicio',
+            username: 'miriamap',
+            avgRating: 4.5
+        },
+        title: 'Programadora per classes particulars',
+        description: "Hola, jo també m'ofereixo per moltes coses",
+        rang: 10,
+        services: {
+            babysitter: false,
+            classes: true,
+            cleaner: false,
+            pets: false,
         },
         price: 15,
     },
@@ -50,14 +70,21 @@ class ResultsList extends Component {
             results: data,
         }
     }
+
+    handleAdOnClick = (e) => {
+        const adId = e.currentTarget.getAttribute('id');
+        //TODO link to ad detail page
+        console.log(adId);
+    }
     
     resultsToComp = (results) => {
-        console.log(results.length);
         return (
-            results.map((anunci, index) => (
+            results.map((ad, index) => (
                 <ResultsItem
-                    key={index}
-                    anunci={anunci}>
+                    key={ad.owner.type}
+                    id={ad.owner.type}
+                    ad={ad}
+                    handleAdOnClick={this.handleAdOnClick}>
                 </ResultsItem>
             ))
         );
@@ -72,8 +99,7 @@ class ResultsList extends Component {
             <div className="container list-cont">
                 <div className="columns">
                     <div className="column is-three-fifths is-offset-one-fifth">
-                        <div>S'han trobat X resultats </div>
-                        {console.log(results)}
+                        <div className="ammount">{`S'han trobat ${results.length} resultats`}</div>
                         {this.resultsToComp(results)}
                     </div>
                 </div>

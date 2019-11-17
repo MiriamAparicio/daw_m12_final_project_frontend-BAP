@@ -1,0 +1,19 @@
+.service {
+    background: grey;
+
+}
+
+.selected {
+    background: green;
+}
+.servicesCont {
+    margin-top: 30px;
+    
+}
+.service {
+    font-weight: 700;
+    color: white;
+    font-size: 0.75rem;
+    padding: 3px;
+    border-radius: 3px;
+}

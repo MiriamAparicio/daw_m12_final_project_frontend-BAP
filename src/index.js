@@ -12,6 +12,7 @@ import Login from './views/Login/containers/Login/Login';
 import Signup from './views/Signup/containers/Signup/Signup';
 import Anuncis from './views/Anuncis/containers/Anuncis';
 import Profile from './views/Profile/containers/Profile/Profile';
+import PageNotFound from './views/PageNotFound/PageNotFound';
 
 //TODO: esborrar lína de redux.devtools
 const store = createStore(
@@ -30,6 +31,7 @@ const router = (
       <AuthRoute path="/signup" component={Signup} />
       <PrivateRoute path="/anuncis" component={Anuncis} />
       <PrivateRoute path="/profile" component={Profile} />
+      <Route component={PageNotFound} />
     </Switch>
   </Router>
 );

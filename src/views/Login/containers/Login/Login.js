@@ -11,14 +11,14 @@ import LoginForm from '../LoginForm/LoginForm';
 class Login extends Component {
   static propTypes = {
     handleLogin: PropTypes.func.isRequired,
-    isLogin: PropTypes.bool.isRequired,
     error: PropTypes.string.isRequired
   };
 
-  handleSubmit = ({ email, password }) => e => {
+  handleSubmit = (email, password) => e => {
     e.preventDefault();
-    return this.props.handleLogin({ email, password }).then(() => {
-      this.props.history.replace('/anuncis');
+    const { handleLogin, error, history } = this.props;
+    handleLogin({ email, password }).then(() => {
+      !error && history.replace('/anuncis');
     });
   };
 
@@ -26,23 +26,17 @@ class Login extends Component {
     return (
       <>
         <NavBar showIcon={false} isUserLogged={false} />
-        <LoginForm handleSubmit={this.handleSubmit} />
+        <LoginForm handleSubmit={this.handleSubmit} error={this.props.error} />
       </>
     );
   }
 }
 
 const mapStateToProps = ({ user }) => ({
-  isLogin: user.isLogin,
   error: user.error
 });
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(userActionCreators, dispatch);
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Login)
-);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));

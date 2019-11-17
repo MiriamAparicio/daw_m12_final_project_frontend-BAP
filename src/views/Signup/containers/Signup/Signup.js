@@ -33,7 +33,8 @@ class Signup extends Component {
         postalCode
       })
       .then(() => {
-        this.props.history.replace('/anuncis');
+        const { error, history } = this.props;
+        !error && history.replace('/anuncis');
       });
   };
 
@@ -41,7 +42,7 @@ class Signup extends Component {
     return (
       <>
         <NavBar showIcon={false} isUserLogged={false} />
-        <SignupForm handleSubmit={this.handleSubmit} />
+        <SignupForm handleSubmit={this.handleSubmit} error={this.props.error} />
       </>
     );
   }
@@ -55,9 +56,4 @@ const mapStateToProps = ({ user }) => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators(userActionCreators, dispatch);
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Signup)
-);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Signup));

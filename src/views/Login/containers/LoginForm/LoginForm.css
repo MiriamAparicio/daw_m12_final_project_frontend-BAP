@@ -2,35 +2,43 @@
   flex-grow: 0.5;
 }
 
-
-.form-title,.form-label,.login-foot,.button-text{
+.form-title,
+.form-label,
+.login-foot,
+.button-text {
   font-weight: 700;
 }
 
-h2{
+h2 {
   font-size: 2rem;
   padding-bottom: 15px;
   color: #01a3a4;
 }
 
-.form-label{
+.form-label {
   font-size: 1rem;
 }
 
-.button-text{
+.button-text {
   color: white;
   background-color: #01a3a4;
   border-width: 0;
 }
 
-.coloured-text{
+.button-text[disabled] {
+  background-color: #01a3a4;
+  color: white;
+  opacity: 0.5;
+}
+
+.coloured-text {
   color: #01a3a4;
 }
 
-.form-button{
+.form-button {
   margin-top: 15px;
 }
 
-.form-hero{
+.form-hero {
   background-color: #c8d6e5;
 }

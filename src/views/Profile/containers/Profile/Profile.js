@@ -11,7 +11,6 @@ import ProfileForm from '../ProfileForm/ProfileForm';
 
 class Profile extends Component {
   static propTypes = {
-    isLogin: PropTypes.bool.isRequired,
     error: PropTypes.string.isRequired,
     user: PropTypes.object.isRequired,
     token: PropTypes.string.isRequired,
@@ -54,10 +53,12 @@ class Profile extends Component {
         },
         this.props.token
       )
-      .then(() => {
+      .then(async () => {
         const { user, token } = this.props;
-        this.setState({ isEditting: false });
-        this.handleFetchUserProfile(user._id, token);
+        await this.handleFetchUserProfile(user._id, token);
+        !this.props.error
+          ? this.setState({ isEditting: false })
+          : this.setState({ isEditting: true });
       });
   };
 
@@ -65,12 +66,16 @@ class Profile extends Component {
     return (
       <>
         <NavBar isUserLogged={!!this.props.user} />
-        <section id="profile" className="hero is-fullheight is-fullwidth form-hero">
+        <section
+          id="profile"
+          className="hero is-fullheight is-fullwidth form-hero"
+        >
           <ProfileForm
             user={this.props.user}
             profile={this.state.profile}
             handleSubmit={this.handleSubmit}
             isEditting={this.state.isEditting}
+            error={this.props.error}
           />
         </section>
       </>
@@ -80,7 +85,6 @@ class Profile extends Component {
 
 const mapStateToProps = ({ user }) => ({
   user: user.data,
-  isLogin: user.isLogin,
   error: user.error,
   token: user.token
 });
@@ -88,7 +92,4 @@ const mapStateToProps = ({ user }) => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators(userActionCreators, dispatch);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Profile);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

@@ -12,6 +12,7 @@ import {
 import authService from '../../services/auth-service';
 import profileService from '../../services/profile-service';
 import { decodeToken } from '../../utils/utils';
+import { ERROR_MESSAGES } from '../../utils/error-messages';
 
 function signupUser() {
   return {
@@ -29,10 +30,10 @@ function signupUserSuccess(response) {
 }
 
 function signupUserError(error) {
-  console.error(error);
+  console.error(error.message);
   return {
     type: SIGNUP_USER_ERROR,
-    error
+    error: ERROR_MESSAGES[error.code]
   };
 }
 
@@ -44,7 +45,7 @@ export function handleSignup(user) {
       .then(response => {
         dispatch(signupUserSuccess(response));
       })
-      .catch(error => dispatch(signupUserError(error.response.data.message)));
+      .catch(error => dispatch(signupUserError(error.response.data)));
   };
 }
 
@@ -64,10 +65,10 @@ function loginUserSuccess(response) {
 }
 
 function loginUserError(error) {
-  console.error(error);
+  console.error(error.message);
   return {
     type: LOGIN_USER_ERROR,
-    error
+    error: ERROR_MESSAGES[error.code]
   };
 }
 
@@ -79,7 +80,7 @@ export function handleLogin({ email, password }) {
       .then(response => {
         dispatch(loginUserSuccess(response));
       })
-      .catch(error => dispatch(loginUserError(error.response.data.message)));
+      .catch(error => dispatch(loginUserError(error.response.data)));
   };
 }
 
@@ -99,10 +100,10 @@ function updateUserSucces(response) {
 }
 
 function updateUserError(error) {
-  console.error(error);
+  console.error(error.message);
   return {
     type: UPDATE_USER_ERROR,
-    error
+    error: ERROR_MESSAGES[error.code]
   };
 }
 
@@ -114,6 +115,6 @@ export function handleUpdateUser(user, token) {
       .then(response => {
         dispatch(updateUserSucces(response));
       })
-      .catch(error => dispatch(updateUserError(error.response.data.message)));
+      .catch(error => dispatch(updateUserError(error.response.data)));
   };
 }

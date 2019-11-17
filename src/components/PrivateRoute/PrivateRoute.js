@@ -8,7 +8,6 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
       localStorage.getItem('token') ? (
         <Component {...props} />
       ) : (
-        //TODO BUG si falla sigup es redirigeix a login, evitar aixó
         <Redirect to="/login" />
       )
     }

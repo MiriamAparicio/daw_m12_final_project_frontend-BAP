@@ -33,7 +33,8 @@ function user(state = initialState, action) {
         ...state,
         isLogin: false,
         data: action.user,
-        token: action.response.data.token
+        token: action.response.data.token,
+        error: ''
       };
     case SIGNUP_USER_ERROR:
       return {
@@ -53,7 +54,8 @@ function user(state = initialState, action) {
         ...state,
         isLogin: false,
         data: action.user,
-        token: action.response.data.token
+        token: action.response.data.token,
+        error: ''
       };
     case LOGIN_USER_ERROR:
       return {
@@ -73,7 +75,8 @@ function user(state = initialState, action) {
         ...state,
         isLogin: false,
         data: action.user,
-        token: action.response.data.token
+        token: action.response.data.token,
+        error: ''
       };
     case UPDATE_USER_ERROR:
       return {

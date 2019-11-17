@@ -4,12 +4,20 @@ import { connect } from 'react-redux';
 import classNames from 'classnames';
 import './ProfileForm.css';
 
+import {
+  validateUsername,
+  validatePostalCode,
+  validateEmail
+} from '../../../../utils/validations';
+import { ERROR_MESSAGES } from '../../../../utils/error-messages';
+
 class ProfileForm extends Component {
   static propTypes = {
     user: PropTypes.object.isRequired,
     profile: PropTypes.object.isRequired,
     handleSubmit: PropTypes.func,
-    isEditting: PropTypes.bool.isRequired
+    isEditting: PropTypes.bool.isRequired,
+    error: PropTypes.string.isRequired
   };
 
   state = {
@@ -19,7 +27,12 @@ class ProfileForm extends Component {
     postalCode: '',
     email: '',
     isEditable: false,
-    isEditting: false
+    isEditting: false,
+    formErrors: {},
+    usernameValid: true,
+    emailValid: true,
+    postalCodeValid: true,
+    formValid: false
   };
 
   componentDidUpdate(prevProps) {
@@ -39,8 +52,69 @@ class ProfileForm extends Component {
 
   onChange = e => {
     const value = e.target.value;
+    const name = e.target.name;
+    this.setState(
+      {
+        [name]: value
+      },
+      this.validateFields(name, value)
+    );
+  };
+
+  validateFields = (fieldName, value) => {
+    let fieldValidationErrors = this.state.formErrors;
+    let usernameValid = this.state.usernameValid;
+    let postalCodeValid = this.state.postalCodeValid;
+    let emailValid = this.state.emailValid;
+    let error = '';
+
+    switch (fieldName) {
+      case 'username':
+        if (!value) {
+          error = ERROR_MESSAGES[4];
+        } else {
+          usernameValid = validateUsername(value);
+          error = usernameValid ? '' : ERROR_MESSAGES[5];
+        }
+        fieldValidationErrors.username = error;
+        break;
+      case 'postalCode':
+        if (!value) {
+          error = ERROR_MESSAGES[4];
+        } else {
+          postalCodeValid = validatePostalCode(value);
+          error = postalCodeValid ? '' : ERROR_MESSAGES[8];
+        }
+        fieldValidationErrors.postalCode = error;
+        break;
+      case 'email':
+        if (!value) {
+          error = ERROR_MESSAGES[4];
+        } else {
+          emailValid = validateEmail(value);
+          error = emailValid ? '' : ERROR_MESSAGES[6];
+        }
+        fieldValidationErrors.email = error;
+        break;
+      default:
+        break;
+    }
+
+    this.setState(
+      {
+        formErrors: fieldValidationErrors,
+        usernameValid,
+        postalCodeValid,
+        emailValid
+      },
+      this.validateForm
+    );
+  };
+
+  validateForm = () => {
+    const { usernameValid, postalCodeValid, emailValid } = this.state;
     this.setState({
-      [e.target.name]: value
+      formValid: usernameValid && postalCodeValid && emailValid
     });
   };
 
@@ -58,7 +132,8 @@ class ProfileForm extends Component {
       surname: profile.surname,
       postalCode: profile.cp,
       email: profile.email,
-      isEditting: false
+      isEditting: false,
+      formErrors: {}
     });
   };
 
@@ -70,7 +145,9 @@ class ProfileForm extends Component {
       postalCode,
       email,
       isEditable,
-      isEditting //TODO check ids from logged user or users
+      isEditting,
+      formErrors,
+      formValid
     } = this.state;
 
     const inputClasses = classNames('input input-text', {
@@ -81,13 +158,19 @@ class ProfileForm extends Component {
       <div className="hero-body">
         <div className="container">
           <div className="columns is-vcentered">
-            <div className="column is-three-fifths-desktop is-four-fifths-tablet
-              is-offset-one-fifth-desktop is-offset-1-tablet box main">
-              <h2 className="form-title is-3 has-text-left is-hidden-tablet">Perfil</h2>
+            <div
+              className="column is-three-fifths-desktop is-four-fifths-tablet
+              is-offset-one-fifth-desktop is-offset-1-tablet box main"
+            >
+              <h2 className="form-title is-3 has-text-left is-hidden-tablet">
+                Perfil
+              </h2>
 
               <div className="columns is-vcentered custom-columns">
                 <div className="column is-three-fifths is-four-fifths-mobile  profile-column right-border">
-                <h2 className="form-title is-3 has-text-left is-hidden-mobile">Perfil</h2>
+                  <h2 className="form-title is-3 has-text-left is-hidden-mobile">
+                    Perfil
+                  </h2>
 
                   {/* USERNAME */}
                   <div className="field is-horizontal">
@@ -102,11 +185,16 @@ class ProfileForm extends Component {
                             name="username"
                             type="text"
                             placeholder="Silent Bob"
-                            className={inputClasses}
+                            className={`${inputClasses} ${formErrors.username &&
+                              'is-danger'}`}
                             value={username}
                             readOnly={!isEditting}
-                          //required TODO make own validations
                           />
+                          {formErrors.username && (
+                            <p className="help has-text-left is-danger">
+                              {formErrors.username}
+                            </p>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -127,7 +215,6 @@ class ProfileForm extends Component {
                             className={inputClasses}
                             value={name}
                             readOnly={!isEditting}
-                          //required TODO make own validations
                           />
                         </div>
                       </div>
@@ -149,7 +236,6 @@ class ProfileForm extends Component {
                             className={inputClasses}
                             value={surname}
                             readOnly={!isEditting}
-                          //required TODO make own validations
                           />
                         </div>
                       </div>
@@ -168,11 +254,16 @@ class ProfileForm extends Component {
                             name="postalCode"
                             type="text"
                             placeholder="08339"
-                            className={inputClasses}
+                            className={`${inputClasses} ${formErrors.postalCode &&
+                              'is-danger'}`}
                             value={postalCode}
                             readOnly={!isEditting}
-                          //required TODO make own validations
                           />
+                          {formErrors.postalCode && (
+                            <p className="help has-text-left is-danger">
+                              {formErrors.postalCode}
+                            </p>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -190,45 +281,56 @@ class ProfileForm extends Component {
                             onChange={this.onChange}
                             type="email"
                             placeholder="bobsmith@gmail.com"
-                            className={inputClasses}
+                            className={`${inputClasses} ${formErrors.email &&
+                              'is-danger'}`}
                             value={email}
                             readOnly={!isEditting}
-                          //required TODO make own validations
                           />
+                          {formErrors.email && (
+                            <p className="help has-text-left is-danger">
+                              {formErrors.email}
+                            </p>
+                          )}
                         </div>
                       </div>
                     </div>
                   </div>
+                  {this.props.error && (
+                    <p className="help has-text-left is-danger">
+                      {this.props.error}
+                    </p>
+                  )}
                   {isEditable &&
-                    (!isEditting ? (
+                    (!isEditting && !this.props.error ? (
                       <div className="field">
                         <button
                           onClick={this.handleEditProfile}
                           className="button form-button button-text"
                         >
                           Edita
-                      </button>
+                        </button>
                       </div>
                     ) : (
-                        <div className="field is-grouped is-grouped-left">
-                          <div className="control">
-                            <button
-                              onClick={this.props.handleSubmit(this.state)}
-                              className="button button-text form-button"
-                            >
-                              Desa
-                        </button>
-                          </div>
-                          <div className="control">
-                            <button
-                              onClick={this.handleCancel}
-                              className="button button-text form-button"
-                            >
-                              Cancel·la
-                        </button>
-                          </div>
+                      <div className="field is-grouped is-grouped-left">
+                        <div className="control">
+                          <button
+                            onClick={this.props.handleSubmit(this.state)}
+                            className="button button-text form-button"
+                            disabled={!formValid}
+                          >
+                            Desa
+                          </button>
                         </div>
-                      ))}
+                        <div className="control">
+                          <button
+                            onClick={this.handleCancel}
+                            className="button button-text form-button"
+                          >
+                            Cancel·la
+                          </button>
+                        </div>
+                      </div>
+                    ))}
                 </div>
                 <div className="column bottom-border is-three-quarters-mobile ">
                   <div className="separate has-text-centered">
@@ -269,7 +371,4 @@ const mapStateToProps = ({ user }) => ({
   isLoading: user.isLoading
 });
 
-export default connect(
-  mapStateToProps,
-  {}
-)(ProfileForm);
+export default connect(mapStateToProps, {})(ProfileForm);

@@ -5,22 +5,29 @@ import './LoginForm.css';
 
 class LoginForm extends Component {
   static propTypes = {
-    handleSubmit: PropTypes.func
+    handleSubmit: PropTypes.func,
+    error: PropTypes.string.isRequired
   };
 
   state = {
     email: '',
-    password: ''
+    password: '',
+    formErrors: {},
+    emailValid: false,
+    passwordValid: false,
+    formValid: false
   };
 
   onChange = e => {
     const value = e.target.value;
+    const name = e.target.name;
     this.setState({
-      [e.target.name]: value
+      [name]: value
     });
   };
 
   render() {
+    const { email, password } = this.state;
     return (
       <section className="hero is-fullheight form-hero">
         <div className="hero-body form-body">
@@ -40,7 +47,7 @@ class LoginForm extends Component {
                         type="email"
                         placeholder="bobsmith@gmail.com"
                         className="input"
-                        //required TODO make own validations
+                        value={email}
                       />
                     </div>
                   </div>
@@ -53,13 +60,18 @@ class LoginForm extends Component {
                         type="password"
                         placeholder="*******"
                         className="input"
-                        //required TODO make own validations
+                        value={password}
                       />
                     </div>
                   </div>
+                  {this.props.error && (
+                    <p className="help has-text-left is-danger">
+                      {this.props.error}
+                    </p>
+                  )}
                   <div className="field has-text-centered">
                     <button
-                      onClick={this.props.handleSubmit(this.state)}
+                      onClick={this.props.handleSubmit(email, password)}
                       className="button button-text form-button"
                     >
                       Envia

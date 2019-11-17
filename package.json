@@ -8,6 +8,7 @@
     "classnames": "^2.2.6",
     "cross-env": "^6.0.3",
     "jwt-decode": "^2.2.0",
+    "postal-codes-js": "^2.2.3",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-redux": "^7.1.1",

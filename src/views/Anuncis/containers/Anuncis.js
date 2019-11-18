@@ -24,20 +24,23 @@ class Anuncis extends Component {
       }
     }
   }
-
   
+  handleAdOnClick = (e) => {
+    const adId = e.currentTarget.getAttribute('id');
+    //TODO link to ad detail page
+    console.log(adId);
+  }
+
   handleFilterClick = (e) => {
-        console.log(e.currentTarget.id);
-        const prop = e.currentTarget.id;
-        console.log(this.state.filter[prop]);
 
-        this.setState( prevState => ({
-          filter: {
-            [prop]: !prevState.filter[prop],
-          }
-        }));
+    const prop = e.currentTarget.getAttribute('id');
 
-        console.log(this.state.filter[prop]);
+    this.setState( prevState => ({
+      filter: {
+        ...prevState.filter,
+        [prop]: !prevState.filter[prop]
+      }
+    }));
   }
 
   render() {
@@ -47,11 +50,13 @@ class Anuncis extends Component {
         <section id="anuncis" className="hero is-fullheight is-fullwidth form-hero">
           <div className="hero-body">
             <div className="container">
-              <ResultsSearch 
+              <ResultsSearch
                 query="08294"
                 onFilterClick={this.handleFilterClick}
                 filter={this.state.filter}></ResultsSearch>
-              <ResultsList filter={this.state.filter}></ResultsList>
+              <ResultsList
+                filter={this.state.filter}
+                handleAdOnClick={this.handleAdOnClick}></ResultsList>
             </div>
           </div>
         </section>

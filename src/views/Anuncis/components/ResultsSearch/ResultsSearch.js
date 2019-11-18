@@ -8,8 +8,8 @@ const ResultsSearch = ({ query, onFilterClick, filter }) => {
         <div className="container">
             <div className="columns">
                 <div className="column is-three-fifths is-offset-one-fifth">
-                    <div className="box">
-                        <div className="field search-field is-grouped">
+                    <div className="box search-container">
+                        <div className="field is-grouped">
                             <p className="control is-expanded">
                                 <input
                                     className="input is-small"

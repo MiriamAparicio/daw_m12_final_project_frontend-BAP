@@ -17,24 +17,33 @@ class HomePage extends Component {
     return (
       <>
         <NavBar isUserLogged={!!this.props.user} />
-        <SearchBanner />
-        <section className="section">
-          <h1 className="title has-text-centered how-title">Com funciona?</h1>
-          <div className="columns info-cards">
-            <InfoCard
-              dotColor="red"
-              titleKey="contractar"
-              image="contracta.png"
-              stepsList={STEPS_SEARCH}
-            />
-            <InfoCard
-              dotColor="green"
-              titleKey="oferir"
-              image="ofereix.png"
-              stepsList={STEPS_OFFER}
-            />
+        <div className="hero">
+          <section className="hero-body is-fullheight-with-navbar">
+            <SearchBanner />
+            <div className="container">
+              <section className="section">
+                <h1 className="title has-text-centered how-title">Com funciona?</h1>
+                <div className="columns info-cards">
+                  <InfoCard
+                    dotColor="red"
+                    titleKey="contractar"
+                    image="contracta.png"
+                    stepsList={STEPS_SEARCH}
+                  />
+                  <InfoCard
+                    dotColor="green"
+                    titleKey="oferir"
+                    image="ofereix.png"
+                    stepsList={STEPS_OFFER}
+                  />
+                </div>
+              </section>
+            </div>
+          </section>
+          <div className="hero-foot">
+
           </div>
-        </section>
+        </div>
       </>
     );
   }

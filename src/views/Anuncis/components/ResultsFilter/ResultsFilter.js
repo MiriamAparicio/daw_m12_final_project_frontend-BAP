@@ -17,27 +17,35 @@ const ResultsFilter = ({ onFilterClick, filter }) => {
 
     return (
         <div className="servicesCont">
-            <div className="columns filterCont">
-                <div className={`column filter ${getServiceClass("babysitter")}`}
-                    id="babysitter"
-                    onClick={onFilterClick}>
-                    Cangur
+            <div className="columns is-mobile filterCont">
+                <div className="column">
+                    <div className="columns ">
+                        <div className={`column filter ${getServiceClass("babysitter")}`}
+                            id="babysitter"
+                            onClick={onFilterClick}>
+                            Cangur
+                        </div>
+                        <div className={`column filter ${getServiceClass("cleaner")}`}
+                            id="cleaner"
+                            onClick={onFilterClick}>
+                            Neteja
+                        </div>
                     </div>
-                <div className={`column filter ${getServiceClass("cleaner")}`}
-                    id="cleaner"
-                    onClick={onFilterClick}>
-                    Neteja
+                </div>
+                <div className="column">
+                    <div className="columns">
+                        <div className={`column filter ${getServiceClass("pets")}`}
+                            id="pets"
+                            onClick={onFilterClick}>
+                            Cura mascotes
+                        </div>
+                        <div className={`column filter ${getServiceClass("classes")}`}
+                            id="classes"
+                            onClick={onFilterClick}>
+                            Classes particulars
+                        </div>
                     </div>
-                <div className={`column filter ${getServiceClass("pets")}`}
-                    id="pets"
-                    onClick={onFilterClick}>
-                    Cura mascotes
-                    </div>
-                <div className={`column filter ${getServiceClass("classes")}`}
-                    id="classes"
-                    onClick={onFilterClick}>
-                    Classes particulars
-                    </div>
+                </div>
             </div>
         </div>
     );

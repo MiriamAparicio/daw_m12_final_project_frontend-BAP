@@ -18,18 +18,26 @@ const ServiceType = ({ services }) => {
 
     return (
         <div className="servicesCont">
-            <div className="columns">
-                <div className={`column service ${getServiceClass("babysitter")}`}>
-                    Cangur
+            <div className="columns is-mobile">
+                <div className="column">
+                    <div className="columns">
+                        <div className={`column service ${getServiceClass("babysitter")}`}>
+                            Cangur
+                        </div>
+                        <div className={`column service ${getServiceClass("cleaner")}`}>
+                            Neteja
+                        </div>
+                    </div>
                 </div>
-                <div className={`column service ${getServiceClass("cleaner")}`}>
-                    Neteja
-                </div>
-                <div className={`column service ${getServiceClass("pets")}`}>
-                    Cura mascotes
-                </div>
-                <div className={`column service ${getServiceClass("classes")}`}>
-                    Classes particulars
+                <div className="column">
+                    <div className="columns">
+                        <div className={`column service ${getServiceClass("pets")}`}>
+                            Cura mascotes
+                         </div>
+                        <div className={`column service ${getServiceClass("classes")}`}>
+                            Classes particulars
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

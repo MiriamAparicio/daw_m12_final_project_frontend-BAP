@@ -68,7 +68,7 @@ class Profile extends Component {
         <NavBar isUserLogged={!!this.props.user} />
         <section
           id="profile"
-          className="hero is-fullheight is-fullwidth form-hero"
+          className="hero is-fullheight-with-navbar form-hero"
         >
           <ProfileForm
             user={this.props.user}

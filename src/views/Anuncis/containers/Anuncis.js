@@ -47,8 +47,8 @@ class Anuncis extends Component {
     return (
       <>
         <NavBar isUserLogged={!!this.props.user} />
-        <section id="anuncis" className="hero is-fullheight is-fullwidth form-hero">
-          <div className="hero-body">
+        <section id="anuncis" className="hero is-fullheight-with-navbar is-fullwidth form-hero">
+          <div className="hero-body ads-body">
             <div className="container">
               <ResultsSearch
                 query="08294"

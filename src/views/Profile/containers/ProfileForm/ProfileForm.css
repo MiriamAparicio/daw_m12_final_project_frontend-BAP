@@ -13,6 +13,11 @@
     border-bottom: 3px dotted #c8d6e5;
   }
 
+  .profile-body {
+    margin: 30px;
+    margin-top: 45px;
+  }
+
 }
 
 @media (min-width: 767px){
@@ -25,10 +30,6 @@
     line-height: 2.1rem;
   }
 }
-
-
-
-
 
 .main{
   margin-top: 20px;

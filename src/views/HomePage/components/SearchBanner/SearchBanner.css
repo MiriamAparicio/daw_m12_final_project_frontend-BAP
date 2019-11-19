@@ -1,34 +1,28 @@
+@media ( max-width: 767px) {
+  .search-field {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
 .search-banner {
   background-color: #faca57;
-}
-
-.hero.is-small .hero-body {
-  margin-top: 3rem;
-  padding-bottom: 0;
-  display: flex;
-  justify-content: center;
-}
-
-.search {
-  padding-bottom: 0.5rem;
+  margin-top: 60px;
 }
 
 .search img {
   width: 70%;
+  vertical-align: bottom;
 }
 
 .search-banner-subtitle {
   color: #24303d;
   font-weight: 800;
-  font-size: 3rem;
+  font-size: 2.2rem;
 }
 
 .control {
   text-align: center;
-}
-
-.search-field {
-  padding-bottom: 1rem;
 }
 
 .search-field input {

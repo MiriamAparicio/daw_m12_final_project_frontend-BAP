@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import ResultsFilter from './../ResultsFilter/ResultsFilter';
 import './ResultsSearch.css';
 
@@ -31,6 +32,17 @@ const ResultsSearch = ({ query, onFilterClick, filter }) => {
         </div>
     );
 
+}
+
+ResultsSearch.propTypes = {
+    query: PropTypes.string.isRequired,
+    onFilterClick: PropTypes.func.isRequired,
+    filter: PropTypes.shape ({
+        babysitter: PropTypes.bool.isRequired,
+        cleaner: PropTypes.bool.isRequired,
+        pets: PropTypes.bool.isRequired,
+        classes: PropTypes.bool.isRequired,
+    }),
 }
 
 export default ResultsSearch;

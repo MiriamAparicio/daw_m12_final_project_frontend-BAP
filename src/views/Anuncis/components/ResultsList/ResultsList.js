@@ -1,64 +1,7 @@
 import React, { Component } from 'react';
+import { PropTypes } from 'prop-types';
 import ResultsItem from '../ResultsItem/ResultsItem';
 
-
-
-const data = [
-    {
-        owner: {
-            type: 1234,
-            name: 'Francesc Muñoz',
-            username: 'franlol',
-            avgRating: 5
-        },
-        title: "S'ofereix professor per classes particulars",
-        description: "Hola, m'ofereixo per moltes coses",
-        rang: 10,
-        services: {
-            babysitter: false,
-            classes: true,
-            cleaner: false,
-            pets: false,
-        },
-        price: 15,
-    },
-    {
-        owner: {
-            type: 6789,
-            name: 'Xavi Sánchez',
-            username: 'xavixanxe',
-            avgRating: 3.5
-        },
-        title: 'Noia responsable per cangurs i neteja',
-        description: "Hola, jo també m'ofereixo per moltes coses",
-        rang: 10,
-        services: {
-            babysitter: true,
-            classes: false,
-            cleaner: true,
-            pets: false,
-        },
-        price: 15,
-    },
-    {
-        owner: {
-            type: 54321,
-            name: 'Miriam Aparicio',
-            username: 'miriamap',
-            avgRating: 4.5
-        },
-        title: 'Programadora per classes particulars',
-        description: "Hola, jo també m'ofereixo per moltes coses",
-        rang: 10,
-        services: {
-            babysitter: false,
-            classes: true,
-            cleaner: false,
-            pets: false,
-        },
-        price: 15,
-    },
-];
 
 
 class ResultsList extends Component {
@@ -66,9 +9,11 @@ class ResultsList extends Component {
     constructor(props) {
         super(props);
 
+        const { query, results } = this.props;
+
         this.state = {
-            query: this.props.query,
-            results: data,
+            query,
+            results
         }
     }
 
@@ -80,8 +25,8 @@ class ResultsList extends Component {
             return (
                 results.map((ad, index) => (
                     <ResultsItem
-                        key={ad.owner.type}
-                        id={ad.owner.type}
+                        key={ad._id}
+                        id={ad._id}
                         ad={ad}
                         handleAdOnClick={handleAdOnClick}>
                     </ResultsItem>
@@ -107,6 +52,12 @@ class ResultsList extends Component {
             </div>
         );
     }
+}
+
+ResultsList.propTypes = {
+    query: PropTypes.string.isRequired,
+    results: PropTypes.array.isRequired,
+    handleAdOnClick: PropTypes.func.isRequired,
 }
 
 export default ResultsList;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import ServiceType from './../ServiceType/ServiceType';
 import './ResultsItem.css';
 import Rating from 'react-rating';
@@ -43,6 +44,12 @@ const ResultsItem = ({ ad, handleAdOnClick, id }) => {
             </article>
         </div >
     );
+}
+
+ResultsItem.propTypes = {
+    handleAdOnClick: PropTypes.func.isRequired,
+    id: PropTypes.string.isRequired,
+    ad: PropTypes.object.isRequired,
 }
 
 export default ResultsItem;

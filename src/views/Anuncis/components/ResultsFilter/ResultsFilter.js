@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import './ResultsFilter.css';
 
 const ResultsFilter = ({ onFilterClick, filter }) => {
@@ -51,6 +52,14 @@ const ResultsFilter = ({ onFilterClick, filter }) => {
     );
 }
 
-
+ResultsFilter.propTypes = {
+    filter: PropTypes.shape ({
+        babysitter: PropTypes.bool.isRequired,
+        cleaner: PropTypes.bool.isRequired,
+        pets: PropTypes.bool.isRequired,
+        classes: PropTypes.bool.isRequired,
+    }),
+    onFilterClick: PropTypes.func.isRequired,
+}
 
 export default ResultsFilter;

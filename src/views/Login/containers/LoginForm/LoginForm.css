@@ -1,5 +1,7 @@
 .form-body {
   flex-grow: 0.5;
+  padding: 20px;
+  padding-top: 30px;
 }
 
 .form-title,

@@ -155,7 +155,7 @@ class ProfileForm extends Component {
       'is-static': !isEditting
     });
     return (
-      <div className="hero-body">
+      <div className="hero-body profile-body">
         <div className="container">
           <div className="columns is-vcentered">
             <div

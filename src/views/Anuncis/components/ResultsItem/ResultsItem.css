@@ -1,0 +1,37 @@
+.adCont {
+    vertical-align: middle;
+}
+
+.adTitle {
+    font-size: 1.125rem;
+    font-weight: 800;
+    border-bottom: 3px dotted #c8d6e5;
+    margin-top: 8px;
+}
+
+.rating {
+    font-size: 0.8rem;
+}
+
+.star {
+    color: #feca57;
+}
+
+.user {
+    color: #01A3A4;
+    font-weight: 800;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.ammount {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.itemCont {
+    box-shadow: 0 0 0 0;
+    background: #eff3f7;
+}

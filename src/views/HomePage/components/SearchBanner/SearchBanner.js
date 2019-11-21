@@ -7,24 +7,27 @@ import SearchInput from '../SearchInput/SearchInput';
 class SearchBanner extends Component {
   render() {
     return (
-      <section className="hero is-small search-banner">
-        <div className="hero-body">
-          <div className="container columns is-vcentered is-centered">
-            <div className="column has-text-centered search">
-              <img
-                src={require('../../../../images/cerca.png')}
-                alt="imatge-cerca"
-              />
-            </div>
-            <div className="column has-text-centered">
-              <h2 className="title is-2 search-banner-subtitle">
-                Cerca serveis a la teva zona
+      <div className="columns search-banner">
+        <div className="column">
+          <div className="container">
+            <div className="columns is-vcentered">
+              <div className="column is-5 is-offset-1 has-text-centered search">
+                <img
+                  src={require('../../../../images/cerca.png')}
+                  alt="imatge-cerca"
+                />
+              </div>
+              <div className="column is-4 has-text-centered">
+                <h2 className="title search-banner-subtitle">
+                  Cerca serveis <br /> a la teva zona
               </h2>
-              <SearchInput></SearchInput>
+                <SearchInput></SearchInput>
+              </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+
     );
   }
 }

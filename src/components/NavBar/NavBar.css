@@ -1,6 +1,28 @@
-.navbar {
+  .navbar-item {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+}
+.navbar .container {
+  display: flex;
+}
+
+.navbar,
+.navbar-menu,
+.navbar-end {
+  align-items: stretch;
+  display: flex;
+  padding: 0;
+  box-shadow: 0 0 0 0;
+}
+
+.navbar-menu{
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+.navbar-end{
+  justify-content: flex-end;
+  margin-left: auto;
 }
 
 .logo {
@@ -17,7 +39,12 @@
 }
 
 .user-icon {
+  align-content: right;
   padding: 1rem 1.5rem;
+}
+
+.icon {
+  text-align: right;
 }
 
 .user-icon-color {

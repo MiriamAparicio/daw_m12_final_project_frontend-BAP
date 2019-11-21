@@ -1,0 +1,22 @@
+.unselected {
+    background: #c8d6e5;
+}
+
+.selected {
+    background: #01A3A4;
+}
+
+.filterCont {
+    margin-top: 0;
+}
+
+.filter {
+    text-align: center;
+    font-weight: 700;
+    color: white;
+    font-size: 0.75rem;
+    margin: 15px;
+    margin-top: 0;
+    padding: 3px;
+    border-radius: 6px;
+}

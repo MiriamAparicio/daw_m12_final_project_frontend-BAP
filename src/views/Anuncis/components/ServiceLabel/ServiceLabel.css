@@ -6,11 +6,8 @@
     background: #01A3A4;
 }
 
-.servicesCont {
-    margin-top: 10px;
-}
-
 .service {
+    cursor: pointer;
     text-align: center;
     font-weight: 700;
     color: white;

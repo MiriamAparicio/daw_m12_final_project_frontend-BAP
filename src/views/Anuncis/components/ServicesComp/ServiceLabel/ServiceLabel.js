@@ -3,7 +3,14 @@ import { PropTypes } from 'prop-types';
 import './ServiceLabel.css';
 
 
-const ServiceLabel = ({ service, text, onClickHandler, serviceStates }) => {
+const ServiceLabel = ({ service, onClickHandler, serviceStates }) => {
+
+    const labelText = {
+        babysitter: 'Cangur',
+        cleaner: 'Neteja',
+        pets: 'Cura mascotes',
+        classes: 'Classes particulars',
+    }
 
     const getServiceClass = (service, serviceStates) => {
         switch (serviceStates[service]) {
@@ -19,9 +26,9 @@ const ServiceLabel = ({ service, text, onClickHandler, serviceStates }) => {
     return (
         <div className={`service ${getServiceClass(service,serviceStates)}`}
             id={service}
-            onClick={onClickHandler ? onClickHandler : {}}
+            onClick={onClickHandler ? onClickHandler : ()=>{}}
         >
-            {text}
+            {labelText[service]}
         </div>
     );
 }

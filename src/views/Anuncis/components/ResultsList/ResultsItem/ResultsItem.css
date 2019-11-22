@@ -1,3 +1,9 @@
+@media (max-width:676px){
+    .column-mobile{
+        padding-right: 0;
+    }
+}
+
 .adCont {
     vertical-align: middle;
 }
@@ -32,6 +38,11 @@
 }
 
 .itemCont {
+    cursor: pointer;
     box-shadow: 0 0 0 0;
     background: #eff3f7;
+}
+
+.itemCont:hover {
+    background: white;
 }

@@ -87,10 +87,10 @@ class Anuncis extends Component {
     }
   }
 
-  handleAdOnClick = (e) => {
-    const adId = e.currentTarget.getAttribute('id');
+  handlePostOnClick = (e) => {
+    const postId = e.currentTarget.getAttribute('id');
     //TODO link to ad detail page
-    console.log(adId);
+    console.log(postId);
   }
 
   handleFilterClick = (e) => {
@@ -110,7 +110,7 @@ class Anuncis extends Component {
       <>
         <NavBar isUserLogged={!!this.props.user} />
         <section id="anuncis" className="hero is-fullheight-with-navbar is-fullwidth form-hero">
-          <div className="hero-body ads-body">
+          <div className="hero-body posts-body">
             <div className="container">
               <ResultsSearch
                 query="08294"
@@ -120,7 +120,7 @@ class Anuncis extends Component {
                 results={data}
                 filter={this.state.filter}
                 query="08294"
-                handleAdOnClick={this.handleAdOnClick}></ResultsList>
+                handlePostOnClick={this.handlePostOnClick}></ResultsList>
             </div>
           </div>
         </section>

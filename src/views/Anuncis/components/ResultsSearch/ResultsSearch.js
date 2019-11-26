@@ -1,6 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import ServicesComp from './../ServicesComp/ServicesComp';
+import ServicesComp from './../ServicesList/ServicesList';
 import './ResultsSearch.css';
 
 const ResultsSearch = ({ query, onFilterClick, filter }) => {

@@ -1,13 +1,13 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import ServiceLabel from './ServiceLabel/ServiceLabel';
-import './ServicesComp.css';
+import './ServicesList.css';
 
 const ServicesComp = ({ onLabelClick, serviceStates }) => {
 
     return (
         <div>
-            <div className="columns is-mobile servicesCont">
+            <div className="columns is-mobile is-marginless servicesCont">
                 <div className="column">
                     <div className="columns">
                         <div className="column">

@@ -1,42 +1,60 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import ServicesComp from './../../ServicesComp/ServicesComp';
+import ServicesComp from './../../ServicesList/ServicesList';
 import './ResultsItem.css';
 import Rating from 'react-rating';
 
 
-const ResultsItem = ({ ad, handleAdOnClick, id }) => {
+const ResultsItem = ({ post, handlePostOnClick, id }) => {
 
     return (
-        <div className="itemCont box" onClick={handleAdOnClick} id={id}>
+        <div className="itemCont box" onClick={handlePostOnClick} id={id}>
+            <div className="user-info has-text-centered is-hidden-tablet">
+                <figure className="image is-96x96 post-image">
+                    <img
+                        className="is-rounded"
+                        src="https://bulma.io/images/placeholders/64x64.png"
+                        alt={post.owner.username}
+                    />
+                </figure>
+                <div className="user">{post.owner.username}</div>
+                <div className="rating">
+                    {`${post.owner.avgRating} / 5 `}
+                    <Rating
+                        emptySymbol="far fa-star star"
+                        fullSymbol="fas fa-star star"
+                        initialRating={post.owner.avgRating}
+                        readonly />
+                </div>
+            </div>
             <article className="media">
-                <div className="media-left">
+                <div className="media-left is-hidden-mobile">
                     <figure className="image is-64x64">
                         <img
                             className="is-rounded"
                             src="https://bulma.io/images/placeholders/64x64.png"
-                            alt={ad.owner.username}
+                            alt={post.owner.username}
                         />
                     </figure>
-                    <div className="user">{ad.owner.username}</div>
+                    <div className="user">{post.owner.username}</div>
                 </div>
-                <div className="media-content">
+                <div className="media-content is-paddingless">
                     <div className="adTitle">
-                        <div className="columns">
-                            <div className="column is-four-fifths column-mobile">
-                                {ad.title}
+                        <div className="columns is-marginless">
+                            <div className="column is-paddingless is-four-fifths">
+                                {post.title}
                             </div>
-                            <div className="column rating has-text-right column-mobile">
-                                {`${ad.owner.avgRating} / 5 `}
+                            <div className="column is-paddingless rating has-text-right is-hidden-mobile">
+                                {`${post.owner.avgRating} / 5 `}
                                 <Rating
                                     emptySymbol="far fa-star star"
                                     fullSymbol="fas fa-star star"
-                                    initialRating={ad.owner.avgRating}
+                                    initialRating={post.owner.avgRating}
                                     readonly />
                             </div>
                         </div>
                     </div>
-                    <ServicesComp serviceStates={ad.services}></ServicesComp>
+                    <ServicesComp serviceStates={post.services}></ServicesComp>
                 </div >
             </article>
         </div >
@@ -44,9 +62,9 @@ const ResultsItem = ({ ad, handleAdOnClick, id }) => {
 }
 
 ResultsItem.propTypes = {
-    handleAdOnClick: PropTypes.func.isRequired,
+    handlePostOnClick: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
-    ad: PropTypes.object.isRequired,
+    post: PropTypes.object.isRequired,
 }
 
 export default ResultsItem;

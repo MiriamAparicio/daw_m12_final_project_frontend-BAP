@@ -1,6 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import ServiceLabel from './../ServiceLabel/ServiceLabel';
+import ServiceLabel from './ServiceLabel/ServiceLabel';
 import './ServicesComp.css';
 
 const ServicesComp = ({ onLabelClick, serviceStates }) => {

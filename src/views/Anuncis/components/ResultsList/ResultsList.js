@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
-import ResultsItem from '../ResultsItem/ResultsItem';
+import ResultsItem from './ResultsItem/ResultsItem';
 
 
 

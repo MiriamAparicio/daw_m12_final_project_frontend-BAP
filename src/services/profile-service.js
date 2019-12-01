@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const apiUrl = 'http://localhost:3000/profile';
 
-class UserProfile {
+class ProfileService {
   constructor() {
     this.profile = axios.create({
       baseURL: apiUrl,
@@ -37,6 +37,6 @@ class UserProfile {
   }
 }
 
-const userProfile = new UserProfile();
+const profileService = new ProfileService();
 
-export default userProfile;
+export default profileService;

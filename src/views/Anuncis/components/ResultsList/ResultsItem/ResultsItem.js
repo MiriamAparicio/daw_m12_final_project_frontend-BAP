@@ -1,6 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import ServicesComp from './../../ServicesList/ServicesList';
+import ServicesList from './../../ServicesList/ServicesList';
 import './ResultsItem.css';
 import Rating from 'react-rating';
 
@@ -10,7 +10,7 @@ const ResultsItem = ({ post, handlePostOnClick, id }) => {
     return (
         <div className="itemCont box" onClick={handlePostOnClick} id={id}>
             <div className="user-info has-text-centered is-hidden-tablet">
-                <figure className="image is-96x96 post-image">
+                <figure className="image avatar is-96x96 post-image">
                     <img
                         className="is-rounded"
                         src="https://bulma.io/images/placeholders/64x64.png"
@@ -40,8 +40,8 @@ const ResultsItem = ({ post, handlePostOnClick, id }) => {
                 </div>
                 <div className="media-content is-paddingless">
                     <div className="adTitle">
-                        <div className="columns is-marginless">
-                            <div className="column is-paddingless is-four-fifths">
+                        <div className="columns is-marginless service-columns">
+                            <div className="column is-paddingless is-four-fifths service-column">
                                 {post.title}
                             </div>
                             <div className="column is-paddingless rating has-text-right is-hidden-mobile">
@@ -54,7 +54,7 @@ const ResultsItem = ({ post, handlePostOnClick, id }) => {
                             </div>
                         </div>
                     </div>
-                    <ServicesComp serviceStates={post.services}></ServicesComp>
+                    <ServicesList serviceStates={post.services}></ServicesList>
                 </div >
             </article>
         </div >

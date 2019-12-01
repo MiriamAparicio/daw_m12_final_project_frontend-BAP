@@ -1,6 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import ServicesComp from './../ServicesList/ServicesList';
+import ServicesList from './../ServicesList/ServicesList';
 import './ResultsSearch.css';
 
 const ResultsSearch = ({ query, onFilterClick, filter }) => {
@@ -23,9 +23,9 @@ const ResultsSearch = ({ query, onFilterClick, filter }) => {
                             </p>
                         </div>
                         <p className="filterLabel">Filtra el tipus de servei que busques:</p>
-                        <ServicesComp 
+                        <ServicesList 
                             onLabelClick={onFilterClick}
-                            serviceStates={filter}></ServicesComp>
+                            serviceStates={filter}></ServicesList>
                     </div>
                 </div>
             </div>

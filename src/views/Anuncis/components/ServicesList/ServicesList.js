@@ -3,21 +3,21 @@ import { PropTypes } from 'prop-types';
 import ServiceLabel from './ServiceLabel/ServiceLabel';
 import './ServicesList.css';
 
-const ServicesComp = ({ onLabelClick, serviceStates }) => {
+const ServicesList = ({ onLabelClick, serviceStates }) => {
 
     return (
         <div>
-            <div className="columns is-mobile is-marginless servicesCont">
-                <div className="column">
-                    <div className="columns">
-                        <div className="column">
+            <div className="columns is-mobile services-cont service-columns">
+                <div className="column service-column">
+                    <div className="columns service-columns left-column">
+                        <div className="column service-column">
                             <ServiceLabel
                                 service={'babysitter'}
                                 onClickHandler={onLabelClick ? onLabelClick : () => {}}
                                 serviceStates={serviceStates}>
                             </ServiceLabel>
                         </div>
-                        <div className="column">
+                        <div className="column service-column">
                             <ServiceLabel
                                 service={'cleaner'}
                                 onClickHandler={onLabelClick ? onLabelClick : () => {}}
@@ -26,16 +26,16 @@ const ServicesComp = ({ onLabelClick, serviceStates }) => {
                         </div>
                     </div>
                 </div>
-                <div className="column">
-                    <div className="columns">
-                        <div className="column">
+                <div className="column service-column">
+                    <div className="columns service-columns right-column">
+                        <div className="column service-column">
                             <ServiceLabel
                                 service={'pets'}
                                 onClickHandler={onLabelClick ? onLabelClick : () => {}}
                                 serviceStates={serviceStates}>
                             </ServiceLabel>
                         </div>
-                        <div className="column">
+                        <div className="column service-column">
                             <ServiceLabel
                                 service={'classes'}
                                 onClickHandler={onLabelClick ? onLabelClick : () => {}}
@@ -49,7 +49,7 @@ const ServicesComp = ({ onLabelClick, serviceStates }) => {
     );
 }
 
-ServicesComp.propTypes = {
+ServicesList.propTypes = {
     serviceStates: PropTypes.shape({
         babysitter: PropTypes.bool.isRequired,
         cleaner: PropTypes.bool.isRequired,
@@ -59,4 +59,4 @@ ServicesComp.propTypes = {
     onLabelClick: PropTypes.func,
 }
 
-export default ServicesComp;
+export default ServicesList;

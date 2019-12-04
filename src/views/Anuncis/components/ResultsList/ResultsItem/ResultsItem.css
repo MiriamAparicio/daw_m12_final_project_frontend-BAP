@@ -4,11 +4,7 @@
     }
 }
 
-.adCont {
-    vertical-align: middle;
-}
-
-.adTitle {
+.post-title {
     font-size: 1.125rem;
     font-weight: 800;
     border-bottom: 3px dotted #c8d6e5;
@@ -36,12 +32,12 @@
     margin-bottom: 10px;
 }
 
-.itemCont {
+.item-container {
     cursor: pointer;
     box-shadow: 0 0 0 0;
     background: #eff3f7;
 }
 
-.itemCont:hover {
+.item-container:hover {
     background: white;
 }

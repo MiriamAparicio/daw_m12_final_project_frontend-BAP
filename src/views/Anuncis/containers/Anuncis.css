@@ -1,4 +1,4 @@
-.results-hero {
-  height: 100%;
+.results-container {
+  min-height: 100vh;
   background-color: #c8d6e5;
 }

@@ -8,7 +8,7 @@ import Rating from 'react-rating';
 const ResultsItem = ({ post, handlePostOnClick, id }) => {
 
     return (
-        <div className="itemCont box" onClick={handlePostOnClick} id={id}>
+        <div className="item-container box" onClick={handlePostOnClick} id={id}>
             <div className="user-info has-text-centered is-hidden-tablet">
                 <figure className="image avatar is-96x96 post-image">
                     <img
@@ -39,7 +39,7 @@ const ResultsItem = ({ post, handlePostOnClick, id }) => {
                     <div className="user">{post.owner.username}</div>
                 </div>
                 <div className="media-content is-paddingless">
-                    <div className="adTitle">
+                    <div className="post-title">
                         <div className="columns is-marginless service-columns">
                             <div className="column is-paddingless is-four-fifths service-column">
                                 {post.title}

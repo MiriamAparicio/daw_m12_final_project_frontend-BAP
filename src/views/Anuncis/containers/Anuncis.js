@@ -109,13 +109,15 @@ class Anuncis extends Component {
     return (
       <>
         <NavBar isUserLogged={!!this.props.user} />
-        <section id="anuncis" className="section is-medium results-hero">
+        <section id="anuncis" className="section is-medium results-container">
           <div className="hero-body">
             <div className="container">
               <ResultsSearch
                 query="08294"
                 onFilterClick={this.handleFilterClick}
                 filter={this.state.filter}></ResultsSearch>
+                </div>
+                <div className="container">
               <ResultsList
                 results={data}
                 filter={this.state.filter}

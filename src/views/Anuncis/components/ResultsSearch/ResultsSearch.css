@@ -3,5 +3,21 @@
 }
 
 .search-container {
+    margin: 40px auto;
     margin-bottom: 20px;
+}   
+
+.range-select {
+    margin-right: 10px;
+}
+
+.select-label {
+    margin-right: 5px;
+    line-height: 2rem;
+}
+
+@media (max-width: 676px) {
+    .select-label {
+        line-height: 1rem;
+    }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import ServicesList from './../ServicesList/ServicesList';
+import { MAX_KM } from '../../../../utils/constants';
 import './ResultsSearch.css';
 
 class ResultsSearch extends Component {
@@ -18,7 +19,6 @@ class ResultsSearch extends Component {
 
     getSelectOption() {
 
-        const MAX_KM = 50;
         const options = [];
 
         for (let i = 0; i <= MAX_KM; i = i + 5) {

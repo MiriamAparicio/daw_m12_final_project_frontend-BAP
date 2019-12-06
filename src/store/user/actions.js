@@ -21,7 +21,9 @@ function signupUser() {
 }
 
 function signupUserSuccess(response) {
+  const now = new Date().getTime();
   localStorage.setItem('token', response.data.token);
+  localStorage.setItem('loginTime', now);
   return {
     type: SIGNUP_USER_SUCCESS,
     user: decodeToken(response.data.token),
@@ -56,7 +58,9 @@ function loginUser() {
 }
 
 function loginUserSuccess(response) {
+  const now = new Date().getTime();
   localStorage.setItem('token', response.data.token);
+  localStorage.setItem('loginTime', now);
   return {
     type: LOGIN_USER_SUCCESS,
     user: decodeToken(response.data.token),

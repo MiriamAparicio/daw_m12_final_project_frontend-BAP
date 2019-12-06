@@ -9,6 +9,7 @@ export const ERROR_MESSAGES = {
   7: 'La contrasenya no és vàlida, ha de contenir almenys 8 caràcters, una lletra minúscula i una majúscula, i almenys un digit',
   8: 'El codi postal no és correcte',
   9: "L'email i la contrasenya són requerits",
-  11: "El id de l'usuari no és vàlid",
-  12: "L'usuari no s'ha trobat"
+  10: "El id de l'usuari no és vàlid",
+  11: "L'usuari no s'ha trobat",
+  12: 'La sessió ha expirat'
 };

@@ -1,38 +1,40 @@
+.custom-columns {
+  margin-bottom: 0px !important;
+}
+
 @media (max-width: 767px) {
   .custom-columns {
     flex-direction: column-reverse;
     display: flex;
   }
 
-  .form-title{
-    margin-top: 10px;
-    margin-left: 20px;
+  .form-title {
+    margin-top: 0.65rem;
+    margin-left: 1.25rem;
   }
 
-  .bottom-border{
+  .bottom-border {
     border-bottom: 3px dotted #c8d6e5;
   }
-
-  .profile-body {
-    margin: 30px;
-    margin-top: 45px;
-  }
-
+}
+.profile-body {
+  margin: 30px;
+  margin-top: 45px;
 }
 
-@media (min-width: 767px){
-  .right-border{
+@media (min-width: 767px) {
+  .right-border {
     border-right: 3px dotted #c8d6e5;
   }
-  
-  .form-label  {
+
+  .form-label {
     flex-grow: 2; /* overwrites previous value of 1 */
     line-height: 2.1rem;
   }
 }
 
-.main{
-  margin-top: 20px;
+.main {
+  margin-top: 1.25rem;
 }
 
 .input-is-read-only {
@@ -54,33 +56,28 @@
 
 .rate {
   padding-right: 0.5rem;
-  font-weight: 800;;
+  font-weight: 800;
 }
 
-.separate{
-  margin-bottom: 20px;
+.separate {
+  margin-bottom: 1.25rem;
 }
 
-.profile-column{
-  margin: 20px;
-  margin-top: 10px;
+.profile-column {
+  margin: 1.25rem;
+  margin-top: 0.65rem;
 }
 
-.input-text{
+.input-text {
   font-size: 1rem;
 }
 
-.rate-stars{
+.rate-stars {
   color: #feca57;
 }
 
-.username{
+.username {
   font-size: 1.125rem;
   font-weight: 800;
   color: #576574;
 }
-
-
-
-
-

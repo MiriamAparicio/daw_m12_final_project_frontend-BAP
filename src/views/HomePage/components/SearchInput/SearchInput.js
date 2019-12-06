@@ -12,8 +12,14 @@ class SearchInput extends Component {
             placeholder="Introdueix el codi postal"
           />
         </p>
-        <p className="control">
-          <button href="#" className="button is-small search-button" type="submit">Cerca</button>
+        <p className="control input-control">
+          <button
+            href="#"
+            className="button is-small search-button"
+            type="submit"
+          >
+            Cerca
+          </button>
         </p>
       </div>
     );

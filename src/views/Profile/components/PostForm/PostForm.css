@@ -1,0 +1,35 @@
+.post-form {
+  background-color: #f4f7fa !important;
+}
+
+.post-column {
+  margin-left: 1.25rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  padding-bottom: 1rem;
+  color: #01a3a4;
+}
+
+.services-list {
+  margin-top: 2rem;
+  padding-right: 3rem;
+}
+.service-label {
+  margin-left: 1rem;
+}
+
+.range-field {
+  margin-left: 1rem;
+}
+
+.price-field {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.post-buttons {
+  margin-left: 1.25rem;
+  margin-bottom: 1.25rem;
+}

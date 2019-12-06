@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
-import ResultsItem from '../ResultsItem/ResultsItem';
+import ResultsItem from './ResultsItem/ResultsItem';
 
 
 
@@ -17,18 +17,35 @@ class ResultsList extends Component {
         }
     }
 
+    applyFilter(results){
+
+        const { filter } = this.props;
+
+        const filteredResults = results.filter( post => {
+            let ok = false;
+            for(let prop in post.services){
+                if(filter[prop] === true && post.services[prop] === true){
+                    ok = true;
+                } 
+            }
+            return ok;  
+        });
+        return filteredResults;
+    }
+
+
     resultsToComp = (results) => {
 
-        const { handleAdOnClick } = this.props;
+        const { handlePostOnClick } = this.props;
 
         if (results) {
             return (
-                results.map((ad, index) => (
+                results.map((post, index) => (
                     <ResultsItem
-                        key={ad._id}
-                        id={ad._id}
-                        ad={ad}
-                        handleAdOnClick={handleAdOnClick}>
+                        key={post._id}
+                        id={post._id}
+                        post={post}
+                        handlePostOnClick={handlePostOnClick}>
                     </ResultsItem>
                 ))
             );
@@ -37,16 +54,16 @@ class ResultsList extends Component {
 
     render() {
 
-        const { results } = this.state;
+        const filteredResults = this.applyFilter(this.state.results);
 
         return (
             <div className="container list-cont">
                 <div className="columns">
                     <div className="column is-three-fifths is-offset-one-fifth">
-                        {results ?
-                            <div className="ammount">{`S'han trobat ${results.length} resultats`}</div> :
+                        {filteredResults.length > 0 ?
+                            <div className="ammount">{`S'han trobat ${filteredResults.length} resultats`}</div> :
                             <div className="ammount">No s'han trobat resultats</div>}
-                        {this.resultsToComp(results)}
+                        {this.resultsToComp(filteredResults)}
                     </div>
                 </div>
             </div>
@@ -57,7 +74,7 @@ class ResultsList extends Component {
 ResultsList.propTypes = {
     query: PropTypes.string.isRequired,
     results: PropTypes.array.isRequired,
-    handleAdOnClick: PropTypes.func.isRequired,
+    handlePostOnClick: PropTypes.func.isRequired,
 }
 
 export default ResultsList;

@@ -1,12 +1,13 @@
-.adCont {
-    vertical-align: middle;
+@media (max-width:676px){
+    .column-mobile{
+        padding-right: 0;
+    }
 }
 
-.adTitle {
+.post-title {
     font-size: 1.125rem;
     font-weight: 800;
     border-bottom: 3px dotted #c8d6e5;
-    margin-top: 8px;
 }
 
 .rating {
@@ -31,7 +32,12 @@
     margin-bottom: 10px;
 }
 
-.itemCont {
+.item-container {
+    cursor: pointer;
     box-shadow: 0 0 0 0;
     background: #eff3f7;
+}
+
+.item-container:hover {
+    background: white;
 }

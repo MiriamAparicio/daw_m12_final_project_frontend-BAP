@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
+import Rating from 'react-rating';
 import './ProfileForm.css';
 
 import {
@@ -327,26 +328,26 @@ class ProfileForm extends Component {
                 )}
               </div>
             ) : (
-              <div className="field is-grouped is-grouped-left">
-                <div className="control">
-                  <button
-                    onClick={this.props.handleSubmit(this.state)}
-                    className="button button-text form-button"
-                    disabled={!formValid}
-                  >
-                    Desa
+                <div className="field is-grouped is-grouped-left">
+                  <div className="control">
+                    <button
+                      onClick={this.props.handleSubmit(this.state)}
+                      className="button button-text form-button"
+                      disabled={!formValid}
+                    >
+                      Desa
                   </button>
-                </div>
-                <div className="control">
-                  <button
-                    onClick={this.handleCancel}
-                    className="button button-text form-button"
-                  >
-                    Cancel·la
+                  </div>
+                  <div className="control">
+                    <button
+                      onClick={this.handleCancel}
+                      className="button button-text form-button"
+                    >
+                      Cancel·la
                   </button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
         </div>
         <div className="column bottom-border is-three-quarters-mobile ">
           <div className="separate has-text-centered">
@@ -362,12 +363,12 @@ class ProfileForm extends Component {
             <p className="username">{this.props.profile.username}</p>
           </div>
           <div className="has-text-centered">
-            <span className="rate">4,5</span>
-            <i className="fas fa-star rate-stars"></i>
-            <i className="fas fa-star rate-stars"></i>
-            <i className="fas fa-star rate-stars"></i>
-            <i className="fas fa-star rate-stars"></i>
-            <i className="fas fa-star-half-alt rate-stars"></i>
+            <span className="rate">4</span>
+            <Rating
+              emptySymbol="far fa-star star"
+              fullSymbol="fas fa-star star"
+              initialRating='4'
+              readonly />
           </div>
           <div className="separate has-text-centered">
             <p>4 comentaris</p>

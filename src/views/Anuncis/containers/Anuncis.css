@@ -1,9 +1,4 @@
-#anuncis {
-  margin-top: 2rem;
-}
-
-
-.ads-body {
-  margin: 20px;
-  margin-top: 50px;
+.results-container {
+  min-height: 100vh;
+  background-color: #c8d6e5;
 }

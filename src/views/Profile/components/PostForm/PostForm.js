@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './PostForm.css';
 
 import { MAX_KM } from '../../../../utils/constants';
-import ServiceItem from '../../../../components/ServiceItem/ServiceItem';
+import ServiceLabel from '../../../../components/ServiceLabel/ServiceLabel';
 
 class PostForm extends Component {
   static propTypes = {
@@ -60,17 +60,6 @@ class PostForm extends Component {
       });
     }
   }
-
-  getServiceClass = service => {
-    switch (this.state.services[service]) {
-      case true:
-        return 'service selected';
-      case false:
-        return 'service unselected';
-      default:
-        return 'service unselected';
-    }
-  };
 
   getSelectOption() {
     const options = [];
@@ -164,29 +153,25 @@ class PostForm extends Component {
             <label className="label service-label">
               Tipus de servei ofertat
             </label>
-            <ServiceItem
-              className={this.getServiceClass('babysitter')}
-              id="babysitter"
-              service="Cangur"
-              onClick={this.handleServiceClick}
+            <ServiceLabel
+              service="babysitter"
+              onClickHandler={this.handleServiceClick}
+              serviceStates={this.state.services}
             />
-            <ServiceItem
-              className={this.getServiceClass('cleaner')}
-              id="cleaner"
-              service="Neteja"
-              onClick={this.handleServiceClick}
+            <ServiceLabel
+              service="cleaner"
+              onClickHandler={this.handleServiceClick}
+              serviceStates={this.state.services}
             />
-            <ServiceItem
-              className={this.getServiceClass('pets')}
-              id="pets"
-              service="Cura mascotes"
-              onClick={this.handleServiceClick}
+            <ServiceLabel
+              service="pets"
+              onClickHandler={this.handleServiceClick}
+              serviceStates={this.state.services}
             />
-            <ServiceItem
-              className={this.getServiceClass('classes')}
-              id="classes"
-              service="Classes particulars"
-              onClick={this.handleServiceClick}
+            <ServiceLabel
+              service="classes"
+              onClickHandler={this.handleServiceClick}
+              serviceStates={this.state.services}
             />
           </div>
           <div className="field range-field">
@@ -228,21 +213,21 @@ class PostForm extends Component {
               <div className="control">
                 {this.props.post._id ? (
                   <button
-                    onClick={() => {}}
+                    onClick={() => { }}
                     className="button button-text form-button"
                     disabled={!formValid}
                   >
                     Edita
                   </button>
                 ) : (
-                  <button
-                    onClick={this.handlePublishPost}
-                    className="button button-text form-button"
-                    disabled={!formValid}
-                  >
-                    Publica
+                    <button
+                      onClick={this.handlePublishPost}
+                      className="button button-text form-button"
+                      disabled={!formValid}
+                    >
+                      Publica
                   </button>
-                )}
+                  )}
               </div>
               <div className="control">
                 {this.props.post._id ? (
@@ -253,13 +238,13 @@ class PostForm extends Component {
                     Eliminar
                   </button>
                 ) : (
-                  <button
-                    onClick={this.props.handleCancelPublish}
-                    className="button button-text form-button"
-                  >
-                    Cancel·la
+                    <button
+                      onClick={this.props.handleCancelPublish}
+                      className="button button-text form-button"
+                    >
+                      Cancel·la
                   </button>
-                )}
+                  )}
               </div>
             </div>
           </div>

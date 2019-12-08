@@ -5,6 +5,7 @@ import './SearchBanner.css';
 import SearchInput from '../SearchInput/SearchInput';
 
 class SearchBanner extends Component {
+
   render() {
     return (
       <div className="columns search-banner">
@@ -21,7 +22,7 @@ class SearchBanner extends Component {
                 <h2 className="title search-banner-subtitle">
                   Cerca serveis <br /> a la teva zona
               </h2>
-                <SearchInput></SearchInput>
+                <SearchInput />
               </div>
             </div>
           </div>

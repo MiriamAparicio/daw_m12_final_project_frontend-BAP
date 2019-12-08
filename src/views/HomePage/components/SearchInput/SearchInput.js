@@ -1,8 +1,35 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+
 //import PropTypes from 'prop-types';
 
 class SearchInput extends Component {
+
+  state = {
+    cp: '',
+    search: false,
+  }
+
+  handleSearchClick = () => {
+    this.setState({
+      ...this.state,
+      search: true,
+    })
+  }
+
+  handleInput = (e) => {
+    this.setState({
+      ...this.state,
+      cp: e.target.value,
+    });
+  }
+
   render() {
+    if (this.state.search) return <Redirect to={{
+      pathname: '/anuncis',
+      state: { cp: this.state.cp }
+    }}
+    />
     return (
       <div className="field search-field is-grouped">
         <p className="control is-expanded">
@@ -10,6 +37,7 @@ class SearchInput extends Component {
             className="input is-small"
             type="text"
             placeholder="Introdueix el codi postal"
+            onChange={this.handleInput}
           />
         </p>
         <p className="control input-control">
@@ -17,6 +45,7 @@ class SearchInput extends Component {
             href="#"
             className="button is-small search-button"
             type="submit"
+            onClick={this.handleSearchClick}
           >
             Cerca
           </button>

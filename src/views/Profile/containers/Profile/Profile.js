@@ -30,11 +30,24 @@ class Profile extends Component {
     error: ''
   };
 
-  componentDidMount() {
-    //TODO id should be the one from the user when navigating from the posts list
-    const { user, token } = this.props;
-    this.handleFetchUserProfile(user._id, token);
-    this.handleFetchUserPost(user._id, token);
+  componentDidMount = () => {
+    const { user, token, match } = this.props;
+    const id = match && match.path === '/profile/:id' ? match.params.id : user._id;
+ 
+    this.updateProfile(id, token);
+  }
+
+  componentDidUpdate(prevProps) {
+    const { id: prevId } = prevProps.match.params;
+    const { id: newId } = this.props.match.params;
+    const { token } = this.props;
+
+    if (prevId !== newId) this.updateProfile(newId, token);
+  }
+
+  updateProfile(id, token) {
+    this.handleFetchUserProfile(id, token);
+    this.handleFetchUserPost(id, token);
   }
 
   handleFetchUserPost(id, token) {
@@ -42,7 +55,7 @@ class Profile extends Component {
       .fetchPostByOwnerId(id, token)
       .then(response => {
         this.setState({
-          post: response.data.ad //TODO refactor names
+          post: response.data.ad // TODO refactor names
         });
       })
       .catch(error => {

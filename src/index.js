@@ -30,6 +30,7 @@ const router = (
       <AuthRoute path="/login" component={Login} />
       <AuthRoute path="/signup" component={Signup} />
       <PrivateRoute path="/anuncis" component={Anuncis} />
+      <PrivateRoute path="/profile/:id" component={Profile} />
       <PrivateRoute path="/profile" component={Profile} />
       <Route component={PageNotFound} />
     </Switch>

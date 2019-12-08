@@ -19,6 +19,11 @@ class PostService {
     return this.post.get(`/${ownerId}`, config);
   }
 
+  fetchPostByPC(postalCode, token, distance = 30) {
+    const config = this.getConfig(token);
+    return this.post.get(`/cp/${postalCode}?distance=${distance}`, config);
+  }
+
   createPost(post, token) {
     const { title, description, range, services, price } = post;
     const config = this.getConfig(token);

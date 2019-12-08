@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -17,7 +18,8 @@ class NavBar extends Component {
   };
 
   render() {
-    const url = this.props.isUserLogged ? '/profile' : '/login';
+    const url = this.props.isUserLogged ? `/profile/${this.props.user._id}` : '/login';
+
     return (
       <nav
         className="navbar breadcrumb is-fixed-top is-transparent is-white"
@@ -47,7 +49,7 @@ class NavBar extends Component {
           {this.props.showIcon && (
             <div className="navbar-menu">
               <div className="navbar-end user-icon">
-                <Link to={url} className="button is-rounded icon is-medium">
+                <Link replace to={url} className="button is-rounded icon is-medium">
                   <i className="far fa-user user-icon-color"></i>
                 </Link>
               </div>
@@ -59,4 +61,10 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+const mapStateToProps = ({ user }) => ({
+  user: user.data,
+});
+
+
+export default connect(mapStateToProps)(NavBar);
+

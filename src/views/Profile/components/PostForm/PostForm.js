@@ -16,16 +16,16 @@ class PostForm extends Component {
   };
 
   state = {
-    title: '',
-    description: '',
-    range: '',
+    title: ' ',
+    description: ' ',
+    range: ' ',
     services: {
       babysitter: true,
       cleaner: true,
       pets: true,
       classes: true
     },
-    price: '',
+    price: ' ',
     isEditable: true,
     formValid: false
   };
@@ -213,21 +213,21 @@ class PostForm extends Component {
               <div className="control">
                 {this.props.post._id ? (
                   <button
-                    onClick={() => { }}
+                    onClick={() => {}}
                     className="button button-text form-button"
                     disabled={!formValid}
                   >
                     Edita
                   </button>
                 ) : (
-                    <button
-                      onClick={this.handlePublishPost}
-                      className="button button-text form-button"
-                      disabled={!formValid}
-                    >
-                      Publica
+                  <button
+                    onClick={this.handlePublishPost}
+                    className="button button-text form-button"
+                    disabled={!formValid}
+                  >
+                    Publica
                   </button>
-                  )}
+                )}
               </div>
               <div className="control">
                 {this.props.post._id ? (
@@ -238,13 +238,13 @@ class PostForm extends Component {
                     Eliminar
                   </button>
                 ) : (
-                    <button
-                      onClick={this.props.handleCancelPublish}
-                      className="button button-text form-button"
-                    >
-                      Cancel·la
+                  <button
+                    onClick={this.props.handleCancelPublish}
+                    className="button button-text form-button"
+                  >
+                    Cancel·la
                   </button>
-                  )}
+                )}
               </div>
             </div>
           </div>

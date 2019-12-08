@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import './NavBar.css';
 
 class NavBar extends Component {
   static propTypes = {
     showIcon: PropTypes.bool,
-    isUserLogged: PropTypes.bool.isRequired
+    isUserLogged: PropTypes.bool.isRequired,
+    breadcrumbs: PropTypes.array
   };
 
   static defaultProps = {
-    showIcon: true
+    showIcon: true,
+    breadcrumbs: []
   };
 
   render() {
     const url = this.props.isUserLogged ? '/profile' : '/login';
     return (
       <nav
-        className="navbar is-fixed-top is-transparent is-white"
+        className="navbar breadcrumb is-fixed-top is-transparent is-white"
         role="navigation"
-        aria-label="main navigation"
+        aria-label="breadcrumbs"
       >
         <div className="container">
           <div className="navbar-brand">
@@ -28,6 +31,18 @@ class NavBar extends Component {
                 <img src={require('../../images/logoBap.png')} alt="logo" />
               </Link>
             </div>
+            <ul className="navbar-breadcrumbs">
+              {this.props.breadcrumbs.map((breadcrumb, index) => {
+                const className = classNames({
+                  'is-active': breadcrumb.current
+                });
+                return (
+                  <li key={`${breadcrumb.name}${index}`} className={className}>
+                    <Link to={breadcrumb.url}>{breadcrumb.name}</Link>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
           {this.props.showIcon && (
             <div className="navbar-menu">

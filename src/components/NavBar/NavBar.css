@@ -1,4 +1,4 @@
-  .navbar-item {
+.navbar-item {
   display: flex;
   align-items: center;
 }
@@ -15,12 +15,12 @@
   box-shadow: 0 0 0 0;
 }
 
-.navbar-menu{
+.navbar-menu {
   flex-grow: 1;
   flex-shrink: 0;
 }
 
-.navbar-end{
+.navbar-end {
   justify-content: flex-end;
   margin-left: auto;
 }
@@ -31,6 +31,14 @@
 
 .logo img {
   transform: scale(1.5);
+}
+
+.navbar-breadcrumbs {
+  padding: 1.5rem 1.5rem;
+}
+
+.navbar-breadcrumbs a {
+  color: #01a3a4;
 }
 
 .button.is-rounded {

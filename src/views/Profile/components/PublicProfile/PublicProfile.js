@@ -3,9 +3,6 @@ import PropTypes from 'prop-types';
 import Rating from 'react-rating';
 import './PublicProfile.css'
 
-
-
-
 class PublicProfile extends Component {
 
     static propTypes = {
@@ -16,9 +13,7 @@ class PublicProfile extends Component {
 
         const { profile } = this.props;
         const fullName = `${profile.name} ${profile.surname}`;
-        if(profile.location){
-            console.log(profile.location.place)
-        }
+
         return (
             <>
                 <div className="columns is-vcentered custom-columns owner-data">

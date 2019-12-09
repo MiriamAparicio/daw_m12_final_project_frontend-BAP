@@ -12,7 +12,8 @@ class PostForm extends Component {
     error: PropTypes.string.isRequired,
     handleCancelPublish: PropTypes.func,
     handleCreatePost: PropTypes.func,
-    handleDeletePost: PropTypes.func
+    handleDeletePost: PropTypes.func,
+    handleEditPost: PropTypes.func
   };
 
   state = {
@@ -95,17 +96,32 @@ class PostForm extends Component {
   handleServiceClick = e => {
     const service = e.currentTarget.getAttribute('id');
 
-    this.setState(prevState => ({
-      services: {
-        ...prevState.services,
-        [service]: !prevState.services[service]
-      }
-    }));
+    this.setState(
+      prevState => ({
+        services: {
+          ...prevState.services,
+          [service]: !prevState.services[service]
+        }
+      }),
+      this.validateForm
+    );
   };
 
   handlePublishPost = () => {
     const { title, description, range, services, price } = this.state;
     this.props.handleCreatePost({ title, description, range, services, price });
+  };
+
+  handleUpdatePost = () => {
+    const { title, description, range, services, price } = this.state;
+    this.props.handleEditPost({
+      title,
+      description,
+      range,
+      services,
+      price,
+      _id: this.props.post._id
+    });
   };
 
   render() {
@@ -213,7 +229,7 @@ class PostForm extends Component {
               <div className="control">
                 {this.props.post._id ? (
                   <button
-                    onClick={() => {}}
+                    onClick={this.handleUpdatePost}
                     className="button button-text form-button"
                     disabled={!formValid}
                   >

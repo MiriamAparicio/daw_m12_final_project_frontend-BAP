@@ -39,8 +39,11 @@ class PostService {
       config
     );
   }
-  //TODO
-  //updatePost()
+
+  updatePost(post, token) {
+    const config = this.getConfig(token);
+    return this.post.put(`/${post._id}`, post, config);
+  }
 
   deletePost(postId, token) {
     const config = this.getConfig(token);

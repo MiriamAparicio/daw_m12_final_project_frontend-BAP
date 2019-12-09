@@ -11,7 +11,8 @@ class Post extends Component {
     error: PropTypes.string.isRequired,
     handleCancelPublish: PropTypes.func,
     handleCreatePost: PropTypes.func,
-    handleDeletePost: PropTypes.func
+    handleDeletePost: PropTypes.func,
+    handleEditPost: PropTypes.func
   };
 
   render() {
@@ -22,6 +23,7 @@ class Post extends Component {
         handleCancelPublish={this.props.handleCancelPublish}
         handleCreatePost={this.props.handleCreatePost}
         handleDeletePost={this.props.handleDeletePost}
+        handleEditPost={this.props.handleEditPost}
         error={this.props.error}
       ></PostForm>
     );

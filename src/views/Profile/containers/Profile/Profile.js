@@ -32,10 +32,10 @@ export class Profile extends Component {
 
   componentDidMount = () => {
     const { user, token, match } = this.props;
-    const id = match && match.path === '/profile/:id' ? match.params.id : user._id;
- 
+    const id =
+      match && match.path === '/profile/:id' ? match.params.id : user._id;
     this.updateProfile(id, token);
-  }
+  };
 
   componentDidUpdate(prevProps) {
     const { id: prevId } = prevProps.match.params;
@@ -116,7 +116,18 @@ export class Profile extends Component {
       });
   };
 
-  //handleEditPost
+  handleEditPost = post => {
+    return postService
+      .updatePost(post, this.props.token)
+      .then(() => {
+        this.setState({ post });
+      })
+      .catch(error => {
+        console.error(error);
+        this.setState({ error });
+      });
+  };
+
   handleDeletePost = () => {
     return postService
       .deletePost(this.state.post._id, this.props.token)
@@ -174,6 +185,7 @@ export class Profile extends Component {
                       handleCancelPublish={this.handleCancelPublish}
                       handleCreatePost={this.handleCreatePost}
                       handleDeletePost={this.handleDeletePost}
+                      handleEditPost={this.handleEditPost}
                       error={error}
                     />
                   )}

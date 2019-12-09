@@ -1,0 +1,29 @@
+@media (max-width: 676px){
+    .owner-data {
+        text-align: center;
+        padding: 10px;
+    }
+
+    .custom-columns {
+        flex-direction: column-reverse;
+        display: flex;
+    }
+}
+
+.owner-data {
+    padding: 0 10px 10px;
+}
+
+.owner-name { 
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #01a3a4;
+}
+
+.owner-location, .rating {
+    font-weight: 700;
+}
+
+.avgRating {
+    margin-right: 5px;
+}

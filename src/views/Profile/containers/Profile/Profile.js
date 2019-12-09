@@ -11,6 +11,7 @@ import './Profile.css';
 import NavBar from '../../../../components/NavBar/NavBar';
 import ProfileForm from '../ProfileForm/ProfileForm';
 import Post from '../Post/Post';
+import PublicProfile from '../../components/PublicProfile/PublicProfile';
 
 class Profile extends Component {
   static propTypes = {
@@ -140,6 +141,7 @@ class Profile extends Component {
   render() {
     const { profile, isEditting, isPublishing, post, error } = this.state;
     const publishPost = post._id || isPublishing;
+
     return (
       <>
         <NavBar
@@ -154,19 +156,25 @@ class Profile extends Component {
                   className="column is-three-fifths-desktop is-four-fifths-tablet
               is-offset-one-fifth-desktop is-offset-1-tablet box main"
                 >
-                  <h2 className="form-title is-3 has-text-left is-hidden-tablet">
-                    Perfil
-                  </h2>
-                  <ProfileForm
-                    user={this.props.user}
-                    profile={profile}
-                    handleSubmit={this.handleSubmitProfile}
-                    handlePublish={this.handlePublish}
-                    isEditting={isEditting}
-                    isPublishing={isPublishing}
-                    error={this.props.error}
-                    postId={post._id}
-                  />
+                  {this.props.user._id === profile._id ?
+                  <>
+                    <h2 className="form-title is-3 has-text-left is-hidden-tablet">
+                      Perfil
+                    </h2>
+                    <ProfileForm
+                      user={this.props.user}
+                      profile={profile}
+                      handleSubmit={this.handleSubmitProfile}
+                      handlePublish={this.handlePublish}
+                      isEditting={isEditting}
+                      isPublishing={isPublishing}
+                      error={this.props.error}
+                      postId={post._id}
+                    />
+                  </> :
+                  <PublicProfile 
+                    profile={profile}/>
+                  }
                   {publishPost && (
                     <Post
                       post={post}

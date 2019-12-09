@@ -8,7 +8,7 @@ import * as userActionCreators from '../../../../store/user/actions';
 import NavBar from '../../../../components/NavBar/NavBar';
 import SignupForm from '../SignupForm/SignupForm';
 
-class Signup extends Component {
+export class Signup extends Component {
   static propTypes = {
     handleSignup: PropTypes.func.isRequired,
     isLogin: PropTypes.bool.isRequired,

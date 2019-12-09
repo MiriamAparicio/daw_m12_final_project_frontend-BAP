@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './LoginForm.css';
 
-class LoginForm extends Component {
+export class LoginForm extends Component {
   static propTypes = {
     handleSubmit: PropTypes.func,
     error: PropTypes.string.isRequired
@@ -12,10 +12,7 @@ class LoginForm extends Component {
   state = {
     email: '',
     password: '',
-    formErrors: {},
-    emailValid: false,
-    passwordValid: false,
-    formValid: false
+    formErrors: {}
   };
 
   onChange = e => {
@@ -29,7 +26,10 @@ class LoginForm extends Component {
   render() {
     const { email, password } = this.state;
     return (
-      <section className="hero is-fullheight form-hero">
+      <section
+        data-test="component-loginForm"
+        className="hero is-fullheight form-hero"
+      >
         <div className="hero-body form-body">
           <div className="container">
             <div className="columns is-centered">

@@ -12,7 +12,7 @@ import {
 } from '../../../../utils/validations';
 import { ERROR_MESSAGES } from '../../../../utils/error-messages';
 
-class ProfileForm extends Component {
+export class ProfileForm extends Component {
   static propTypes = {
     user: PropTypes.object.isRequired,
     profile: PropTypes.object.isRequired,
@@ -173,7 +173,10 @@ class ProfileForm extends Component {
       'is-static': !isEditting
     });
     return (
-      <div className="columns is-vcentered custom-columns">
+      <div
+        data-test="component-profileForm"
+        className="columns is-vcentered custom-columns"
+      >
         <div className="column is-three-fifths is-four-fifths-mobile  profile-column right-border">
           <h2 className="form-title is-3 has-text-left is-hidden-mobile">
             Perfil
@@ -328,26 +331,26 @@ class ProfileForm extends Component {
                 )}
               </div>
             ) : (
-                <div className="field is-grouped is-grouped-left">
-                  <div className="control">
-                    <button
-                      onClick={this.props.handleSubmit(this.state)}
-                      className="button button-text form-button"
-                      disabled={!formValid}
-                    >
-                      Desa
+              <div className="field is-grouped is-grouped-left">
+                <div className="control">
+                  <button
+                    onClick={this.props.handleSubmit(this.state)}
+                    className="button button-text form-button"
+                    disabled={!formValid}
+                  >
+                    Desa
                   </button>
-                  </div>
-                  <div className="control">
-                    <button
-                      onClick={this.handleCancel}
-                      className="button button-text form-button"
-                    >
-                      Cancel·la
-                  </button>
-                  </div>
                 </div>
-              ))}
+                <div className="control">
+                  <button
+                    onClick={this.handleCancel}
+                    className="button button-text form-button"
+                  >
+                    Cancel·la
+                  </button>
+                </div>
+              </div>
+            ))}
         </div>
         <div className="column bottom-border is-three-quarters-mobile ">
           <div className="separate has-text-centered">
@@ -367,8 +370,9 @@ class ProfileForm extends Component {
             <Rating
               emptySymbol="far fa-star star"
               fullSymbol="fas fa-star star"
-              initialRating='4'
-              readonly />
+              initialRating="4"
+              readonly
+            />
           </div>
           <div className="separate has-text-centered">
             <p>4 comentaris</p>

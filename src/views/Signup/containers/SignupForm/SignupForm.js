@@ -127,7 +127,10 @@ class SignupForm extends Component {
       password
     } = this.state;
     return (
-      <section className="hero is-fullheight form-hero">
+      <section
+        data-test="component-signupForm"
+        className="hero is-fullheight form-hero"
+      >
         <div className="hero-body form-body">
           <div className="container">
             <div className="columns is-centered">

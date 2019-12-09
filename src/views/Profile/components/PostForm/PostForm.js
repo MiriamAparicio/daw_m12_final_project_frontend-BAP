@@ -25,7 +25,7 @@ class PostForm extends Component {
       pets: true,
       classes: true
     },
-    price: ' ',
+    price: 0,
     isEditable: true,
     formValid: false
   };

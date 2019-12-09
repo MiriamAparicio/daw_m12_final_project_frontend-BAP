@@ -12,7 +12,7 @@ import NavBar from '../../../../components/NavBar/NavBar';
 import ProfileForm from '../ProfileForm/ProfileForm';
 import Post from '../Post/Post';
 
-class Profile extends Component {
+export class Profile extends Component {
   static propTypes = {
     error: PropTypes.string.isRequired,
     user: PropTypes.object.isRequired,
@@ -175,7 +175,7 @@ class Profile extends Component {
                       handleCreatePost={this.handleCreatePost}
                       handleDeletePost={this.handleDeletePost}
                       error={error}
-                    ></Post>
+                    />
                   )}
                 </div>
               </div>

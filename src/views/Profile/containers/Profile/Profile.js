@@ -55,12 +55,25 @@ class Profile extends Component {
     return postService
       .fetchPostByOwnerId(id, token)
       .then(response => {
-        this.setState({
-          post: response.data.ad // TODO refactor names
-        });
+        if (response.status === 204) {
+          this.setState({
+            post: {
+              _id: ''
+            }
+          });
+        } else {
+          this.setState({
+            post: response.data.ad // TODO refactor names
+          });
+        }
       })
       .catch(error => {
         console.error(error);
+        this.setState({
+          post: {
+            _id: ''
+          }
+        });
       });
   }
 

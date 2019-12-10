@@ -44,6 +44,21 @@ class ProfileForm extends Component {
     isPublishing: false
   };
 
+  componentDidMount() {
+    const { user, profile, isEditting, postId, isPublishing } = this.props;
+    this.setState({
+      username: profile.username,
+      name: profile.name,
+      surname: profile.surname,
+      postalCode: profile.cp,
+      email: profile.email,
+      isEditable: user._id === profile._id,
+      isEditting,
+      isPublishing,
+      postId
+    });
+  }
+
   componentDidUpdate(prevProps) {
     if (prevProps !== this.props) {
       const { user, profile, isEditting, postId, isPublishing } = this.props;

@@ -17,23 +17,24 @@ class Post extends Component {
   };
 
   render() {
-    
+
     return (
       <>
-      {this.props.userId === this.props.post.owner ?
+        {this.props.userId === this.props.post.owner ?
           <PostForm
             post={this.props.post}
             userId={this.props.userId}
             handleCancelPublish={this.props.handleCancelPublish}
             handleCreatePost={this.props.handleCreatePost}
             handleDeletePost={this.props.handleDeletePost}
+            handleEditPost={this.props.handleEditPost}
             error={this.props.error}
           ></PostForm>
           :
           <PublicPost
-            post={this.props.post} 
-            />
-      }
+            post={this.props.post}
+          />
+        }
       </>
     );
   }

@@ -11,6 +11,7 @@ import './Profile.css';
 import NavBar from '../../../../components/NavBar/NavBar';
 import ProfileForm from '../ProfileForm/ProfileForm';
 import Post from '../Post/Post';
+import PublicProfile from '../../components/PublicProfile/PublicProfile';
 
 export class Profile extends Component {
   static propTypes = {
@@ -54,12 +55,25 @@ export class Profile extends Component {
     return postService
       .fetchPostByOwnerId(id, token)
       .then(response => {
-        this.setState({
-          post: response.data.ad // TODO refactor names
-        });
+        if (response.status === 204) {
+          this.setState({
+            post: {
+              _id: ''
+            }
+          });
+        } else {
+          this.setState({
+            post: response.data.ad // TODO refactor names
+          });
+        }
       })
       .catch(error => {
         console.error(error);
+        this.setState({
+          post: {
+            _id: ''
+          }
+        });
       });
   }
 
@@ -151,6 +165,7 @@ export class Profile extends Component {
   render() {
     const { profile, isEditting, isPublishing, post, error } = this.state;
     const publishPost = post._id || isPublishing;
+
     return (
       <>
         <NavBar
@@ -165,19 +180,25 @@ export class Profile extends Component {
                   className="column is-three-fifths-desktop is-four-fifths-tablet
               is-offset-one-fifth-desktop is-offset-1-tablet box main"
                 >
-                  <h2 className="form-title is-3 has-text-left is-hidden-tablet">
-                    Perfil
-                  </h2>
-                  <ProfileForm
-                    user={this.props.user}
-                    profile={profile}
-                    handleSubmit={this.handleSubmitProfile}
-                    handlePublish={this.handlePublish}
-                    isEditting={isEditting}
-                    isPublishing={isPublishing}
-                    error={this.props.error}
-                    postId={post._id}
-                  />
+                  {this.props.user._id === profile._id ?
+                  <>
+                    <h2 className="form-title is-3 has-text-left is-hidden-tablet">
+                      Perfil
+                    </h2>
+                    <ProfileForm
+                      user={this.props.user}
+                      profile={profile}
+                      handleSubmit={this.handleSubmitProfile}
+                      handlePublish={this.handlePublish}
+                      isEditting={isEditting}
+                      isPublishing={isPublishing}
+                      error={this.props.error}
+                      postId={post._id}
+                    />
+                  </> :
+                  <PublicProfile 
+                    profile={profile}/>
+                  }
                   {publishPost && (
                     <Post
                       post={post}

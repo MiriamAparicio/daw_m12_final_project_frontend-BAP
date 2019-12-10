@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './Post.css';
 
 import PostForm from '../../components/PostForm/PostForm';
+import PublicPost from '../../components/PublicPost/PublicPost';
 
 class Post extends Component {
   static propTypes = {
@@ -16,16 +17,24 @@ class Post extends Component {
   };
 
   render() {
+    
     return (
-      <PostForm
-        post={this.props.post}
-        userId={this.props.userId}
-        handleCancelPublish={this.props.handleCancelPublish}
-        handleCreatePost={this.props.handleCreatePost}
-        handleDeletePost={this.props.handleDeletePost}
-        handleEditPost={this.props.handleEditPost}
-        error={this.props.error}
-      ></PostForm>
+      <>
+      {this.props.userId === this.props.post.owner ?
+          <PostForm
+            post={this.props.post}
+            userId={this.props.userId}
+            handleCancelPublish={this.props.handleCancelPublish}
+            handleCreatePost={this.props.handleCreatePost}
+            handleDeletePost={this.props.handleDeletePost}
+            error={this.props.error}
+          ></PostForm>
+          :
+          <PublicPost
+            post={this.props.post} 
+            />
+      }
+      </>
     );
   }
 }

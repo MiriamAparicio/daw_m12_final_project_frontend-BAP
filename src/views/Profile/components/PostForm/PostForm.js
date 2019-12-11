@@ -17,8 +17,8 @@ class PostForm extends Component {
   };
 
   state = {
-    title: ' ',
-    description: ' ',
+    title: '',
+    description: '',
     range: ' ',
     services: {
       babysitter: true,

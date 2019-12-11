@@ -146,7 +146,10 @@ export class Profile extends Component {
     return postService
       .deletePost(this.state.post._id, this.props.token)
       .then(() => {
-        this.setState({ post: { _id: '' } });
+        this.setState({ 
+          post: { _id: '' },
+          isPublishing: false
+         });
       })
       .catch(error => {
         console.error(error);

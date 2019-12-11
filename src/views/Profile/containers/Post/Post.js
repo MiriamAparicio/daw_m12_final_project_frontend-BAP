@@ -20,7 +20,7 @@ class Post extends Component {
 
     return (
       <>
-        {this.props.userId === this.props.post.owner ?
+        { !this.props.post.owner || this.props.userId === this.props.post.owner ?
           <PostForm
             post={this.props.post}
             userId={this.props.userId}

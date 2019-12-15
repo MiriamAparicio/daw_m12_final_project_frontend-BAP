@@ -63,7 +63,7 @@ export class Profile extends Component {
           });
         } else {
           this.setState({
-            post: response.data.ad // TODO refactor names
+            post: response.data.post // TODO refactor names
           });
         }
       })
@@ -146,10 +146,10 @@ export class Profile extends Component {
     return postService
       .deletePost(this.state.post._id, this.props.token)
       .then(() => {
-        this.setState({ 
+        this.setState({
           post: { _id: '' },
           isPublishing: false
-         });
+        });
       })
       .catch(error => {
         console.error(error);
@@ -183,25 +183,25 @@ export class Profile extends Component {
                   className="column is-three-fifths-desktop is-four-fifths-tablet
               is-offset-one-fifth-desktop is-offset-1-tablet box main"
                 >
-                  {this.props.user._id === profile._id ?
-                  <>
-                    <h2 className="form-title is-3 has-text-left is-hidden-tablet">
-                      Perfil
-                    </h2>
-                    <ProfileForm
-                      user={this.props.user}
-                      profile={profile}
-                      handleSubmit={this.handleSubmitProfile}
-                      handlePublish={this.handlePublish}
-                      isEditting={isEditting}
-                      isPublishing={isPublishing}
-                      error={this.props.error}
-                      postId={post._id}
-                    />
-                  </> :
-                  <PublicProfile 
-                    profile={profile}/>
-                  }
+                  {this.props.user._id === profile._id ? (
+                    <>
+                      <h2 className="form-title is-3 has-text-left is-hidden-tablet">
+                        Perfil
+                      </h2>
+                      <ProfileForm
+                        user={this.props.user}
+                        profile={profile}
+                        handleSubmit={this.handleSubmitProfile}
+                        handlePublish={this.handlePublish}
+                        isEditting={isEditting}
+                        isPublishing={isPublishing}
+                        error={this.props.error}
+                        postId={post._id}
+                      />
+                    </>
+                  ) : (
+                    <PublicProfile profile={profile} />
+                  )}
                   {publishPost && (
                     <Post
                       post={post}

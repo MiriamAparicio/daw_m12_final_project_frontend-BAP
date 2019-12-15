@@ -18,7 +18,7 @@ class AuthService {
       surname,
       email,
       password,
-      cp: postalCode
+      postalCode
     });
   }
 

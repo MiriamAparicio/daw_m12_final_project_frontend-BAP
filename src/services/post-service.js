@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiUrl = 'http://localhost:3000/adds';
+const apiUrl = 'http://localhost:3000/posts';
 
 class PostService {
   constructor() {
@@ -21,7 +21,10 @@ class PostService {
 
   fetchPostByPC(postalCode, token, distance = 30) {
     const config = this.getConfig(token);
-    return this.post.get(`/cp/${postalCode}?distance=${distance}`, config);
+    return this.post.get(
+      `/postalCode/${postalCode}?distance=${distance}`,
+      config
+    );
   }
 
   createPost(post, token) {

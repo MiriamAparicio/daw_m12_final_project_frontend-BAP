@@ -10,41 +10,43 @@ import { POSTS_BREADCRUMBS } from '../../../utils/constants';
 import NavBar from '../../../components/NavBar/NavBar';
 
 class Anuncis extends Component {
-
   static propTypes = {
     user: PropTypes.object.isRequired
   };
 
   state = {
-    cp: '',
+    postalCode: '',
     distance: 30,
     data: [],
     filter: {
       babysitter: true,
       cleaner: true,
       pets: true,
-      classes: true,
+      classes: true
     }
-  }
+  };
 
   componentDidMount() {
     if (this.props.location.state) {
-      this.setState({
-        ...this.state,
-        cp: this.props.location.state.cp,
-      }, this.handleSearchClick)
+      this.setState(
+        {
+          ...this.state,
+          postalCode: this.props.location.state.postalCode
+        },
+        this.handleSearchClick
+      );
     }
   }
 
-  handlePostOnClick = (e) => {
+  handlePostOnClick = e => {
     const userId = e.currentTarget.getAttribute('id');
     this.props.history.push({
       pathname: `/profile/${userId}`,
       as: '/profile'
     });
-  }
+  };
 
-  handleFilterClick = (e) => {
+  handleFilterClick = e => {
     const prop = e.currentTarget.getAttribute('id');
 
     this.setState(prevState => ({
@@ -57,29 +59,29 @@ class Anuncis extends Component {
 
   handleSearchClick = () => {
     const token = this.props.token;
-    postService.fetchPostByPC(this.state.cp, token, this.state.distance)
+    postService
+      .fetchPostByPC(this.state.postalCode, token, this.state.distance)
       .then(response => {
         this.setState({
           ...this.state,
-          data: response.data.ads,
-        })
-      }
-      )
-  }
+          data: response.data.posts
+        });
+      });
+  };
 
-  handleInput = (e) => {
+  handleInput = e => {
     this.setState({
       ...this.state,
-      cp: e.target.value,
-    })
-  }
+      postalCode: e.target.value
+    });
+  };
 
-  handleSelect = (e) => {
+  handleSelect = e => {
     this.setState({
       ...this.state,
-      distance: e.target.value,
-    })
-  }
+      distance: e.target.value
+    });
+  };
 
   render() {
     return (
@@ -92,18 +94,20 @@ class Anuncis extends Component {
           <div className="hero-body">
             <div className="container">
               <ResultsSearch
-                query={this.state.cp}
+                query={this.state.postalCode}
                 onFilterClick={this.handleFilterClick}
                 onSearchClick={this.handleSearchClick}
                 onInputChange={this.handleInput}
                 onSelectChange={this.handleSelect}
-                filter={this.state.filter} />
+                filter={this.state.filter}
+              />
             </div>
             <div className="container">
               <ResultsList
                 results={this.state.data}
                 filter={this.state.filter}
-                handlePostOnClick={this.handlePostOnClick} />
+                handlePostOnClick={this.handlePostOnClick}
+              />
             </div>
           </div>
         </section>

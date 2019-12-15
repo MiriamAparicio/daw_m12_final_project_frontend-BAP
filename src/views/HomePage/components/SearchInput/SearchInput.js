@@ -4,32 +4,35 @@ import { Redirect } from 'react-router-dom';
 //import PropTypes from 'prop-types';
 
 class SearchInput extends Component {
-
   state = {
-    cp: '',
-    search: false,
-  }
+    postalCode: '',
+    search: false
+  };
 
   handleSearchClick = () => {
     this.setState({
       ...this.state,
-      search: true,
-    })
-  }
+      search: true
+    });
+  };
 
-  handleInput = (e) => {
+  handleInput = e => {
     this.setState({
       ...this.state,
-      cp: e.target.value,
+      postalCode: e.target.value
     });
-  }
+  };
 
   render() {
-    if (this.state.search) return <Redirect to={{
-      pathname: '/anuncis',
-      state: { cp: this.state.cp }
-    }}
-    />
+    if (this.state.search)
+      return (
+        <Redirect
+          to={{
+            pathname: '/anuncis',
+            state: { postalCode: this.state.postalCode }
+          }}
+        />
+      );
     return (
       <div className="field search-field is-grouped">
         <p className="control is-expanded">

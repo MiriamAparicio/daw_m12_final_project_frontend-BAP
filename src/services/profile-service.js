@@ -30,7 +30,7 @@ class ProfileService {
         name,
         surname,
         email,
-        cp: postalCode
+        postalCode
       },
       config
     );

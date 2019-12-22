@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import classNames from 'classnames';
 import Rating from 'react-rating';
 import './ProfileForm.css';
+import UserImage from '../../components/UserImage/UserImage';
 
 import {
   validateUsername,
@@ -34,6 +35,7 @@ export class ProfileForm extends Component {
     surname: '',
     postalCode: '',
     email: '',
+    image: '',
     isEditable: false,
     isEditting: false,
     formErrors: {},
@@ -52,6 +54,7 @@ export class ProfileForm extends Component {
       surname: profile.surname,
       postalCode: profile.postalCode,
       email: profile.email,
+      image: profile.image,
       isEditable: user._id === profile._id,
       isEditting,
       isPublishing,
@@ -346,37 +349,29 @@ export class ProfileForm extends Component {
                 )}
               </div>
             ) : (
-              <div className="field is-grouped is-grouped-left">
-                <div className="control">
-                  <button
-                    onClick={this.props.handleSubmit(this.state)}
-                    className="button button-text form-button"
-                    disabled={!formValid}
-                  >
-                    Desa
+                <div className="field is-grouped is-grouped-left">
+                  <div className="control">
+                    <button
+                      onClick={this.props.handleSubmit(this.state)}
+                      className="button button-text form-button"
+                      disabled={!formValid}
+                    >
+                      Desa
                   </button>
-                </div>
-                <div className="control">
-                  <button
-                    onClick={this.handleCancel}
-                    className="button button-text form-button"
-                  >
-                    Cancel·la
+                  </div>
+                  <div className="control">
+                    <button
+                      onClick={this.handleCancel}
+                      className="button button-text form-button"
+                    >
+                      Cancel·la
                   </button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
         </div>
         <div className="column bottom-border is-three-quarters-mobile ">
-          <div className="separate has-text-centered">
-            <figure className="image avatar is-128x128">
-              <img
-                className="is-rounded"
-                src="https://bulma.io/images/placeholders/128x128.png"
-                alt={username}
-              />
-            </figure>
-          </div>
+          <UserImage user={this.props.user} isEditting={isEditting} />
           <div className="separate has-text-centered">
             <p className="username">{this.props.profile.username}</p>
           </div>

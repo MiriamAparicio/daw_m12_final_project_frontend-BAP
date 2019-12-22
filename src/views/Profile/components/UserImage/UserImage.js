@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 
 import storage from '../../../../services/firebase-service';
@@ -18,7 +19,7 @@ const UserImage = props => {
   const inputRef = useRef(null);
 
   useEffect(() => console.log(`${pr}%`), [pr]);
-  
+
   useEffect(() => {
     if (url) dispatch(handleUpdateUser({ ...user, image: url }, token));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -65,6 +66,14 @@ const UserImage = props => {
       }
     </div>
   )
+}
+
+UserImage.propTypes = {
+  isEditting: PropTypes.bool.isRequired,
+  user: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+  }).isRequired,
 }
 
 export default UserImage;

@@ -4,9 +4,7 @@ import ServicesList from './../../ServicesList/ServicesList';
 import './ResultsItem.css';
 import Rating from 'react-rating';
 
-
 const ResultsItem = ({ post, handlePostOnClick, id }) => {
-
 	return (
 		<div className="item-container box" onClick={handlePostOnClick} id={id}>
 			<div className="user-info has-text-centered is-hidden-tablet">
@@ -14,7 +12,7 @@ const ResultsItem = ({ post, handlePostOnClick, id }) => {
 					<img
 						className="is-rounded"
 						src={post.owner.image || "https://bulma.io/images/placeholders/64x64.png"}
-						alt={post.owner.username}
+						alt={post.owner.username || 'User profile image'}
 					/>
 				</figure>
 				<div className="user">{post.owner.username}</div>
@@ -33,7 +31,7 @@ const ResultsItem = ({ post, handlePostOnClick, id }) => {
 						<img
 							className="is-rounded"
 							src={post.owner.image || "https://bulma.io/images/placeholders/64x64.png"}
-							alt={post.owner.username}
+							alt={post.owner.username || 'User profile image'}
 						/>
 					</figure>
 					<div className="user">{post.owner.username}</div>
@@ -54,7 +52,7 @@ const ResultsItem = ({ post, handlePostOnClick, id }) => {
 							</div>
 						</div>
 					</div>
-					<ServicesList serviceStates={post.services}></ServicesList>
+					<ServicesList serviceStates={post.services} />
 				</div >
 			</article>
 		</div >

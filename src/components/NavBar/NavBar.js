@@ -19,6 +19,7 @@ class NavBar extends Component {
 
   render() {
     const url = this.props.isUserLogged ? `/profile/${this.props.user._id}` : '/login';
+    const { image } = this.props.user;
 
     return (
       <nav
@@ -49,8 +50,10 @@ class NavBar extends Component {
           {this.props.showIcon && (
             <div className="navbar-menu">
               <div className="navbar-end user-icon">
-                <Link replace to={url} className="button is-rounded icon is-medium">
-                  <i className="far fa-user user-icon-color"></i>
+                <Link replace to={url} className="button is-rounded icon is-medium navbar-icon">
+                  <figure className="image is-32x32">
+                    <img className="is-rounded" src={image || 'https://bulma.io/images/placeholders/128x128.png'} alt='imagead' />
+                  </figure>
                 </Link>
               </div>
             </div>

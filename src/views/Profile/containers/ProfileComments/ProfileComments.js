@@ -1,0 +1,9 @@
+import React from 'react'
+
+export default function ProfileComments() {
+  return (
+    <div>
+      Comments
+    </div>
+  )
+}

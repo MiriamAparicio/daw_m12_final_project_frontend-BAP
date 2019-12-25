@@ -5,3 +5,7 @@
 .form-hero {
   min-height: 100vh;
 }
+
+.tabs > ul {
+  border-bottom: 1px solid hsl(0, 0%, 86%) !important; /* dont use important ;) */
+}

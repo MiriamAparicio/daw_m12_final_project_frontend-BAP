@@ -25,14 +25,12 @@ const UserImage = props => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url]);
 
-  const handlePush = () => {
-    inputRef.current.click();
-  }
+  const handlePush = () => inputRef.current.click();
 
   const handleChange = ({ target }) => {
     if (target.files[0]) {
       const inputFile = target.files[0];
-      const image = `${uuidv4()}.${inputFile.name.split(".").pop()}`;
+      const image = `${uuidv4()}.${inputFile.name.split('.').pop()}`;
       const upload = storage.ref(`images/${image}`).put(inputFile);
       setPr(1);
 
@@ -50,11 +48,7 @@ const UserImage = props => {
   return (
     <div className="userImage-wrapper separate has-text-centered">
       <figure className="image avatar is-128x128">
-        <img
-          className="is-rounded"
-          src={image || defaultImage}
-          alt={username}
-        />
+        <img className="is-rounded" src={image || defaultImage} alt={username} />
       </figure>
       <input ref={inputRef} onChange={handleChange} type="file" name="userImage" className="userImage-input" />
       {isEditting &&

@@ -220,24 +220,26 @@ export class Profile extends Component {
                       error={error}
                     />
                   )}
-                  <div className="tabs is-boxed">
-                    <ul>
-                      <li className={tab === 'scheduler' ? 'is-active' : ''}>
-                        <a onClick={(event) => this.tabsHandler(event, 'scheduler')} href="/">
-                          <span className="icon is-small"><i className="fas fa-calendar" aria-hidden="true"></i></span>
-                          <span>Calendari</span>
-                        </a>
-                      </li>
-                      <li className={tab === 'comments' ? 'is-active' : ''}>
-                        <a onClick={(event) => this.tabsHandler(event, 'comments')} href="/">
-                          <span className="icon is-small"><i className="fas fa-comment" aria-hidden="true"></i></span>
-                          <span>Comentaris</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                  {tab === 'scheduler' && <p>Calendari</p>}
-                  {tab === 'comments' && <ProfileComments />}
+                  {post._id &&
+                    <div className="tabs is-boxed">
+                      <ul>
+                        <li className={tab === 'scheduler' ? 'is-active' : ''}>
+                          <a onClick={(event) => this.tabsHandler(event, 'scheduler')} href="/">
+                            <span className="icon is-small"><i className="fas fa-calendar" aria-hidden="true"></i></span>
+                            <span>Calendari</span>
+                          </a>
+                        </li>
+                        <li className={tab === 'comments' ? 'is-active' : ''}>
+                          <a onClick={(event) => this.tabsHandler(event, 'comments')} href="/">
+                            <span className="icon is-small"><i className="fas fa-comment" aria-hidden="true"></i></span>
+                            <span>Comentaris</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  }
+                  {tab === 'scheduler' && post._id && <p>Calendari</p>}
+                  {tab === 'comments' && post._id && <ProfileComments />}
                 </div>
               </div>
             </div>

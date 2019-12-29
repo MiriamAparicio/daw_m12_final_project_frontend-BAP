@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import Logout from './Logout/Logout';
 import './NavBar.css';
 
 class NavBar extends Component {
@@ -49,6 +50,7 @@ class NavBar extends Component {
           {this.props.showIcon && (
             <div className="navbar-menu">
               <div className="navbar-end user-icon">
+                {this.props.isUserLogged ? <Logout /> : <></>}
                 <Link replace to={url} className="button is-rounded icon is-medium">
                   <i className="far fa-user user-icon-color"></i>
                 </Link>

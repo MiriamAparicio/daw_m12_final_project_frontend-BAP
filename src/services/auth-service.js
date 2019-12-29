@@ -34,13 +34,6 @@ class AuthService {
   logout(token) {
     const config = this.getConfig(token);
     return this.auth.post('/logout', null, config)
-    .then(res => {
-      localStorage.removeItem('token');
-      localStorage.removeItem('loginTime');
-    })
-    .catch(error => {
-      console.log(error);
-    });
   }
 }
 

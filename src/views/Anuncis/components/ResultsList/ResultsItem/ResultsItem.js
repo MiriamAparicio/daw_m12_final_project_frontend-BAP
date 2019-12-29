@@ -19,11 +19,11 @@ const ResultsItem = ({ post, handlePostOnClick, id }) => {
                 </figure>
                 <div className="user">{post.owner.username}</div>
                 <div className="rating">
-                    {`${post.owner.avgRating} / 5 `}
+                    {`4 / 5`}
                     <Rating
                         emptySymbol="far fa-star star"
                         fullSymbol="fas fa-star star"
-                        initialRating={post.owner.avgRating}
+                        initialRating={4}
                         readonly />
                 </div>
             </div>
@@ -45,11 +45,11 @@ const ResultsItem = ({ post, handlePostOnClick, id }) => {
                                 {post.title}
                             </div>
                             <div className="column is-paddingless rating has-text-right is-hidden-mobile">
-                                {`${post.owner.avgRating} / 5 `}
+                                {`4 / 5`}
                                 <Rating
                                     emptySymbol="far fa-star star"
                                     fullSymbol="fas fa-star star"
-                                    initialRating={post.owner.avgRating}
+                                    initialRating={4}
                                     readonly />
                             </div>
                         </div>

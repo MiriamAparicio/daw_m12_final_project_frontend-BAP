@@ -24,7 +24,7 @@ class ResultsSearch extends Component {
 
     for (let i = 0; i <= MAX_KM; i = i + 5) {
       options.push(
-        <option key={i} value={i} selected={i===30}>
+        <option key={i} value={i} >
           {i}
         </option>
       );
@@ -54,9 +54,9 @@ class ResultsSearch extends Component {
                 <div className="field">
                   <div className="control">
                     <div className="select is-small range-select">
-                      <select onChange={onSelectChange}
+                      <select defaultValue="30" onChange={onSelectChange}
                         name="range"
-                        >
+                      >
                         {options}
                       </select>
                     </div>

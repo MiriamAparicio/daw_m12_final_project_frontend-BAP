@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Rating from 'react-rating';
+
 import './PublicProfile.css';
 
 class PublicProfile extends Component {
@@ -9,7 +10,7 @@ class PublicProfile extends Component {
   };
 
   render() {
-    const { profile } = this.props;
+    const { profile, profile: { image } } = this.props;
     const fullName = `${profile.name} ${profile.surname}`;
 
     return (
@@ -35,7 +36,7 @@ class PublicProfile extends Component {
             <figure className="image avatar is-96x96">
               <img
                 className="is-rounded"
-                src="https://bulma.io/images/placeholders/64x64.png"
+                src={image || 'https://bulma.io/images/placeholders/64x64.png'}
                 alt={fullName}
               />
             </figure>

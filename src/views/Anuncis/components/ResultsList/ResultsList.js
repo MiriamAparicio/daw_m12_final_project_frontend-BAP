@@ -22,7 +22,6 @@ class ResultsList extends PureComponent {
 		return filteredResults;
 	}
 
-
 	resultsToComp = results => {
 		const { handlePostOnClick } = this.props;
 

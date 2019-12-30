@@ -20,7 +20,7 @@ class ProfileService {
   }
 
   updateUserProfile(user, token) {
-    const { _id, username, name, surname, email, postalCode } = user;
+    const { _id, username, name, surname, email, postalCode, image } = user;
     const config = this.getConfig(token);
     return this.profile.put(
       '/',
@@ -30,7 +30,8 @@ class ProfileService {
         name,
         surname,
         email,
-        postalCode
+        postalCode,
+        image
       },
       config
     );

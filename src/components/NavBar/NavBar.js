@@ -3,13 +3,15 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import Logout from './Logout/Logout';
 import './NavBar.css';
 
 class NavBar extends Component {
   static propTypes = {
     showIcon: PropTypes.bool,
     isUserLogged: PropTypes.bool.isRequired,
-    breadcrumbs: PropTypes.array
+    breadcrumbs: PropTypes.array,
+    token: PropTypes.string
   };
 
   static defaultProps = {
@@ -50,6 +52,7 @@ class NavBar extends Component {
           {this.props.showIcon && (
             <div className="navbar-menu">
               <div className="navbar-end user-icon">
+                {this.props.token && <Logout />}
                 <Link replace to={url} className="button is-rounded icon is-medium navbar-icon">
                   <figure className="image is-32x32">
                     <img className="is-rounded" src={image || 'https://bulma.io/images/placeholders/128x128.png'} alt='imagead' />
@@ -66,6 +69,7 @@ class NavBar extends Component {
 
 const mapStateToProps = ({ user }) => ({
   user: user.data,
+  token: user.token
 });
 
 

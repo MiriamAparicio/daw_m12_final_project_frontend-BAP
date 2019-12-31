@@ -7,7 +7,10 @@ import {
   LOGIN_USER_ERROR,
   UPDATE_USER,
   UPDATE_USER_SUCCESS,
-  UPDATE_USER_ERROR
+  UPDATE_USER_ERROR,
+  LOGOUT_USER,
+  LOGOUT_USER_SUCCESS,
+  LOGOUT_USER_ERROR
 } from '../constants';
 import { decodeToken } from '../../utils/utils';
 
@@ -84,6 +87,27 @@ function user(state = initialState, action) {
         isLogin: false,
         error: action.error
       };
+      
+    //LOGOUT
+    case LOGOUT_USER:
+        return {
+          ...state,
+          isLogin: true
+        };
+    case LOGOUT_USER_SUCCESS: 
+        return {
+          ...state,
+          isLogin: false,
+          data: {},
+          token: '',
+          error: ''
+        }
+    case LOGOUT_USER_ERROR:
+      return {
+        ...state,
+        isLogin: false,
+        error: action.error
+      }
     default:
       return state;
   }

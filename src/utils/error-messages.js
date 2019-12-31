@@ -11,5 +11,6 @@ export const ERROR_MESSAGES = {
   9: "L'email i la contrasenya són requerits",
   10: "El id de l'usuari no és vàlid",
   11: "L'usuari no s'ha trobat",
-  12: 'La sessió ha expirat'
+  12: 'La sessió ha expirat',
+  13: 'Error al tancar sessió'
 };

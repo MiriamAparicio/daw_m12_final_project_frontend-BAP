@@ -47,6 +47,7 @@ class ResultsSearch extends Component {
                     className="input is-small text-input"
                     type="text"
                     onChange={onInputChange}
+                    placeholder="Introdueix el codi postal"
                     defaultValue={query}
                   />
                 </p>

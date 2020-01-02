@@ -1,39 +1,38 @@
-@media (max-width: 676px){
-
-    .post-description {
-        padding:0;
-    }
+@media (max-width: 676px) {
+  .post-description {
+    padding: 0;
+  }
 }
 
 .post-data {
-    border-radius: 0;
-    margin: -0.75rem;
-    padding: 10px;
-    background: #F4F7FA;
+  border-radius: 0;
+  margin: -0.75rem;
+  padding: 10px;
+  background: #f4f7fa;
 }
 
 .post-title {
-    font-size: 1.25rem;
-    color: #576574;
-    border-bottom: 0px;
-    margin-bottom: 10px;
+  font-size: 1.25rem;
+  color: #576574;
+  border-bottom: 0px;
+  margin-bottom: 10px;
 }
 
 .post-description {
-    padding-right: 15px;
+  padding-right: 15px;
 }
 
 .post-services-list .service {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 .price-label {
-    margin-top: 15px;
-    font-weight: 800;
+  margin-top: 15px;
+  font-weight: 800;
 }
 
 .price-ammount {
-    font-size: 2rem;
-    font-weight: 900;
-    color: #ee5253;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #ee5253;
 }

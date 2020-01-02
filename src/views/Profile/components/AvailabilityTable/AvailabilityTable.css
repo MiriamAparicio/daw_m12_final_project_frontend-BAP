@@ -1,0 +1,30 @@
+.table {
+  font-size: 0.8rem;
+}
+
+.table thead th {
+  width: 3rem;
+}
+
+.table.is-bordered td,
+.table.is-bordered th {
+  border-width: 5px;
+  border-color: white;
+  padding: 0;
+}
+
+td {
+  background-color: #f4f7fa;
+}
+
+.table th:not([align]) {
+  text-align: center;
+}
+
+.is-available {
+  background-color: #43d1a1;
+}
+
+.is-responsive {
+  padding: 1rem;
+}

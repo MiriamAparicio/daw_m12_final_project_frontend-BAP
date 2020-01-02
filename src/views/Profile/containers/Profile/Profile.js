@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import profileService from '../../../../services/profile-service';
 import postService from '../../../../services/post-service';
+import availabilityService from '../../../../services/availability-service';
 import * as userActionCreators from '../../../../store/user/actions';
 import { PROFILE_BREADCRUMBS } from '../../../../utils/constants';
 import './Profile.css';
@@ -12,7 +13,19 @@ import NavBar from '../../../../components/NavBar/NavBar';
 import ProfileForm from '../ProfileForm/ProfileForm';
 import Post from '../Post/Post';
 import PublicProfile from '../../components/PublicProfile/PublicProfile';
+import AvailabilityTable from '../../components/AvailabilityTable/AvailabilityTable';
 import ProfileComments from '../ProfileComments/ProfileComments';
+
+const initialCalendarState = {
+  fh1: [false, false, false, false, false, false, false],
+  fh2: [false, false, false, false, false, false, false],
+  fh3: [false, false, false, false, false, false, false],
+  fh4: [false, false, false, false, false, false, false],
+  fh5: [false, false, false, false, false, false, false],
+  fh6: [false, false, false, false, false, false, false],
+  fh7: [false, false, false, false, false, false, false],
+  fh8: [false, false, false, false, false, false, false]
+};
 
 export class Profile extends Component {
   static propTypes = {
@@ -30,7 +43,8 @@ export class Profile extends Component {
     isEditting: false,
     isPublishing: false,
     error: '',
-    tab: 'scheduler'
+    tab: 'scheduler',
+    calendar: initialCalendarState
   };
 
   componentDidMount = () => {
@@ -65,8 +79,9 @@ export class Profile extends Component {
           });
         } else {
           this.setState({
-            post: response.data.post // TODO refactor names
+            post: response.data.post
           });
+          this.handleFetchAvailability(this.state.post._id, token);
         }
       })
       .catch(error => {
@@ -85,6 +100,19 @@ export class Profile extends Component {
       .then(response => {
         this.setState({
           profile: response.data.user
+        });
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
+
+  handleFetchAvailability(postId, token) {
+    availabilityService
+      .fetchAvailability(postId, token)
+      .then(response => {
+        this.setState({
+          calendar: response.data.calendar
         });
       })
       .catch(error => {
@@ -125,6 +153,9 @@ export class Profile extends Component {
       .createPost(post, this.props.token)
       .then(response => {
         this.setState({ post: response.data });
+      })
+      .then(() => {
+        this.handleAddAvailability();
       })
       .catch(error => {
         console.error(error);
@@ -167,15 +198,52 @@ export class Profile extends Component {
     this.setState({ isPublishing: false });
   };
 
+  handleAddAvailability = () => {
+    const { post } = this.state;
+    return availabilityService
+      .addAvailability(post._id, initialCalendarState, this.props.token)
+      .then(() => {
+        this.setState({
+          calendar: initialCalendarState
+        });
+      })
+      .catch(error => {
+        console.error(error);
+        this.setState({ error });
+      });
+  };
+
+  handleUpdateAvailability = calendar => {
+    return availabilityService
+      .updateAvailability(this.state.post._id, calendar, this.props.token)
+      .then(() => {
+        this.setState({
+          calendar
+        });
+      })
+      .catch(error => {
+        console.error(error);
+        this.setState({ error });
+      });
+  };
+
   tabsHandler = (event, tab = 'scheduler') => {
     event.preventDefault();
     this.setState({ ...this.state, tab });
-  }
+  };
 
   render() {
-    const { profile, isEditting, isPublishing, post, error, tab } = this.state;
+    const {
+      profile,
+      isEditting,
+      isPublishing,
+      post,
+      error,
+      tab,
+      calendar
+    } = this.state;
     const publishPost = post._id || isPublishing;
-
+    const readOnly = this.props.user._id !== profile._id;
     return (
       <>
         <NavBar
@@ -185,12 +253,12 @@ export class Profile extends Component {
         <section id="profile" className="hero is-fullheight form-hero">
           <div className="hero-body profile-body">
             <div className="container">
-              <div className="columns is-vcentered">
+              <div className="columns profile-columns">
                 <div
                   className="column is-three-fifths-desktop is-four-fifths-tablet
               is-offset-one-fifth-desktop is-offset-1-tablet box main"
                 >
-                  {this.props.user._id === profile._id ? (
+                  {!readOnly ? (
                     <>
                       <h2 className="form-title is-3 has-text-left is-hidden-tablet">
                         Perfil
@@ -220,25 +288,51 @@ export class Profile extends Component {
                       error={error}
                     />
                   )}
-                  {post._id &&
+                  {post._id && (
                     <div className="tabs is-boxed">
                       <ul>
                         <li className={tab === 'scheduler' ? 'is-active' : ''}>
-                          <a onClick={(event) => this.tabsHandler(event, 'scheduler')} href="/">
-                            <span className="icon is-small"><i className="fas fa-calendar" aria-hidden="true"></i></span>
-                            <span>Calendari</span>
+                          <a
+                            onClick={event =>
+                              this.tabsHandler(event, 'scheduler')
+                            }
+                            href="/"
+                          >
+                            <span className="icon is-small">
+                              <i
+                                className="fas fa-calendar"
+                                aria-hidden="true"
+                              ></i>
+                            </span>
+                            <span>Disponibilitat</span>
                           </a>
                         </li>
                         <li className={tab === 'comments' ? 'is-active' : ''}>
-                          <a onClick={(event) => this.tabsHandler(event, 'comments')} href="/">
-                            <span className="icon is-small"><i className="fas fa-comment" aria-hidden="true"></i></span>
+                          <a
+                            onClick={event =>
+                              this.tabsHandler(event, 'comments')
+                            }
+                            href="/"
+                          >
+                            <span className="icon is-small">
+                              <i
+                                className="fas fa-comment"
+                                aria-hidden="true"
+                              ></i>
+                            </span>
                             <span>Comentaris</span>
                           </a>
                         </li>
                       </ul>
                     </div>
-                  }
-                  {tab === 'scheduler' && post._id && <p>Calendari</p>}
+                  )}
+                  {tab === 'scheduler' && post._id && (
+                    <AvailabilityTable
+                      readOnly={readOnly}
+                      calendar={calendar}
+                      handleUpdateAvailability={this.handleUpdateAvailability}
+                    />
+                  )}
                   {tab === 'comments' && post._id && <ProfileComments />}
                 </div>
               </div>

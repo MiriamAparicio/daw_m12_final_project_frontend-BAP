@@ -1,5 +1,15 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Getting started
+
+### Clone or fork the the project
+
+`git clone https://github.com/MiriamAparicio/daw_m12_final_project_frontend-BAP.git`
+
+### Install dependencies
+
+`npm install`
+
 ## Available Scripts
 
 In the project directory, you can run:

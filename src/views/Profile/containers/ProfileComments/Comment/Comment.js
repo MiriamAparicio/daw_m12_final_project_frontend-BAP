@@ -1,12 +1,12 @@
 import React from 'react'
-import Rating from 'react-rating';
+import './Comment.css';
 
 export default function Comment(props) {
-  const { userId: user = 'username', text = 'Sense contingut', title = 'Sense titol', status = false } = props.message;
+  const { updateHandler, userId: user = 'username', text = 'Sense contingut', title = 'Sense titol', status = false } = props.message;
 
   return (
     <>
-      <div className="item-container box" >
+      <div className="message-container box" >
         <div className="user-info has-text-centered is-hidden-tablet">
           <figure className="image avatar is-96x96 post-image">
             <img
@@ -16,14 +16,9 @@ export default function Comment(props) {
             />
           </figure>
           <div className="user">{user.username}</div>
-          <div className="rating">
-            {`${4} / 5 `}
-            <Rating
-              emptySymbol="far fa-star star"
-              fullSymbol="fas fa-star star"
-              initialRating={4}
-              readonly />
-          </div>
+          {!status && <>&nbsp;&nbsp;<span className="tag is-warning">Pendent..</span></>}
+          {/* {status && <>&nbsp;&nbsp;<span className="tag is-success">Acceptat</span></>}
+          {!status && <>&nbsp;&nbsp;<span className="tag is-danger">Declinat</span></>} */}
         </div>
         <article className="media">
           <div className="media-left is-hidden-mobile">
@@ -43,21 +38,23 @@ export default function Comment(props) {
                 <div className="column is-paddingless is-four-fifths service-column">
                   {title}
                 </div>
-                <div className="column is-paddingless rating has-text-right is-hidden-mobile">
-                  {`${4} / 5 `}
-                  <Rating
-                    emptySymbol="far fa-star star"
-                    fullSymbol="fas fa-star star"
-                    initialRating={4}
-                    readonly />
-                </div>
               </div>
             </div>
             <p>{text}</p>
           </div>
-          {!status && <>&nbsp;&nbsp;<span className="tag is-warning">Pendent..</span></>}
-          {/* {status && <>&nbsp;&nbsp;<span className="tag is-success">Acceptat</span></>}
-          {!status && <>&nbsp;&nbsp;<span className="tag is-danger">Declinat</span></>} */}
+          <div className="is-hidden-mobile">
+            {!status && <>&nbsp;&nbsp;<span className="tag is-warning status-tag">Pendent..</span></>}
+            {/* {status && <>&nbsp;&nbsp;<span className="tag is-success">Acceptat</span></>}
+            {!status && <>&nbsp;&nbsp;<span className="tag is-danger">Declinat</span></>} */}
+            <span className="acceptDecline">
+              <span onClick={updateHandler} className="icon is-medium has-text-success">
+                <i className="fas fa-check-circle"></i>
+              </span>
+              <span onClick={updateHandler} className="icon is-medium has-text-danger">
+                <i className="fas fa-times-circle"></i>
+              </span>
+            </span>
+          </div>
         </article>
       </div >
 

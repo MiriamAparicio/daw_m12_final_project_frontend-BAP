@@ -52,6 +52,10 @@ export default function ProfileComments() {
     buttonRef.current.disabled = titleRef.current.value.length > 0 && textareaRef.current.value.length > 0 ? false : true;
   }
 
+  const messageUpdateHandler = (e) => {
+    console.log('hola!');
+  }
+
   const getMessages = () => {
     if (loading) return (
       <div className="comments-wrapper">
@@ -61,7 +65,7 @@ export default function ProfileComments() {
 
     if (messages.length === 0) return <p>No hi ha cites.. Sigues el primer!</p>;
 
-    return messages.map((message, index) => <Comment key={index} message={message} />);
+    return messages.map((message, index) => <Comment key={index} message={message} updateHandler={messageUpdateHandler} />);
   }
 
   return (

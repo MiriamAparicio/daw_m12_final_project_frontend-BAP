@@ -1,0 +1,15 @@
+.message-container {
+    box-shadow: 0 0 0 0;
+    background: #eff3f7;
+}
+
+.acceptDecline {
+    margin-left: 5px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    baseline: 15px;
+} 
+
+.status-tag {
+    margin: 0;
+}

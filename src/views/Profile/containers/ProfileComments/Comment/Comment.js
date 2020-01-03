@@ -1,8 +1,10 @@
 import React from 'react'
+import Status from '../Status/Status';
 import './Comment.css';
 
 export default function Comment(props) {
-  const { updateHandler, userId: user = 'username', text = 'Sense contingut', title = 'Sense titol', status = false } = props.message;
+  const { _id = 'id', userId: user = 'username', text = 'Sense contingut', title = 'Sense titol', status = null } = props.message;
+  const { ind, readOnly, statusUpdateHandler } = props;
 
   return (
     <>
@@ -16,9 +18,13 @@ export default function Comment(props) {
             />
           </figure>
           <div className="user">{user.username}</div>
-          {!status && <>&nbsp;&nbsp;<span className="tag is-warning">Pendent..</span></>}
-          {/* {status && <>&nbsp;&nbsp;<span className="tag is-success">Acceptat</span></>}
-          {!status && <>&nbsp;&nbsp;<span className="tag is-danger">Declinat</span></>} */}
+          <Status
+            _id={_id}
+            ind={ind}
+            status={status}
+            statusUpdateHandler={statusUpdateHandler}
+            readOnly={readOnly}
+          />
         </div>
         <article className="media">
           <div className="media-left is-hidden-mobile">
@@ -43,17 +49,13 @@ export default function Comment(props) {
             <p>{text}</p>
           </div>
           <div className="is-hidden-mobile">
-            {!status && <>&nbsp;&nbsp;<span className="tag is-warning status-tag">Pendent..</span></>}
-            {/* {status && <>&nbsp;&nbsp;<span className="tag is-success">Acceptat</span></>}
-            {!status && <>&nbsp;&nbsp;<span className="tag is-danger">Declinat</span></>} */}
-            <span className="acceptDecline">
-              <span onClick={updateHandler} className="icon is-medium has-text-success">
-                <i className="fas fa-check-circle"></i>
-              </span>
-              <span onClick={updateHandler} className="icon is-medium has-text-danger">
-                <i className="fas fa-times-circle"></i>
-              </span>
-            </span>
+            <Status
+              _id={_id}
+              ind={ind}
+              status={status}
+              statusUpdateHandler={statusUpdateHandler}
+              readOnly={readOnly}
+            />
           </div>
         </article>
       </div >

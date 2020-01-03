@@ -333,7 +333,7 @@ export class Profile extends Component {
                       handleUpdateAvailability={this.handleUpdateAvailability}
                     />
                   )}
-                  {tab === 'comments' && post._id && <ProfileComments />}
+                  {tab === 'comments' && post._id && <ProfileComments readOnly={readOnly} />}
                 </div>
               </div>
             </div>

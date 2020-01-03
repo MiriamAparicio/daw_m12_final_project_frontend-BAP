@@ -18,7 +18,16 @@ const postCommentByUserId = ({ title = 'No title', message = 'No comment' }, tok
   });
 }
 
+const updateCommentByMessageId = (messageId, status, token) => {
+  return fetch(`${URL}${messageId}`, {
+    method: 'PUT',
+    body: JSON.stringify({ status }),
+    headers: getConfig(token)
+  })
+}
+
 export default {
   getCommentsByUserId,
-  postCommentByUserId
+  postCommentByUserId,
+  updateCommentByMessageId
 }

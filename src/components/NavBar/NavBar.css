@@ -58,3 +58,7 @@
 .user-icon-color {
   color: lightgrey;
 }
+
+.navbar-icon {
+  padding: 0 !important; /* Dont use important! ;) */
+}

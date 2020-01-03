@@ -17,10 +17,10 @@ class Post extends Component {
   };
 
   render() {
-
     return (
       <>
-        { !this.props.post.owner || this.props.userId === this.props.post.owner ?
+        {!this.props.post.owner ||
+        this.props.userId === this.props.post.owner ? (
           <PostForm
             post={this.props.post}
             userId={this.props.userId}
@@ -30,11 +30,9 @@ class Post extends Component {
             handleEditPost={this.props.handleEditPost}
             error={this.props.error}
           ></PostForm>
-          :
-          <PublicPost
-            post={this.props.post}
-          />
-        }
+        ) : (
+          <PublicPost post={this.props.post} />
+        )}
       </>
     );
   }

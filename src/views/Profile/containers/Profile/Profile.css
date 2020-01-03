@@ -2,10 +2,22 @@
   margin-top: 2rem;
 }
 
+.profile-columns {
+  max-width: 100%;
+}
+
 .form-hero {
   min-height: 100vh;
 }
 
 .tabs > ul {
   border-bottom: 1px solid hsl(0, 0%, 86%) !important; /* dont use important ;) */
+}
+
+.tabs li a {
+  font-weight: bold;
+}
+
+.tabs li.is-active a {
+  color: #01a3a4;
 }

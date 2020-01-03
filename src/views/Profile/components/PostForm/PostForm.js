@@ -110,6 +110,7 @@ class PostForm extends Component {
   handlePublishPost = () => {
     const { title, description, range, services, price } = this.state;
     this.props.handleCreatePost({ title, description, range, services, price });
+    this.setState({ formValid: false });
   };
 
   handleUpdatePost = () => {
@@ -122,6 +123,7 @@ class PostForm extends Component {
       price,
       _id: this.props.post._id
     });
+    this.setState({ formValid: false });
   };
 
   render() {
@@ -230,18 +232,18 @@ class PostForm extends Component {
                 {this.props.post._id ? (
                   <button
                     onClick={this.handleUpdatePost}
-                    className="button button-text form-button"
+                    className="button button-text form-button is-small"
                     disabled={!formValid}
                   >
-                    Edita
+                    Desa anunci
                   </button>
                 ) : (
                   <button
                     onClick={this.handlePublishPost}
-                    className="button button-text form-button"
+                    className="button button-text form-button is-small"
                     disabled={!formValid}
                   >
-                    Publica
+                    Publica anunci
                   </button>
                 )}
               </div>
@@ -249,14 +251,14 @@ class PostForm extends Component {
                 {this.props.post._id ? (
                   <button
                     onClick={this.props.handleDeletePost}
-                    className="button button-text form-button"
+                    className="button button-text form-button is-small"
                   >
-                    Eliminar
+                    Eliminar anunci
                   </button>
                 ) : (
                   <button
                     onClick={this.props.handleCancelPublish}
-                    className="button button-text form-button"
+                    className="button button-text form-button is-small"
                   >
                     Cancel·la
                   </button>

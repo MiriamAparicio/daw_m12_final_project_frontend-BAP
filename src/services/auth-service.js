@@ -10,6 +10,10 @@ class AuthService {
     });
   }
 
+  getConfig(token) {
+    return { headers: { 'access-token': token } };
+  }
+
   signup(user) {
     const { username, name, surname, email, password, postalCode } = user;
     return this.auth.post('/signup', {
@@ -27,7 +31,10 @@ class AuthService {
     return this.auth.post('/login', { email, password });
   }
 
-  // TODO: logout
+  logout(token) {
+    const config = this.getConfig(token);
+    return this.auth.post('/logout', null, config)
+  }
 }
 
 const authService = new AuthService();

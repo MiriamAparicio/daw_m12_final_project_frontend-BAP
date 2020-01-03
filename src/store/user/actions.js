@@ -7,7 +7,10 @@ import {
   LOGIN_USER_ERROR,
   UPDATE_USER,
   UPDATE_USER_SUCCESS,
-  UPDATE_USER_ERROR
+  UPDATE_USER_ERROR,
+  LOGOUT_USER,
+  LOGOUT_USER_SUCCESS,
+  LOGOUT_USER_ERROR
 } from '../constants';
 import authService from '../../services/auth-service';
 import profileService from '../../services/profile-service';
@@ -40,7 +43,7 @@ function signupUserError(error) {
 }
 
 export function handleSignup(user) {
-  return function(dispatch) {
+  return function (dispatch) {
     dispatch(signupUser());
     return authService
       .signup(user)
@@ -77,7 +80,7 @@ function loginUserError(error) {
 }
 
 export function handleLogin({ email, password }) {
-  return function(dispatch) {
+  return function (dispatch) {
     dispatch(loginUser());
     return authService
       .login({ email, password })
@@ -112,7 +115,7 @@ function updateUserError(error) {
 }
 
 export function handleUpdateUser(user, token) {
-  return function(dispatch) {
+  return function (dispatch) {
     dispatch(updateUser());
     return profileService
       .updateUserProfile(user, token)
@@ -120,5 +123,38 @@ export function handleUpdateUser(user, token) {
         dispatch(updateUserSucces(response));
       })
       .catch(error => dispatch(updateUserError(error.response.data)));
+  };
+}
+
+function logoutUser() {
+  return {
+    type: LOGOUT_USER
+  };
+}
+
+function logoutUserSuccess() {
+  localStorage.removeItem('token');
+  localStorage.removeItem('loginTime');
+  return {
+    type: LOGOUT_USER_SUCCESS
+  };
+}
+
+function logoutUserError(error) {
+  console.error(error.message);
+  return {
+    type: LOGOUT_USER_ERROR,
+    error: ERROR_MESSAGES[13]
+  }
+}
+
+export function handleLogoutUser(token) {
+  return function (dispatch){
+    dispatch(logoutUser());
+    return authService.logout(token)
+    .then(response => {
+      dispatch(logoutUserSuccess())
+    })
+    .catch(error => dispatch(logoutUserError(error.response.data)));
   };
 }

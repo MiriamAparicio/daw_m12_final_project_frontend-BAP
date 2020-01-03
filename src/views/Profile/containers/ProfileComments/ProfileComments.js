@@ -5,45 +5,49 @@ import { useParams } from 'react-router-dom';
 import Spinner from '../../../../components/Spinner/Spinner';
 import Comment from './Comment/Comment';
 
+import commentsService from '../../../../services/comments-service';
+
 import './styles.css';
 
 export default function ProfileComments() {
   const textareaRef = useRef(null);
   const titleRef = useRef(null);
   const buttonRef = useRef(null);
-  const url = 'http://localhost:3000/posts/messages/'
   const { token } = useSelector(({ user }) => user);
-
-  const { id } = useParams();
+  const { id: userId } = useParams();
   const [loading, setLoading] = useState(true);
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
     (async () => {
       setLoading(true);
-      const response = await fetch(`${url}${id}`, {
-        headers: { 'Content-Type': 'application/json', 'access-token': token }
-      });
+      const response = await commentsService.getCommentsByUserId(userId, token);
+
       if (response.status === 200) {
         const messages = await response.json();
         setMessages(messages.messages);
       }
+
       setLoading(false);
     })();
-  }, [id, token]);
+  }, [userId, token]);
 
   const submitHandler = async event => {
     event.preventDefault();
-    const response = await fetch(url, {
-      method: 'POST',
-      body: JSON.stringify({ title: titleRef.current.value, message: textareaRef.current.value, userId: id }),
-      headers: { 'Content-Type': 'application/json', 'access-token': token }
-    });
+
+    const comment = {
+      title: titleRef.current.value,
+      message: textareaRef.current.value
+    }
+
+    const response = await commentsService.postCommentByUserId(comment, token, userId);
 
     if (response.status === 200) {
       const data = await response.json();
+
       textareaRef.current.value = '';
       titleRef.current.value = '';
+
       setMessages([...messages, data.newMessage]);
     }
   }

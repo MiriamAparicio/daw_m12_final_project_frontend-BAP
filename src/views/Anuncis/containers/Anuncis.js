@@ -27,18 +27,23 @@ class Anuncis extends Component {
 
   componentDidMount() {
     if (this.props.location.state) {
-      this.setState(
-        {
-          ...this.state,
-          postalCode: this.props.location.state.postalCode
-        },
-        this.handleSearchClick
-      );
+      this.setState({
+        ...this.state,
+        postalCode: this.props.location.state.postalCode
+      }, this.handleSearchClick);
+    } else if (sessionStorage.getItem('lastZipcode')) {
+      this.setState({
+        ...this.state,
+        postalCode: sessionStorage.getItem('lastZipcode')
+      }, this.handleSearchClick);
     }
+    sessionStorage.removeItem('lastZipcode');
   }
 
   handlePostOnClick = e => {
     const userId = e.currentTarget.getAttribute('id');
+    sessionStorage.setItem('lastZipcode', this.state.postalCode);
+
     this.props.history.push({
       pathname: `/profile/${userId}`,
       as: '/profile'

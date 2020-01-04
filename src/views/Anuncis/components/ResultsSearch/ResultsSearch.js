@@ -84,4 +84,4 @@ class ResultsSearch extends Component {
   }
 }
 
-export default ResultsSearch;   
+export default ResultsSearch;

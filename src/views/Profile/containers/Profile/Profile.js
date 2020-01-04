@@ -244,6 +244,7 @@ export class Profile extends Component {
     } = this.state;
     const publishPost = post._id || isPublishing;
     const readOnly = this.props.user._id !== profile._id;
+
     return (
       <>
         <NavBar
@@ -333,7 +334,7 @@ export class Profile extends Component {
                       handleUpdateAvailability={this.handleUpdateAvailability}
                     />
                   )}
-                  {tab === 'comments' && post._id && <ProfileComments readOnly={readOnly} />}
+                  {tab === 'comments' && post._id && <ProfileComments readOnly={readOnly} post={post} />}
                 </div>
               </div>
             </div>

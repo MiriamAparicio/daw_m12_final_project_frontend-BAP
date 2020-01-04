@@ -63,7 +63,8 @@ class AvailabilityTable extends Component {
           <th>{TIME_RANGES[key]}</th>
           {this.state.calendar[key].map((value, index) => {
             const tdClass = classNames({
-              'is-available': value
+              'is-available': value,
+              'td-hover': !this.props.readOnly
             });
             return (
               <td

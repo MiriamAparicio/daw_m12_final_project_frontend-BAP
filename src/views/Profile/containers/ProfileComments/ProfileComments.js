@@ -17,8 +17,7 @@ export default function ProfileComments(props) {
   const { id: userId } = useParams();
   const [loading, setLoading] = useState(true);
   const [messages, setMessages] = useState([]);
-  const { readOnly } = props;
-
+  const { readOnly, post } = props;
 
   useEffect(() => {
     (async () => {
@@ -86,7 +85,10 @@ export default function ProfileComments(props) {
         ind={index}
         message={message}
         readOnly={readOnly}
-        statusUpdateHandler={statusUpdateHandler} />);
+        statusUpdateHandler={statusUpdateHandler}
+        post={post}
+      />
+    );
   }
 
   return (

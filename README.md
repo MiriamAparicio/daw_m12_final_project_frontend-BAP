@@ -1,6 +1,8 @@
+## Getting started
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Getting started
+It works together with: [BAP backend project](https://github.com/franlol/daw_m12_final_project_backend_BAP)
 
 ### Clone or fork the the project
 
@@ -43,7 +45,8 @@ This app uses firebase as a tool for the profile picture storage, in order to us
 
 Check firebase [docs](https://firebase.google.com/docs/web/setup).
 
-```import firebase from "firebase/app";
+```javascript
+import firebase from "firebase/app";
 import "firebase/storage";
 
 const firebaseConfig = {
@@ -60,6 +63,5 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const storage = firebase.storage();
 
-export { firebase, storage as default };```
-
-
+export { firebase, storage as default };
+```

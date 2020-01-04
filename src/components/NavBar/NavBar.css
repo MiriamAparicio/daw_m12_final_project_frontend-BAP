@@ -22,4 +22,11 @@
 
 .navbar-icon {
   padding: 0 !important; /* Dont use important! ;) */
+  overflow: hidden;
+  border: 0;
+}
+
+.navbar-icon-img {
+  max-height: 100% !important;
+  
 }

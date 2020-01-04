@@ -73,7 +73,7 @@ class NavBar extends Component {
                 <div className="navbar-item has-dropdown is-hoverable">
                   <div className="button is-rounded icon is-medium navbar-icon navbar-link is-arrowless">
                     {image ? (
-                      <img className="is-rounded" src={image} alt="imagead" />
+                      <img className="navbar-icon-img is-rounded" src={image} alt="imagead" />
                     ) : (
                       <div>
                         <i className="far fa-user user-icon-color"></i>

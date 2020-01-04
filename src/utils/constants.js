@@ -1,16 +1,5 @@
 export const MAX_KM = 50;
 
-export const POSTS_BREADCRUMBS = [
-  { name: 'Inici', url: '/', current: false },
-  { name: 'Anuncis', url: '/anuncis', current: true }
-];
-
-export const PROFILE_BREADCRUMBS = [
-  { name: 'Inici', url: '/', current: false },
-  { name: 'Anuncis', url: '/anuncis', current: false },
-  { name: 'Perfil', url: '/profile', current: true }
-];
-
 export const TIME_RANGES = {
   fh1: '08.00-09:00',
   fh2: '09.30-10:30',

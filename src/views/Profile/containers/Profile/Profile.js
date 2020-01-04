@@ -6,7 +6,6 @@ import profileService from '../../../../services/profile-service';
 import postService from '../../../../services/post-service';
 import availabilityService from '../../../../services/availability-service';
 import * as userActionCreators from '../../../../store/user/actions';
-import { PROFILE_BREADCRUMBS } from '../../../../utils/constants';
 import './Profile.css';
 
 import NavBar from '../../../../components/NavBar/NavBar';
@@ -247,10 +246,7 @@ export class Profile extends Component {
 
     return (
       <>
-        <NavBar
-          isUserLogged={!!this.props.user}
-          breadcrumbs={PROFILE_BREADCRUMBS}
-        />
+        <NavBar isUserLogged={!!this.props.user} />
         <section id="profile" className="hero is-fullheight form-hero">
           <div className="hero-body profile-body">
             <div className="container">

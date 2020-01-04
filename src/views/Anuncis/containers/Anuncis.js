@@ -5,7 +5,6 @@ import ResultsList from './../components/ResultsList/ResultsList';
 import ResultsSearch from './../components/ResultsSearch/ResultsSearch';
 import postService from '../../../services/post-service';
 import './Anuncis.css';
-import { POSTS_BREADCRUMBS } from '../../../utils/constants';
 
 import NavBar from '../../../components/NavBar/NavBar';
 
@@ -86,10 +85,7 @@ class Anuncis extends Component {
   render() {
     return (
       <>
-        <NavBar
-          isUserLogged={!!this.props.user}
-          breadcrumbs={POSTS_BREADCRUMBS}
-        />
+        <NavBar isUserLogged={!!this.props.user} />
         <section id="anuncis" className="section is-medium results-container">
           <div className="hero-body">
             <div className="container">

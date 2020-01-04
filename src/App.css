@@ -4,3 +4,8 @@
 *{
     font-family: Nunito, sans-serif;
 }
+
+.navbar-text {
+    color: darkgrey !important;
+    font-weight: 700;
+}

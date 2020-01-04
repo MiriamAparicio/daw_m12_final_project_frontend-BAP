@@ -19,7 +19,7 @@ class Logout extends Component {
         return(
             <Link 
             replace to="/" 
-            style={{ color: 'darkgrey', 'fontWeight': '700' }}
+            className="navbar-text"
             onClick={this.handleLogout}>
                 Tanca sessió
             </Link>

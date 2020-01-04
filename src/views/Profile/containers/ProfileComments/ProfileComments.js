@@ -9,7 +9,7 @@ import commentsService from '../../../../services/comments-service';
 
 import './styles.css';
 
-export default function ProfileComments() {
+export default function ProfileComments(props) {
   const textareaRef = useRef(null);
   const titleRef = useRef(null);
   const buttonRef = useRef(null);
@@ -17,6 +17,7 @@ export default function ProfileComments() {
   const { id: userId } = useParams();
   const [loading, setLoading] = useState(true);
   const [messages, setMessages] = useState([]);
+  const { readOnly, post } = props;
 
   useEffect(() => {
     (async () => {
@@ -56,6 +57,20 @@ export default function ProfileComments() {
     buttonRef.current.disabled = titleRef.current.value.length > 0 && textareaRef.current.value.length > 0 ? false : true;
   }
 
+  const statusUpdateHandler = async event => {
+
+    const messageId = event.currentTarget.id;
+    const status = event.currentTarget.getAttribute('name') === 'accept';
+    const ind = event.currentTarget.getAttribute('ind');
+
+    const response = await commentsService.updateCommentByMessageId(messageId, status, token);
+    if (response.status === 200) {
+      let newMessages = [...messages];
+      newMessages[ind].status = status;
+      setMessages(newMessages);
+    }
+  }
+
   const getMessages = () => {
     if (loading) return (
       <div className="comments-wrapper">
@@ -64,8 +79,16 @@ export default function ProfileComments() {
     )
 
     if (messages.length === 0) return <p>No hi ha cites.. Sigues el primer!</p>;
-
-    return messages.map((message, index) => <Comment key={index} message={message} />);
+    return messages.map((message, index) =>
+      <Comment
+        key={index}
+        ind={index}
+        message={message}
+        readOnly={readOnly}
+        statusUpdateHandler={statusUpdateHandler}
+        post={post}
+      />
+    );
   }
 
   return (

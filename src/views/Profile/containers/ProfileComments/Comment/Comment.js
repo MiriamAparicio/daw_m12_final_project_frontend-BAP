@@ -1,40 +1,43 @@
 import React from 'react'
-import Rating from 'react-rating';
+import Status from '../Status/Status';
+import { connect } from 'react-redux';
 
-export default function Comment(props) {
-  const { userId: user = 'username', text = 'Sense contingut', title = 'Sense titol', status = false } = props.message;
+function Comment(props) {
+  const { _id = 'id', userId: messageOwner = 'username', text = 'Sense contingut', title = 'Sense titol', status = null } = props.message;
+  const { ind, readOnly, statusUpdateHandler, post } = props;
 
   return (
     <>
-      <div className="item-container box" >
+      <div className="message-container box" >
         <div className="user-info has-text-centered is-hidden-tablet">
           <figure className="image avatar is-96x96 post-image">
             <img
               className="is-rounded"
-              src={user.image || "https://bulma.io/images/placeholders/64x64.png"}
-              alt={user.username}
+              src={messageOwner.image || "https://bulma.io/images/placeholders/64x64.png"}
+              alt={messageOwner.username}
             />
           </figure>
-          <div className="user">{user.username}</div>
-          <div className="rating">
-            {`${4} / 5 `}
-            <Rating
-              emptySymbol="far fa-star star"
-              fullSymbol="fas fa-star star"
-              initialRating={4}
-              readonly />
-          </div>
+          <div className="user">{messageOwner.username}</div>
+          {post.owner !== messageOwner._id && (
+            <Status
+              _id={_id}
+              ind={ind}
+              status={status}
+              statusUpdateHandler={statusUpdateHandler}
+              readOnly={readOnly}
+            />
+          )}
         </div>
         <article className="media">
           <div className="media-left is-hidden-mobile">
             <figure className="image is-64x64">
               <img
                 className="is-rounded"
-                src={user.image || "https://bulma.io/images/placeholders/64x64.png"}
-                alt={user.username}
+                src={messageOwner.image || "https://bulma.io/images/placeholders/64x64.png"}
+                alt={messageOwner.username}
               />
             </figure>
-            <div className="user">{user.username}</div>
+            <div className="user">{messageOwner.username}</div>
           </div>
 
           <div className="media-content is-paddingless">
@@ -43,25 +46,27 @@ export default function Comment(props) {
                 <div className="column is-paddingless is-four-fifths service-column">
                   {title}
                 </div>
-                <div className="column is-paddingless rating has-text-right is-hidden-mobile">
-                  {`${4} / 5 `}
-                  <Rating
-                    emptySymbol="far fa-star star"
-                    fullSymbol="fas fa-star star"
-                    initialRating={4}
-                    readonly />
-                </div>
               </div>
             </div>
             <p>{text}</p>
           </div>
-          {!status && <>&nbsp;&nbsp;<span className="tag is-warning">Pendent..</span></>}
-          {/* {status && <>&nbsp;&nbsp;<span className="tag is-success">Acceptat</span></>}
-          {!status && <>&nbsp;&nbsp;<span className="tag is-danger">Declinat</span></>} */}
+          {post.owner !== messageOwner._id && (
+            <Status
+              _id={_id}
+              ind={ind}
+              status={status}
+              statusUpdateHandler={statusUpdateHandler}
+              readOnly={readOnly}
+            />
+          )}
         </article>
       </div >
-
-
     </>
   )
 }
+
+const mapStateToProps = state => {
+  return { loggedUserId: state.user.data._id }
+}
+
+export default connect(mapStateToProps, null)(Comment);

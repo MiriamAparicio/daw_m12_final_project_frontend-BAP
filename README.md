@@ -1,6 +1,8 @@
+## Getting started
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Getting started
+It works together with: [BAP backend project](https://github.com/franlol/daw_m12_final_project_backend_BAP)
 
 ### Clone or fork the the project
 
@@ -36,3 +38,30 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+## Firebase
+
+This app uses firebase as a tool for the profile picture storage, in order to use it you will need to set your own config:
+
+Check firebase [docs](https://firebase.google.com/docs/web/setup).
+
+```javascript
+import firebase from "firebase/app";
+import "firebase/storage";
+
+const firebaseConfig = {
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const storage = firebase.storage();
+
+export { firebase, storage as default };
+```

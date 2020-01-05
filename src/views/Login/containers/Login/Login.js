@@ -16,8 +16,9 @@ export class Login extends Component {
 
   handleSubmit = (email, password) => e => {
     e.preventDefault();
-    const { handleLogin, error, history } = this.props;
-    handleLogin({ email, password }).then(() => {
+
+    this.props.handleLogin({ email, password }).then(() => {
+      const { error, history } = this.props;
       !error && history.replace('/');
     });
   };

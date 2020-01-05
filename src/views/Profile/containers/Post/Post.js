@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './Post.css';
 
 import PostForm from '../../components/PostForm/PostForm';
 import PublicPost from '../../components/PublicPost/PublicPost';

@@ -18,7 +18,7 @@ export class Login extends Component {
     e.preventDefault();
     const { handleLogin, error, history } = this.props;
     handleLogin({ email, password }).then(() => {
-      !error && history.replace('/anuncis');
+      !error && history.replace('/');
     });
   };
 

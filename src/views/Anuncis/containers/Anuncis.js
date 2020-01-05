@@ -27,15 +27,21 @@ class Anuncis extends Component {
 
   componentDidMount() {
     if (this.props.location.state) {
-      this.setState({
-        ...this.state,
-        postalCode: this.props.location.state.postalCode
-      }, this.handleSearchClick);
+      this.setState(
+        {
+          ...this.state,
+          postalCode: this.props.location.state.postalCode
+        },
+        this.handleSearchClick
+      );
     } else if (sessionStorage.getItem('lastZipcode')) {
-      this.setState({
-        ...this.state,
-        postalCode: sessionStorage.getItem('lastZipcode')
-      }, this.handleSearchClick);
+      this.setState(
+        {
+          ...this.state,
+          postalCode: sessionStorage.getItem('lastZipcode')
+        },
+        this.handleSearchClick
+      );
     }
     sessionStorage.removeItem('lastZipcode');
   }
@@ -94,21 +100,35 @@ class Anuncis extends Component {
         <section id="anuncis" className="section is-medium results-container">
           <div className="hero-body">
             <div className="container">
-              <ResultsSearch
-                query={this.state.postalCode}
-                onFilterClick={this.handleFilterClick}
-                onSearchClick={this.handleSearchClick}
-                onInputChange={this.handleInput}
-                onSelectChange={this.handleSelect}
-                filter={this.state.filter}
-              />
+              <div className="columns">
+                <div className="column is-three-fifths is-offset-one-fifth">
+                  <ResultsSearch
+                    query={this.state.postalCode}
+                    onFilterClick={this.handleFilterClick}
+                    onSearchClick={this.handleSearchClick}
+                    onInputChange={this.handleInput}
+                    onSelectChange={this.handleSelect}
+                    filter={this.state.filter}
+                  />
+                </div>
+              </div>
             </div>
             <div className="container">
-              <ResultsList
-                results={this.state.data}
-                filter={this.state.filter}
-                handlePostOnClick={this.handlePostOnClick}
-              />
+              <div className="columns">
+                <div className="column is-three-fifths is-offset-one-fifth">
+                  {!this.state.postalCode && !this.state.data.length > 0 ? (
+                    <div className="ammount">
+                      Fes una cerca i troba anuncis a la teva zona
+                    </div>
+                  ) : (
+                    <ResultsList
+                      results={this.state.data}
+                      filter={this.state.filter}
+                      handlePostOnClick={this.handlePostOnClick}
+                    />
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         </section>

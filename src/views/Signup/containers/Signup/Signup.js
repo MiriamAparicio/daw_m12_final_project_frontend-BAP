@@ -34,7 +34,7 @@ export class Signup extends Component {
       })
       .then(() => {
         const { error, history } = this.props;
-        !error && history.replace('/anuncis');
+        !error && history.replace('/');
       });
   };
 

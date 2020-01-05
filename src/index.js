@@ -1,5 +1,5 @@
 import React from 'react';
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
@@ -13,13 +13,11 @@ import Signup from './views/Signup/containers/Signup/Signup';
 import Anuncis from './views/Anuncis/containers/Anuncis';
 import Profile from './views/Profile/containers/Profile/Profile';
 import PageNotFound from './views/PageNotFound/PageNotFound';
+import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 
-//TODO: esborrar lína de redux.devtools
 const store = createStore(
   reducers,
-  compose(
-    applyMiddleware(thunk),
-    window.navigator.userAgent.includes('Chrome') ? window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() : compose),
+  composeWithDevTools(applyMiddleware(thunk))
 );
 
 const router = (

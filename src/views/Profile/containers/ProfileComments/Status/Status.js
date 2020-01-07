@@ -31,7 +31,7 @@ class Status extends Component {
 
     return (
       <>
-        <div className="comment-status is-hidden-mobile">
+        <div className="comment-status">
           <span className={`tag ${current.color} status-tag`}>
             {current.text}
           </span>

@@ -50,15 +50,17 @@ function Comment(props) {
             </div>
             <p>{text}</p>
           </div>
-          {post.owner !== messageOwner._id && (
-            <Status
-              _id={_id}
-              ind={ind}
-              status={status}
-              statusUpdateHandler={statusUpdateHandler}
-              readOnly={readOnly}
-            />
-          )}
+          <div className="is-hidden-mobile">
+            {post.owner !== messageOwner._id && (
+              <Status
+                _id={_id}
+                ind={ind}
+                status={status}
+                statusUpdateHandler={statusUpdateHandler}
+                readOnly={readOnly}
+              />
+            )}
+          </div>
         </article>
       </div >
     </>

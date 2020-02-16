@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-It works together with: [BAP backend project](https://github.com/franlol/daw_m12_final_project_backend_BAP)
+It works together with: [BAP backend project](https://github.com/MiriamAparicio/daw_m12_final_project_backend_BAP)
 
 ### Clone or fork the the project
 
